@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,35 +8,39 @@
       margin: 0;
       padding: 40px 20px;
       font-family: system-ui, sans-serif;
-      background-color: #d6f0ff;
-      color: #111;
       text-align: center;
-    }
-    .rainbow-text {
-      font-size: 2em;
-      font-weight: bold;
+      color: #ffffff;
       background: linear-gradient(270deg, #ff3cac, #784ba0, #2b86c5, #00e6e6, #00ff99, #f9f871, #ff3cac);
-      background-size: 1500% 1500%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: rainbow 8s ease infinite;
+      background-size: 500% 500%;
+      animation: bgRainbow 20s ease infinite;
     }
-    @keyframes rainbow {
+
+    @keyframes bgRainbow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
     p {
       font-size: 1.1em;
       margin: 10px 0;
     }
+
     .links a {
       display: block;
       margin: 8px 0;
-      color: #005bbb;
+      color: #ffffff;
       font-weight: bold;
       text-decoration: none;
     }
+
     .links a:hover {
       text-decoration: underline;
     }
@@ -45,7 +48,7 @@
 </head>
 <body>
 
-  <h1 class="rainbow-text">Nguyen Manh Dung</h1>
+  <h1>Nguyen Manh Dung</h1>
   <p>crDroid Maintainer for Galaxy A71</p>
   <p>Passionate about Minecraft, ROM development, and custom Android experiences.</p>
 

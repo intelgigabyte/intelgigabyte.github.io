@@ -1,5 +1,4 @@
 # intelgigabyte.github.io
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -40,8 +39,6 @@
   </style>
 </head>
 <body>
-
-  <img src="cat.jpg" alt="My cat">
 
   <h1>Nguyen Manh Dung</h1>
   <p>crDroid Maintainer for Galaxy A71</p>

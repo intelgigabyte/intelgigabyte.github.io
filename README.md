@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>intelgigabyte9299 | crDroid Maintainer</title>
+  <title>Nguyen Manh Dung | crDroid Maintainer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -10,12 +10,12 @@
       font-family: system-ui, sans-serif;
       text-align: center;
       color: #ffffff;
-      background: linear-gradient(270deg, #ff3cac, #784ba0, #2b86c5, #00e6e6, #00ff99, #f9f871, #ff3cac);
-      background-size: 500% 500%;
-      animation: bgRainbow 20s ease infinite;
+      background: linear-gradient(270deg, #00ffe7, #00c3ff, #0088ff, #0055ff);
+      background-size: 400% 400%;
+      animation: bgGradient 15s ease infinite;
     }
 
-    @keyframes bgRainbow {
+    @keyframes bgGradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
@@ -24,13 +24,19 @@
     h1 {
       font-size: 2.5em;
       font-weight: bold;
-      margin-bottom: 20px;
-      color: #ffffff;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.1em;
       margin: 10px 0;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #fff;
+      width: 60%;
+      margin: 20px auto;
     }
 
     .links a {
@@ -49,6 +55,7 @@
 <body>
 
   <h1>Nguyen Manh Dung</h1>
+  <hr>
   <p>crDroid Maintainer for Galaxy A71</p>
   <p>Passionate about Minecraft, ROM development, and custom Android experiences.</p>
 

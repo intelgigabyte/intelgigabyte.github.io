@@ -40,5 +40,9 @@
   <p>📣 <a href="https://t.me/intelgigabyteshit" target="_blank">Telegram Channel</a></p>
   <p>💬 <a href="https://t.me/doraemonintelgigabyte" target="_blank">Telegram Group</a></p>
   <p>📱 <a href="https://crdroid.net/a71/11" target="_blank">crDroid A71 Official Builds</a></p>
+
+  <h2>💖 Donate</h2>
+  <p>👉 <a href="https://paypal.me/intelgigabyte9299" target="_blank">Donate via PayPal</a></p>
+  <p>👉 <a href="https://patreon.com/intelgigabyte9299" target="_blank">Donate via Patreon</a></p>
 </body>
 </html>

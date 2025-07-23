@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>intelgigabyte9299's Custom ROMs</title>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
+     crossorigin="anonymous"></script>
   <style>
     :root {
       --primary: #3b82f6;
@@ -31,11 +33,11 @@
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
-      --section-bg: rgba(255, 255, 255, 0.08);
-      --card-bg: rgba(255, 255, 255, 0.05);
+      --section-bg: rgba(255, 255, 255, 0.08); /* Slightly darker glass effect */
+      --card-bg: rgba(255, 255, 255, 0.05); /* Even darker cards */
       --shadow: rgba(0, 0, 0, 0.4);
       --text-light: #f8fafc;
-      --text-dark: #f8fafc;
+      --text-dark: #f8fafc; /* Adjust for dark mode */
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
     }
@@ -68,37 +70,37 @@
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      transition: background var(--transition-speed) ease, color var(--transition-speed) ease; /* Use unified speed */
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease; /* Smooth theme transition */
     }
 
     header {
-      padding: 3rem 1rem;
+      padding: 3rem 1rem; /* Keep existing padding */
       text-align: center;
       color: white;
       box-shadow: 0 8px 20px var(--shadow);
-      animation: fadeInDown 1s ease-out;
+      animation: fadeInDown 1s ease-out; /* Keep existing animation */
+      /* Updated gradient direction for more pop */
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       border-bottom-left-radius: var(--radius-section); /* Rounded bottom corners for header */
       border-bottom-right-radius: var(--radius-section);
-      /* Add overflow hidden to prevent children from spilling out of rounded corners */
-      overflow: hidden;
+      overflow: hidden; /* Prevent children from spilling out of rounded corners */
     }
 
     header h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.2rem;
+      font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk here */
+      font-size: 3.2rem; /* Slightly increase font size for more impact */
       font-weight: 700;
-      letter-spacing: -0.05em;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      letter-spacing: -0.05em; /* A bit tighter letter spacing for modern look */
+      margin-bottom: 0.5rem; /* Add some space below the title */
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
     }
 
     header p {
-      font-size: 1.25rem;
-      margin-top: 0.5rem;
+      font-size: 1.25rem; /* Slightly larger for better readability */
+      margin-top: 0.5rem; /* Keep this */
       opacity: 0.9;
-      line-height: 1.4;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      line-height: 1.4; /* Improve line spacing */
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
     }
 
     .container {
@@ -116,8 +118,8 @@
       padding: 2rem;
       margin-bottom: 2rem;
       border: 1px solid var(--border-color);
-      animation: fadeIn 1s ease-out forwards;
-      opacity: 0;
+      animation: fadeIn 1s ease-out forwards; /* Animation */
+      opacity: 0; /* Start hidden for animation */
       transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Ensure smooth theme transition */
     }
 
@@ -131,10 +133,10 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark);
+      color: var(--text-dark); /* Adjust color for theme */
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
-      transition: color var(--transition-speed) ease; /* Use unified speed */
+      transition: color var(--transition-speed) ease;
     }
 
     .rom-grid {
@@ -147,9 +149,9 @@
       background: var(--card-bg);
       border-radius: var(--radius-card); /* Use new card radius */
       padding: 1.5rem;
-      color: var(--text-light);
+      color: var(--text-light); /* Adjust color for theme */
       backdrop-filter: blur(16px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease; /* Ensure smooth theme transition */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
       box-shadow: 0 6px 18px var(--shadow);
       text-decoration: none;
       border: 1px solid var(--border-color);
@@ -198,7 +200,7 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: var(--footer-text);
-      transition: color var(--transition-speed) ease; /* Use unified speed */
+      transition: color var(--transition-speed) ease;
     }
 
     /* Theme Toggle Button */
@@ -227,6 +229,22 @@
       box-shadow: 0 6px 16px var(--shadow);
     }
 
+    /* AdSense Container Styling */
+    .ad-container {
+      margin: 2rem auto; /* Khoảng cách trên dưới và căn giữa */
+      text-align: center; /* Đảm bảo quảng cáo được căn giữa nếu có thể */
+      max-width: 728px; /* Giới hạn chiều rộng tối đa cho quảng cáo nếu muốn */
+      background: var(--section-bg); /* Hoà hợp với các section khác */
+      border-radius: var(--radius-soft); /* Bo góc nhẹ */
+      padding: 1rem; /* Khoảng cách bên trong container */
+      box-shadow: 0 4px 12px var(--shadow);
+      border: 1px solid var(--border-color);
+      opacity: 0; /* Bắt đầu ẩn để animation */
+      animation: fadeIn 1s ease-out forwards; /* Animation khi xuất hiện */
+      animation-delay: 1.2s; /* Delay sau các section khác */
+    }
+
+
     /* Animations */
     @keyframes fadeInDown {
       from {
@@ -253,14 +271,14 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
-        padding: 2.5rem 1rem;
+        padding: 2.5rem 1rem; /* Slightly less padding on smaller screens */
       }
       header h1 {
-        font-size: 2.5rem;
+        font-size: 2.5rem; /* Adjusted for tablets */
         letter-spacing: -0.04em;
       }
       header p {
-        font-size: 1.1rem;
+        font-size: 1.1rem; /* Adjusted for tablets */
       }
 
       .container {
@@ -278,7 +296,7 @@
       }
 
       .rom-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack cards on small screens */
       }
 
       .rom-card {
@@ -290,9 +308,13 @@
       }
 
       .connect a {
-        display: block;
+        display: block; /* Stack buttons vertically */
         margin: 0.5rem 0;
         text-align: center;
+      }
+
+      .ad-container {
+        padding: 0.8rem;
       }
     }
 
@@ -339,6 +361,17 @@
       <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
     </section>
 
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7471263191510520"
+           data-ad-slot="9876543210"  data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
     <section>
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
@@ -356,6 +389,17 @@
         <li>Join the Telegram group below for download links and updates</li>
       </ul>
     </section>
+
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7471263191510520"
+           data-ad-slot="1234567890"  data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
 
     <section>
       <h2>🛠️ Tools & Environment</h2>
@@ -380,7 +424,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with 😍 & Android love.
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & Android love.
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
@@ -388,6 +432,7 @@
   </button>
 
   <script>
+    // script.js content (Logic cho nút chuyển đổi chế độ sáng/tối)
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;

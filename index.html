@@ -16,6 +16,40 @@
       --text-dark: #0f172a;
       --text-light: #f8fafc;
       --radius: 20px;
+      --background-start: #0f172a;
+      --background-end: #1e293b;
+      --section-bg: var(--bg-glass);
+      --border-color: rgba(255, 255, 255, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --footer-text: #cbd5e1;
+    }
+
+    /* Dark Mode Variables */
+    body.dark-mode {
+      --background-start: #0f172a;
+      --background-end: #1e293b;
+      --section-bg: rgba(255, 255, 255, 0.08); /* Slightly darker glass effect */
+      --card-bg: rgba(255, 255, 255, 0.05); /* Even darker cards */
+      --shadow: rgba(0, 0, 0, 0.4);
+      --text-light: #f8fafc;
+      --text-dark: #f8fafc; /* Adjust for dark mode */
+      --border-color: rgba(255, 255, 255, 0.15);
+      --footer-text: #94a3b8;
+    }
+
+    /* Light Mode Variables */
+    body.light-mode {
+      --primary: #1d4ed8;
+      --secondary: #6d28d9;
+      --background-start: #e0f2fe;
+      --background-end: #d1e9fb;
+      --section-bg: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --shadow: rgba(0, 0, 0, 0.15);
+      --text-dark: #0f172a;
+      --text-light: #334155;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --footer-text: #475569;
     }
 
     * {
@@ -26,11 +60,12 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, #0f172a, #1e293b);
+      background: linear-gradient(120deg, var(--background-start), var(--background-end));
       color: var(--text-light);
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
+      transition: background 0.5s ease, color 0.5s ease; /* Smooth theme transition */
     }
 
     header {
@@ -39,6 +74,7 @@
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
       box-shadow: 0 8px 20px var(--shadow);
+      animation: fadeInDown 1s ease-out; /* Animation */
     }
 
     header h1 {
@@ -59,22 +95,32 @@
     }
 
     section {
-      background: var(--bg-glass);
+      background: var(--section-bg);
       border-radius: var(--radius);
       box-shadow: 0 8px 24px var(--shadow);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       padding: 2rem;
       margin-bottom: 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid var(--border-color);
+      animation: fadeIn 1s ease-out forwards; /* Animation */
+      opacity: 0; /* Start hidden for animation */
     }
+
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.4s; }
+    section:nth-of-type(3) { animation-delay: 0.6s; }
+    section:nth-of-type(4) { animation-delay: 0.8s; }
+    section:nth-of-type(5) { animation-delay: 1s; }
+
 
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: #fff;
+      color: var(--text-dark); /* Adjust color for theme */
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
+      transition: color 0.5s ease;
     }
 
     .rom-grid {
@@ -84,20 +130,20 @@
     }
 
     .rom-card {
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--card-bg);
       border-radius: var(--radius);
       padding: 1.5rem;
-      color: white;
+      color: var(--text-light); /* Adjust color for theme */
       backdrop-filter: blur(16px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
+      box-shadow: 0 6px 18px var(--shadow);
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid var(--border-color);
     }
 
     .rom-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 24px var(--shadow);
     }
 
     .rom-title {
@@ -137,15 +183,129 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #cbd5e1;
+      color: var(--footer-text);
+      transition: color 0.5s ease;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
+    /* Theme Toggle Button */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 2rem 1rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 1.5rem 0.8rem;
+      }
+
+      section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        padding-left: 0.8rem;
+      }
+
+      .rom-grid {
+        grid-template-columns: 1fr; /* Stack cards on small screens */
+      }
+
+      .rom-card {
+        padding: 1.2rem;
+      }
+
       .rom-title {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+      }
+
+      .connect a {
+        display: block; /* Stack buttons vertically */
+        margin: 0.5rem 0;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 0.9rem;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      .rom-card {
+        padding: 1rem;
+      }
+
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
       }
     }
   </style>
@@ -207,5 +367,46 @@
     &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & Android love.
   </footer>
 
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script>
+    // script.js content
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        body.classList.add(savedTheme);
+        if (savedTheme === 'light-mode') {
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+      } else {
+        // Default to dark mode if no preference is saved
+        body.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+
+      themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          localStorage.setItem('theme', 'light-mode');
+        } else {
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          localStorage.setItem('theme', 'dark-mode');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+

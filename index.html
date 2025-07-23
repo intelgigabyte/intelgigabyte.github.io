@@ -177,11 +177,18 @@
       box-shadow: 0 6px 18px var(--shadow);
       text-decoration: none;
       border: 1px solid var(--border-color);
+      display: flex; /* Added for layout of title, status, and button */
+      flex-direction: column; /* Stack children vertically */
+      justify-content: space-between; /* Push button to bottom if space allows */
     }
 
     .rom-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 10px 24px var(--shadow);
+    }
+
+    .rom-info { /* New wrapper for title and status */
+        margin-bottom: 1rem; /* Space below info before download button */
     }
 
     .rom-title {
@@ -193,6 +200,24 @@
     .rom-status {
       font-size: 0.95rem;
       opacity: 0.85;
+    }
+
+    .download-button { /* Style for the new download button */
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        background: var(--primary); /* Using primary color for consistency */
+        color: white;
+        border-radius: var(--radius-soft);
+        text-decoration: none;
+        font-weight: 500;
+        margin-top: auto; /* Push button to the bottom */
+        text-align: center;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .download-button:hover {
+        background: var(--secondary); /* Change color on hover */
+        transform: translateY(-2px);
     }
 
     ul {
@@ -341,6 +366,11 @@
       .ad-container {
         padding: 0.8rem;
       }
+
+      .download-button {
+          padding: 0.5rem 1rem;
+          font-size: 0.9rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -410,8 +440,11 @@
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
         <a class="rom-card" href="crdroid.html">
-          <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
-          <div class="rom-status">✅ Official</div>
+          <div class="rom-info">
+            <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
+            <div class="rom-status">✅ Official</div>
+          </div>
+          <a href="https://crdroid.net/a71/11" class="download-button" target="_blank" rel="noopener noreferrer">Download Now</a>
         </a>
       </div>
     </section>

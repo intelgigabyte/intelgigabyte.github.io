@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>intelgigabyte9299's Custom ROMS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f1f5f9;
+      --card-bg: #ffffffcc;
+      --shadow: rgba(0, 0, 0, 0.05);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+      color: #1e293b;
+    }
+
+    header {
+      background: linear-gradient(to right, #0f172a, #1e3a8a);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #0f172a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.4rem;
+    }
+
+    .rom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .rom-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px var(--shadow);
+      padding: 1.2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .rom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    }
+
+    .rom-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .rom-status {
+      font-size: 0.9rem;
+      color: #475569;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    .connect a {
+      display: inline-block;
+      margin: 0.5rem 1rem 0.5rem 0;
+      padding: 0.6rem 1.5rem;
+      background: #10b981;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .connect a:hover {
+      background: #059669;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b7280;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>intelgigabyte9299's Custom ROM Builds</h1>
+    <p>Samsung Galaxy A71 4G • Developer of Android</p>
+  </header>
+
+  <div class="container">
+    <section class="about">
+      <h2>About Me</h2>
+      <p>Hello! I'm a ROM developer specializing in Samsung Galaxy A71 series. I build and maintain several custom ROMs — both official and unofficial — with a focus on performance, stability, and clean UI.Thanks anhdat1024 for idea</p>
+    </section>
+
+    <section class="roms">
+      <h2>My ROMs</h2>
+      <div class="rom-grid">
+        <a class="rom-card" href="crdroid.html">
+          <div class="rom-title">crDroid</div>
+          <div class="rom-status">✅ Official</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="devices">
+      <h2>Supported Devices</h2>
+      <ul>
+        <li>Samsung Galaxy A52s 5G (a71)</li>
+        <li>To get ROM's Download link for Galaxy A71 5G, please join Group Telegram below </li>
+      </ul>
+    </section>
+
+    <section class="tools">
+      <h2>Tools & Environment</h2>
+      <ul>
+        <li>Ubuntu 25.04 LTS (WSL2, 64GB RAM)</li>
+        <li>repo, git, clang, Android SDK</li>
+        <li>Sources: AOSP, LineageOS, Pixel-based ROMs</li>
+        <li>OTA updater, GPG signing, GitHub Actions CI</li>
+      </ul>
+    </section>
+
+    <section class="connect">
+      <h2>Let's Connect</h2>
+      <li><a href="https://crdroid.net/a71/11"><i class="fab fa-android"></i> crDroid - Galaxy A71 4G</a></li>
+      <li><a href="https://github.com/intelgigabyte"><i class="fab fa-github"></i> My own GitHub</a></li>
+      <li><a href="https://paypal.me/intelgigabyte9299"><i class="fab fa-paypal"></i> Donate Me Via PayPal</a></li>
+      <li><a href="https://patreon.com/intelgigabyte"><i class="fab fa-patreon"></i> Donate Me Via Patreon</a></li>
+      <li><a href="https://t.me/intelgigabyteshit"><i class="fab fa-telegram"></i> My Telegram Channel</a></li>
+      <li><a href="https://t.me/doraemonintelgigabyte"><i class="fab fa-telegram"></i> My Telegram Group</a></li>
+      <li><a href="https://facebook.com/intelgigabyte9299"><i class="fab fa-facebook"></i> My own Facebook</a></li>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Built with ❤️ and custom ROM passion.
+  </footer>
+
+</body>
+</html>

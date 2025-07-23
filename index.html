@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>intelgigabyte9299 Bio - Home</title> <link rel="icon" href="img/favicon.ico" type="image/x-icon" /> 
-  
+  <title>intelgigabyte9299 Bio - Home</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
@@ -74,33 +75,58 @@
     }
 
     header {
-      padding: 3rem 1rem; /* Keep existing padding */
+      padding: 3.5rem 1rem; /* Tăng padding để có nhiều không gian hơn ở trên và dưới */
       text-align: center;
       color: white;
-      box-shadow: 0 8px 20px var(--shadow);
-      animation: fadeInDown 1s ease-out; /* Keep existing animation */
-      /* Updated gradient direction for more pop */
+      box-shadow: 0 10px 25px var(--shadow); /* Tăng đổ bóng để tạo chiều sâu tốt hơn */
+      animation: fadeInDown 1s ease-out;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-bottom-left-radius: var(--radius-section); /* Rounded bottom corners for header */
+      border-bottom-left-radius: var(--radius-section);
       border-bottom-right-radius: var(--radius-section);
-      overflow: hidden; /* Prevent children from spilling out of rounded corners */
+      overflow: hidden;
+      position: relative; /* Thêm để có thể sử dụng pseudo-elements hoặc các hiệu ứng khác */
+      z-index: 1; /* Đảm bảo header nằm trên các phần tử khác nếu có hiệu ứng nền */
+    }
+
+    /* Thêm hiệu ứng gợn sóng hoặc họa tiết nhẹ ở nền header (tùy chọn) */
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+      z-index: -1;
+      opacity: 0.8;
+      pointer-events: none; /* Đảm bảo không chặn tương tác */
     }
 
     header h1 {
-      font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk here */
-      font-size: 3.2rem; /* Slightly increase font size for more impact */
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.8rem; /* Tăng kích thước chữ H1 đáng kể */
       font-weight: 700;
-      letter-spacing: -0.05em; /* A bit tighter letter spacing for modern look */
-      margin-bottom: 0.5rem; /* Add some space below the title */
-      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+      letter-spacing: -0.06em; /* Ép sát chữ hơn nữa để tạo sự sắc nét */
+      margin-bottom: 0.8rem; /* Tăng khoảng cách dưới H1 */
+      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Đổ bóng mạnh hơn cho chữ */
+      line-height: 1.1; /* Giảm line-height để H1 trông gọn hơn */
+      transition: all 0.5s ease; /* Thêm transition cho chữ */
+    }
+
+    header h1:hover {
+        transform: scale(1.02); /* Hiệu ứng phóng to nhẹ khi di chuột */
     }
 
     header p {
-      font-size: 1.25rem; /* Slightly larger for better readability */
-      margin-top: 0.5rem; /* Keep this */
-      opacity: 0.9;
-      line-height: 1.4; /* Improve line spacing */
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+      font-size: 1.4rem; /* Tăng kích thước chữ P */
+      margin-top: 0.8rem; /* Tăng khoảng cách trên P */
+      opacity: 0.95; /* Tăng độ đậm */
+      line-height: 1.5;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn cho chữ P */
+      max-width: 700px; /* Giới hạn chiều rộng của đoạn văn để dễ đọc hơn */
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .container {
@@ -220,28 +246,33 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.2s ease; /* Thay đổi easing và thêm transition cho transform khi click */
       z-index: 1000;
+      transform: scale(1); /* Đảm bảo nút ở trạng thái scale 1 ban đầu */
     }
 
     .theme-toggle:hover {
-      transform: scale(1.05);
+      transform: scale(1.1); /* Tăng scale khi di chuột vào */
       box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    .theme-toggle.animate {
+      transform: scale(0.9); /* Thu nhỏ khi click */
     }
 
     /* AdSense Container Styling */
     .ad-container {
-      margin: 2rem auto; /* Khoảng cách trên dưới và căn giữa */
-      text-align: center; /* Đảm bảo quảng cáo được căn giữa nếu có thể */
-      max-width: 728px; /* Giới hạn chiều rộng tối đa cho quảng cáo nếu muốn */
-      background: var(--section-bg); /* Hoà hợp với các section khác */
-      border-radius: var(--radius-soft); /* Bo góc nhẹ */
-      padding: 1rem; /* Khoảng cách bên trong container */
+      margin: 2rem auto;
+      text-align: center;
+      max-width: 728px;
+      background: var(--section-bg);
+      border-radius: var(--radius-soft);
+      padding: 1rem;
       box-shadow: 0 4px 12px var(--shadow);
       border: 1px solid var(--border-color);
-      opacity: 0; /* Bắt đầu ẩn để animation */
-      animation: fadeIn 1s ease-out forwards; /* Animation khi xuất hiện */
-      animation-delay: 1.2s; /* Delay sau các section khác */
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 1.2s;
     }
 
 
@@ -268,19 +299,18 @@
       }
     }
 
-    /* Responsive Design */
+    /* Responsive Design Adjustments for header */
     @media (max-width: 768px) {
       header {
-        padding: 2.5rem 1rem;
+        padding: 3rem 1rem; /* Giảm padding cho màn hình nhỏ hơn */
       }
       header h1 {
-        font-size: 2.5rem;
-        letter-spacing: -0.04em;
+        font-size: 3rem; /* Điều chỉnh kích thước H1 cho tablet */
+        letter-spacing: -0.05em;
       }
       header p {
-        font-size: 1.1rem;
+        font-size: 1.2rem; /* Điều chỉnh kích thước P cho tablet */
       }
-
       .container {
         padding: 1.5rem 0.8rem;
       }
@@ -320,16 +350,16 @@
 
     @media (max-width: 480px) {
       header {
-        padding: 2rem 1rem;
+        padding: 2.5rem 1rem;
       }
       header h1 {
-        font-size: 2rem;
-        letter-spacing: -0.03em;
+        font-size: 2.5rem;
+        letter-spacing: -0.04em;
       }
       header p {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        margin-top: 0.6rem;
       }
-
       h2 {
         font-size: 1.2rem;
       }
@@ -432,7 +462,6 @@
   </button>
 
   <script>
-    // script.js content (Logic cho nút chuyển đổi chế độ sáng/tối)
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
@@ -461,6 +490,13 @@
       }
 
       themeToggle.addEventListener('click', () => {
+        // Thêm class 'animate' để kích hoạt hiệu ứng thu nhỏ
+        themeToggle.classList.add('animate');
+        // Sau một khoảng thời gian ngắn, loại bỏ class 'animate' để nút trở lại kích thước ban đầu
+        setTimeout(() => {
+          themeToggle.classList.remove('animate');
+        }, 300); // Thời gian này phải khớp với duration của transition trong CSS (.theme-toggle)
+
         if (body.classList.contains('dark-mode')) {
           applyTheme('light-mode');
         } else {

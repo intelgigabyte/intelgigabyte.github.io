@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="vi"> <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>intelgigabyte9299 Bio - Home</title>
@@ -260,6 +259,48 @@
       transform: scale(0.9); /* Thu nhỏ khi click */
     }
 
+    /* Language Switcher */
+    .lang-switcher {
+      position: fixed;
+      bottom: 80px; /* Đặt cao hơn nút theme toggle */
+      right: 20px;
+      background: var(--section-bg);
+      border-radius: var(--radius-soft);
+      box-shadow: 0 4px 12px var(--shadow);
+      display: flex;
+      overflow: hidden; /* Đảm bảo góc bo tròn */
+      border: 1px solid var(--border-color);
+      z-index: 999; /* Đặt dưới nút theme toggle */
+    }
+
+    .lang-switcher button {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    }
+
+    .lang-switcher button.active {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .lang-switcher button:not(.active):hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    /* Ẩn nội dung theo ngôn ngữ */
+    .lang-en { display: none; }
+    .lang-vi { display: block; }
+    body.en .lang-en { display: block; }
+    body.en .lang-vi { display: none; }
+
+
     /* AdSense Container Styling */
     .ad-container {
       margin: 2rem auto;
@@ -302,14 +343,14 @@
     /* Responsive Design Adjustments for header */
     @media (max-width: 768px) {
       header {
-        padding: 3rem 1rem; /* Giảm padding cho màn hình nhỏ hơn */
+        padding: 3rem 1rem;
       }
       header h1 {
-        font-size: 3rem; /* Điều chỉnh kích thước H1 cho tablet */
+        font-size: 3rem;
         letter-spacing: -0.05em;
       }
       header p {
-        font-size: 1.2rem; /* Điều chỉnh kích thước P cho tablet */
+        font-size: 1.2rem;
       }
       .container {
         padding: 1.5rem 0.8rem;
@@ -368,27 +409,36 @@
         padding: 1rem;
       }
 
-      .theme-toggle {
+      .theme-toggle, .lang-switcher {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
         bottom: 15px;
         right: 15px;
       }
+      .lang-switcher {
+        bottom: 70px; /* Điều chỉnh vị trí cho mobile */
+      }
+      .lang-switcher button {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
-<body>
-
-  <header>
-    <h1>intelgigabyte9299's Custom ROM Builds</h1>
-    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+<body lang="vi"> <header>
+    <h1 class="lang-vi">Bản ROM Tùy Chỉnh của intelgigabyte9299</h1>
+    <h1 class="lang-en">intelgigabyte9299's Custom ROM Builds</h1>
+    <p class="lang-vi">Samsung Galaxy A71 4G • Nhà phát triển Android từ Việt Nam</p>
+    <p class="lang-en">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
   </header>
 
   <div class="container">
     <section>
-      <h2>🧠 About Me</h2>
-      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
+      <h2 class="lang-vi">🧠 Về tôi</h2>
+      <h2 class="lang-en">🧠 About Me</h2>
+      <p class="lang-vi">Chào bạn! Tôi là <b>intelgigabyte9299</b> (tên thật: Nguyễn Mạnh Dũng), một nhà phát triển ROM tùy chỉnh và là người duy trì chính thức của <b>crDroid</b> cho Galaxy A71 4G. Trang web này là hồ sơ cá nhân của tôi – cảm ơn <b>anhdat1024</b> đã truyền cảm hứng ♥</p>
+      <p class="lang-en">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
     </section>
 
     <div class="ad-container">
@@ -403,18 +453,26 @@
     </div>
 
     <section>
-      <h2>📱 My ROMs</h2>
+      <h2 class="lang-vi">📱 ROM của tôi</h2>
+      <h2 class="lang-en">📱 My ROMs</h2>
       <div class="rom-grid">
         <a class="rom-card" href="crdroid.html">
-          <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
-          <div class="rom-status">✅ Official</div>
+          <div class="rom-title lang-vi">crDroid cho Samsung Galaxy A71 4G</div>
+          <div class="rom-title lang-en">crDroid For Samsung Galaxy A71 4G</div>
+          <div class="rom-status lang-vi">✅ Chính thức</div>
+          <div class="rom-status lang-en">✅ Official</div>
         </a>
       </div>
     </section>
 
     <section>
-      <h2>📦 Supported Devices</h2>
-      <ul>
+      <h2 class="lang-vi">📦 Thiết bị được hỗ trợ</h2>
+      <h2 class="lang-en">📦 Supported Devices</h2>
+      <ul class="lang-vi">
+        <li>Samsung Galaxy A71 4G (a71)</li>
+        <li>Tham gia nhóm Telegram dưới đây để có liên kết tải xuống và cập nhật</li>
+      </ul>
+      <ul class="lang-en">
         <li>Samsung Galaxy A71 4G (a71)</li>
         <li>Join the Telegram group below for download links and updates</li>
       </ul>
@@ -432,8 +490,15 @@
     </div>
 
     <section>
-      <h2>🛠️ Tools & Environment</h2>
-      <ul>
+      <h2 class="lang-vi">🛠️ Công cụ & Môi trường</h2>
+      <h2 class="lang-en">🛠️ Tools & Environment</h2>
+      <ul class="lang-vi">
+        <li>Ubuntu 25.04 LTS (WSL2)</li>
+        <li>Công cụ build: repo, git, clang, SDK</li>
+        <li>Source tree: AOSP, LineageOS</li>
+        <li>CI: GitHub Actions + OTA + GPG Signing</li>
+      </ul>
+      <ul class="lang-en">
         <li>Ubuntu 25.04 LTS (WSL2)</li>
         <li>Build tools: repo, git, clang, SDK</li>
         <li>Source trees: AOSP, LineageOS</li>
@@ -442,7 +507,8 @@
     </section>
 
     <section class="connect">
-      <h2>🌐 Connect with Me</h2>
+      <h2 class="lang-vi">🌐 Kết nối với tôi</h2>
+      <h2 class="lang-en">🌐 Connect with Me</h2>
       <a href="https://crdroid.net/a71/11"><i class="fab fa-android"></i> crDroid</a>
       <a href="https://github.com/intelgigabyte"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://paypal.me/intelgigabyte9299"><i class="fab fa-paypal"></i> PayPal</a>
@@ -454,19 +520,25 @@
   </div>
 
   <footer>
-    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.
+    <span class="lang-vi">&copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Được làm bằng ❤️ & tình yêu AOSP.</span>
+    <span class="lang-en">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
     <i class="fas fa-moon"></i>
   </button>
 
+  <div class="lang-switcher">
+    <button id="lang-vi" class="active">VI</button>
+    <button id="lang-en">EN</button>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Logic chuyển đổi chế độ sáng/tối
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
 
-      // Function to apply theme immediately
       const applyTheme = (theme) => {
         if (theme === 'light-mode') {
           body.classList.remove('dark-mode');
@@ -480,29 +552,54 @@
         localStorage.setItem('theme', theme);
       };
 
-      // Check for saved theme preference
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        // Default to dark mode if no preference is saved
         applyTheme('dark-mode');
       }
 
       themeToggle.addEventListener('click', () => {
-        // Thêm class 'animate' để kích hoạt hiệu ứng thu nhỏ
         themeToggle.classList.add('animate');
-        // Sau một khoảng thời gian ngắn, loại bỏ class 'animate' để nút trở lại kích thước ban đầu
         setTimeout(() => {
           themeToggle.classList.remove('animate');
-        }, 300); // Thời gian này phải khớp với duration của transition trong CSS (.theme-toggle)
-
+        }, 300);
         if (body.classList.contains('dark-mode')) {
           applyTheme('light-mode');
         } else {
           applyTheme('dark-mode');
         }
       });
+
+      // Logic chuyển đổi ngôn ngữ
+      const langViBtn = document.getElementById('lang-vi');
+      const langEnBtn = document.getElementById('lang-en');
+
+      const setLanguage = (lang) => {
+        if (lang === 'en') {
+          body.classList.add('en');
+          langEnBtn.classList.add('active');
+          langViBtn.classList.remove('active');
+          document.documentElement.lang = 'en'; // Cập nhật thuộc tính lang của thẻ html
+        } else {
+          body.classList.remove('en');
+          langViBtn.classList.add('active');
+          langEnBtn.classList.remove('active');
+          document.documentElement.lang = 'vi'; // Cập nhật thuộc tính lang của thẻ html
+        }
+        localStorage.setItem('language', lang);
+      };
+
+      // Tải ngôn ngữ đã lưu hoặc mặc định là tiếng Việt
+      const savedLang = localStorage.getItem('language');
+      if (savedLang) {
+        setLanguage(savedLang);
+      } else {
+        setLanguage('vi'); // Mặc định là tiếng Việt
+      }
+
+      langViBtn.addEventListener('click', () => setLanguage('vi'));
+      langEnBtn.addEventListener('click', () => setLanguage('en'));
     });
   </script>
 </body>

@@ -294,8 +294,9 @@
     /* CSS cho hiệu ứng chuyển đổi ngôn ngữ */
     /* Container cho nội dung song ngữ */
     .lang-container {
-        /* min-height có thể cần thiết nếu chiều cao nội dung giữa các ngôn ngữ rất khác nhau */
-        /* Ví dụ: min-height: 50px; */
+        /* Đảm bảo chiều cao của container không thay đổi đột ngột nếu nội dung có chiều cao khác nhau */
+        /* Ví dụ: có thể dùng min-height hoặc thiết lập chiều cao cố định nếu nội dung luôn giống nhau */
+        /* hoặc cho phép nó co giãn bình thường */
     }
 
     /* Hiệu ứng cho các phần tử ngôn ngữ cụ thể */
@@ -306,29 +307,33 @@
     }
 
     /* Trạng thái mặc định: tiếng Việt hiển thị, tiếng Anh ẩn */
+    /* Các phần tử lang-en được ẩn bằng display: none và opacity: 0 khi body không có class 'en' */
     body:not(.en) .lang-en {
         opacity: 0;
         pointer-events: none; /* Ngăn chặn tương tác khi ẩn */
         display: none; /* Ẩn hoàn toàn để không chiếm không gian */
     }
 
+    /* Các phần tử lang-vi được hiển thị với opacity: 1 khi body không có class 'en' */
     body:not(.en) .lang-vi {
         opacity: 1;
         pointer-events: auto;
-        /* Mặc định là block để hiển thị, hoặc display ban đầu của nó */
+        /* Display mặc định (block, inline-block, etc.) sẽ được đặt qua JS */
     }
 
     /* Khi body có class 'en', tiếng Việt ẩn và tiếng Anh hiển thị */
+    /* Các phần tử lang-vi được ẩn bằng display: none và opacity: 0 khi body có class 'en' */
     body.en .lang-vi {
         opacity: 0;
         pointer-events: none;
         display: none; /* Ẩn hoàn toàn để không chiếm không gian */
     }
 
+    /* Các phần tử lang-en được hiển thị với opacity: 1 khi body có class 'en' */
     body.en .lang-en {
         opacity: 1;
         pointer-events: auto;
-        /* Mặc định là block để hiển thị, hoặc display ban đầu của nó */
+        /* Display mặc định (block, inline-block, etc.) sẽ được đặt qua JS */
     }
 
 
@@ -642,62 +647,36 @@
         const allViElements = document.querySelectorAll('.lang-vi');
         const allEnElements = document.querySelectorAll('.lang-en');
 
-        if (isEnglish) {
-          // Fade out VI content
-          allViElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.pointerEvents = 'none';
-            // Sau khi fade out, ẩn hoàn toàn (display: none)
-            setTimeout(() => {
-              el.style.display = 'none';
-            }, transitionDuration);
-          });
+        // Bước 1: Ẩn nội dung ngôn ngữ hiện tại
+        const elementsToFadeOut = isEnglish ? allViElements : allEnElements;
+        elementsToFadeOut.forEach(el => {
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+          // Sau khi fade out, ẩn hoàn toàn (display: none)
+          setTimeout(() => {
+            el.style.display = 'none';
+          }, transitionDuration);
+        });
 
-          // Show EN content (prepare it before fading in)
-          allEnElements.forEach(el => {
-            // Đảm bảo display được set đúng trước khi opacity thay đổi để transition hoạt động
-            const originalDisplay = el.getAttribute('data-original-display') || 'block'; // Mặc định là 'block' nếu không có
-            el.style.display = originalDisplay;
-            
-            // Buộc trình duyệt reflow để đảm bảo opacity 0 được áp dụng trước khi chuyển sang 1
-            void el.offsetWidth; 
+        // Bước 2: Hiển thị nội dung ngôn ngữ mới
+        const elementsToFadeIn = isEnglish ? allEnElements : allViElements;
+        elementsToFadeIn.forEach(el => {
+          // Đảm bảo display được set đúng trước khi opacity thay đổi để transition hoạt động
+          const originalDisplay = el.getAttribute('data-original-display') || 'block'; // Mặc định là 'block' nếu không có
+          el.style.display = originalDisplay;
+          
+          // Buộc trình duyệt reflow để đảm bảo opacity 0 được áp dụng trước khi chuyển sang 1
+          void el.offsetWidth; // Trigger reflow
+          
+          el.style.opacity = '1';
+          el.style.pointerEvents = 'auto';
+        });
 
-            el.style.opacity = '1';
-            el.style.pointerEvents = 'auto';
-          });
-
-          body.classList.add('en');
-          langEnBtn.classList.add('active');
-          langViBtn.classList.remove('active');
-          document.documentElement.lang = 'en';
-        } else {
-          // Fade out EN content
-          allEnElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.pointerEvents = 'none';
-            // Sau khi fade out, ẩn hoàn toàn (display: none)
-            setTimeout(() => {
-              el.style.display = 'none';
-            }, transitionDuration);
-          });
-
-          // Show VI content (prepare it before fading in)
-          allViElements.forEach(el => {
-            const originalDisplay = el.getAttribute('data-original-display') || 'block';
-            el.style.display = originalDisplay;
-
-            // Buộc trình duyệt reflow
-            void el.offsetWidth;
-
-            el.style.opacity = '1';
-            el.style.pointerEvents = 'auto';
-          });
-
-          body.classList.remove('en');
-          langViBtn.classList.add('active');
-          langEnBtn.classList.remove('active');
-          document.documentElement.lang = 'vi';
-        }
+        // Cập nhật class trên body và nút ngôn ngữ
+        body.classList.toggle('en', isEnglish);
+        langEnBtn.classList.toggle('active', isEnglish);
+        langViBtn.classList.toggle('active', !isEnglish);
+        document.documentElement.lang = lang; // Cập nhật thuộc tính lang của HTML
         localStorage.setItem('language', lang);
       };
 
@@ -710,40 +689,25 @@
 
       // Khởi tạo ngôn ngữ khi trang tải, KHÔNG DÙNG ANIMATION để tránh flicker
       const savedLang = localStorage.getItem('language');
-      if (savedLang) {
-          const initialIsEnglish = savedLang === 'en';
-          document.querySelectorAll('.lang-vi').forEach(el => {
-              el.style.display = initialIsEnglish ? 'none' : (el.getAttribute('data-original-display') || 'block');
-              el.style.opacity = initialIsEnglish ? '0' : '1';
-              el.style.pointerEvents = initialIsEnglish ? 'none' : 'auto';
-          });
-          document.querySelectorAll('.lang-en').forEach(el => {
-              el.style.display = initialIsEnglish ? (el.getAttribute('data-original-display') || 'block') : 'none';
-              el.style.opacity = initialIsEnglish ? '1' : '0';
-              el.style.pointerEvents = initialIsEnglish ? 'auto' : 'none';
-          });
-          
-          body.classList.toggle('en', initialIsEnglish);
-          langEnBtn.classList.toggle('active', initialIsEnglish);
-          langViBtn.classList.toggle('active', !initialIsEnglish);
-          document.documentElement.lang = savedLang;
-      } else {
-          // Mặc định tiếng Việt nếu chưa có ngôn ngữ nào được lưu
-          document.querySelectorAll('.lang-en').forEach(el => {
-              el.style.display = 'none';
-              el.style.opacity = '0';
-              el.style.pointerEvents = 'none';
-          });
-          document.querySelectorAll('.lang-vi').forEach(el => {
-              el.style.display = el.getAttribute('data-original-display') || 'block';
-              el.style.opacity = '1';
-              el.style.pointerEvents = 'auto';
-          });
-          body.classList.remove('en'); // Đảm bảo body không có class 'en'
-          langViBtn.classList.add('active');
-          langEnBtn.classList.remove('active');
-          document.documentElement.lang = 'vi';
-      }
+      const initialLang = savedLang || 'vi'; // Mặc định là 'vi' nếu chưa có
+
+      const initialIsEnglish = initialLang === 'en';
+      document.querySelectorAll('.lang-vi').forEach(el => {
+          el.style.display = initialIsEnglish ? 'none' : (el.getAttribute('data-original-display') || 'block');
+          el.style.opacity = initialIsEnglish ? '0' : '1';
+          el.style.pointerEvents = initialIsEnglish ? 'none' : 'auto';
+      });
+      document.querySelectorAll('.lang-en').forEach(el => {
+          el.style.display = initialIsEnglish ? (el.getAttribute('data-original-display') || 'block') : 'none';
+          el.style.opacity = initialIsEnglish ? '1' : '0';
+          el.style.pointerEvents = initialIsEnglish ? 'auto' : 'none';
+      });
+      
+      body.classList.toggle('en', initialIsEnglish);
+      langEnBtn.classList.toggle('active', initialIsEnglish);
+      langViBtn.classList.toggle('active', !initialIsEnglish);
+      document.documentElement.lang = initialLang;
+
 
       langViBtn.addEventListener('click', () => setLanguage('vi'));
       langEnBtn.addEventListener('click', () => setLanguage('en'));

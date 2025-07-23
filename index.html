@@ -6,7 +6,7 @@
   <title>intelgigabyte9299 Bio - Home</title>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
      crossorigin="anonymous"></script>
@@ -14,6 +14,7 @@
     :root {
       --primary: #3b82f6;
       --secondary: #9333ea;
+      --accent: #5eead4; /* Thêm màu accent mới để tạo điểm nhấn */
       --bg-glass: rgba(255, 255, 255, 0.15);
       --shadow: rgba(0, 0, 0, 0.2);
       --text-dark: #0f172a;
@@ -73,17 +74,22 @@
     }
 
     header {
-      padding: 3.5rem 1rem;
+      padding: 4rem 1.5rem; /* Tăng padding để tạo không gian */
       text-align: center;
       color: white;
-      box-shadow: 0 10px 25px var(--shadow);
-      animation: fadeInDown 1s ease-out;
+      box-shadow: 0 12px 30px var(--shadow); /* Đổ bóng mạnh hơn */
+      animation: fadeInDown 1.2s ease-out; /* Animation chậm và mượt hơn */
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       border-bottom-left-radius: var(--radius-section);
       border-bottom-right-radius: var(--radius-section);
       overflow: hidden;
       position: relative;
       z-index: 1;
+      transition: background 0.8s ease; /* Thêm transition cho background */
+    }
+
+    header:hover { /* Hiệu ứng hover cho header */
+        background: linear-gradient(145deg, var(--secondary), var(--primary)); /* Đổi hướng gradient */
     }
 
     header::before {
@@ -93,37 +99,47 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
-                  radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+      /* Hiệu ứng hạt lấp lánh hoặc vân nhẹ */
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.08) 0%, transparent 45%);
       z-index: -1;
-      opacity: 0.8;
+      opacity: 0.9;
       pointer-events: none;
+      transition: opacity 0.5s ease;
     }
+    
+    header:hover::before { /* Hiệu ứng trên lớp phủ khi hover */
+        opacity: 0.7;
+    }
+
 
     header h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.8rem;
+      font-size: 4.5rem; /* Tăng kích thước font */
       font-weight: 700;
-      letter-spacing: -0.06em;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      letter-spacing: -0.07em; /* Giảm khoảng cách chữ */
+      margin-bottom: 0.6rem; /* Giảm khoảng cách dưới h1 */
+      text-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Đổ bóng mạnh hơn cho text */
       line-height: 1.1;
-      transition: all 0.5s ease;
+      transition: all 0.4s ease; /* Transition nhanh hơn */
     }
 
     header h1:hover {
-        transform: scale(1.02);
+        transform: scale(1.01); /* Hiệu ứng scale nhẹ hơn */
+        text-shadow: 0 10px 25px rgba(0, 0, 0, 0.6); /* Đổ bóng mạnh hơn khi hover */
     }
 
     header p {
-      font-size: 1.4rem;
-      margin-top: 0.8rem;
-      opacity: 0.95;
-      line-height: 1.5;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-      max-width: 700px;
+      font-size: 1.55rem; /* Tăng kích thước font */
+      margin-top: 1rem; /* Tăng khoảng cách trên p */
+      opacity: 0.98; /* Rõ nét hơn */
+      line-height: 1.6; /* Khoảng cách dòng thoáng hơn */
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.35); /* Đổ bóng nhẹ hơn cho text phụ */
+      max-width: 750px; /* Tăng chiều rộng tối đa */
       margin-left: auto;
       margin-right: auto;
+      font-weight: 500; /* Làm chữ đậm hơn một chút */
+      letter-spacing: -0.02em; /* Khoảng cách chữ nhẹ */
     }
 
     .container {
@@ -300,7 +316,7 @@
     @keyframes fadeInDown {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-40px); /* Kéo dài animation */
       }
       to {
         opacity: 1;
@@ -322,14 +338,14 @@
     /* Responsive Design Adjustments */
     @media (max-width: 768px) {
       header {
-        padding: 3rem 1rem;
+        padding: 3.5rem 1rem;
       }
       header h1 {
-        font-size: 3rem;
+        font-size: 3.5rem; /* Điều chỉnh font size cho tablet */
         letter-spacing: -0.05em;
       }
       header p {
-        font-size: 1.2rem;
+        font-size: 1.3rem; /* Điều chỉnh font size cho tablet */
       }
       .container {
         padding: 1.5rem 0.8rem;
@@ -375,14 +391,14 @@
 
     @media (max-width: 480px) {
       header {
-        padding: 2.5rem 1rem;
+        padding: 3rem 1rem;
       }
       header h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem; /* Điều chỉnh font size cho mobile */
         letter-spacing: -0.04em;
       }
       header p {
-        font-size: 1rem;
+        font-size: 1.1rem;
         margin-top: 0.6rem;
       }
       h2 {
@@ -406,8 +422,8 @@
 <body lang="en">
 
   <header>
-    <h1>intelgigabyte9299's Custom ROM Builds</h1>
-    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+    <h1>intelgigabyte9299's <span style="color: var(--accent); display: block;">Custom ROM Builds</span></h1>
+    <p>Samsung Galaxy A71 4G • <span style="font-weight: 600;">Android Developer from Vietnam</span></p>
   </header>
 
   <div class="container">

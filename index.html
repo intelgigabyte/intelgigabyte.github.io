@@ -17,32 +17,30 @@
       --shadow: rgba(0, 0, 0, 0.2);
       --text-dark: #0f172a;
       --text-light: #f8fafc;
-      --radius-soft: 12px; /* New: Softer radius for general elements */
-      --radius-card: 16px; /* New: Slightly larger radius for cards */
-      --radius-section: 20px; /* New: Even larger radius for sections */
+      --radius-soft: 12px;
+      --radius-card: 16px;
+      --radius-section: 20px;
       --background-start: #0f172a;
       --background-end: #1e293b;
       --section-bg: var(--bg-glass);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-bg: rgba(255, 255, 255, 0.08);
       --footer-text: #cbd5e1;
-      --transition-speed: 0.6s; /* Unified transition speed */
+      --transition-speed: 0.6s;
     }
 
-    /* Dark Mode Variables */
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
-      --section-bg: rgba(255, 255, 255, 0.08); /* Slightly darker glass effect */
-      --card-bg: rgba(255, 255, 255, 0.05); /* Even darker cards */
+      --section-bg: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
       --text-light: #f8fafc;
-      --text-dark: #f8fafc; /* Adjust for dark mode */
+      --text-dark: #f8fafc;
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
     }
 
-    /* Light Mode Variables */
     body.light-mode {
       --primary: #1d4ed8;
       --secondary: #6d28d9;
@@ -70,24 +68,23 @@
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      transition: background var(--transition-speed) ease, color var(--transition-speed) ease; /* Smooth theme transition */
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
     }
 
     header {
-      padding: 3.5rem 1rem; /* Tăng padding để có nhiều không gian hơn ở trên và dưới */
+      padding: 3.5rem 1rem;
       text-align: center;
       color: white;
-      box-shadow: 0 10px 25px var(--shadow); /* Tăng đổ bóng để tạo chiều sâu tốt hơn */
+      box-shadow: 0 10px 25px var(--shadow);
       animation: fadeInDown 1s ease-out;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       border-bottom-left-radius: var(--radius-section);
       border-bottom-right-radius: var(--radius-section);
       overflow: hidden;
-      position: relative; /* Thêm để có thể sử dụng pseudo-elements hoặc các hiệu ứng khác */
-      z-index: 1; /* Đảm bảo header nằm trên các phần tử khác nếu có hiệu ứng nền */
+      position: relative;
+      z-index: 1;
     }
 
-    /* Thêm hiệu ứng gợn sóng hoặc họa tiết nhẹ ở nền header (tùy chọn) */
     header::before {
       content: '';
       position: absolute;
@@ -99,31 +96,31 @@
                   radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
       z-index: -1;
       opacity: 0.8;
-      pointer-events: none; /* Đảm bảo không chặn tương tác */
+      pointer-events: none;
     }
 
     header h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.8rem; /* Tăng kích thước chữ H1 đáng kể */
+      font-size: 3.8rem;
       font-weight: 700;
-      letter-spacing: -0.06em; /* Ép sát chữ hơn nữa để tạo sự sắc nét */
-      margin-bottom: 0.8rem; /* Tăng khoảng cách dưới H1 */
-      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Đổ bóng mạnh hơn cho chữ */
-      line-height: 1.1; /* Giảm line-height để H1 trông gọn hơn */
-      transition: all 0.5s ease; /* Thêm transition cho chữ */
+      letter-spacing: -0.06em;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      line-height: 1.1;
+      transition: all 0.5s ease;
     }
 
     header h1:hover {
-        transform: scale(1.02); /* Hiệu ứng phóng to nhẹ khi di chuột */
+        transform: scale(1.02);
     }
 
     header p {
-      font-size: 1.4rem; /* Tăng kích thước chữ P */
-      margin-top: 0.8rem; /* Tăng khoảng cách trên P */
-      opacity: 0.95; /* Tăng độ đậm */
+      font-size: 1.4rem;
+      margin-top: 0.8rem;
+      opacity: 0.95;
       line-height: 1.5;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn cho chữ P */
-      max-width: 700px; /* Giới hạn chiều rộng của đoạn văn để dễ đọc hơn */
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -136,16 +133,16 @@
 
     section {
       background: var(--section-bg);
-      border-radius: var(--radius-section); /* Use new section radius */
+      border-radius: var(--radius-section);
       box-shadow: 0 8px 24px var(--shadow);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       padding: 2rem;
       margin-bottom: 2rem;
       border: 1px solid var(--border-color);
-      animation: fadeIn 1s ease-out forwards; /* Animation */
-      opacity: 0; /* Start hidden for animation */
-      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Ensure smooth theme transition */
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -154,11 +151,10 @@
     section:nth-of-type(4) { animation-delay: 0.8s; }
     section:nth-of-type(5) { animation-delay: 1s; }
 
-
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark); /* Adjust color for theme */
+      color: var(--text-dark);
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
       transition: color var(--transition-speed) ease;
@@ -172,9 +168,9 @@
 
     .rom-card {
       background: var(--card-bg);
-      border-radius: var(--radius-card); /* Use new card radius */
+      border-radius: var(--radius-card);
       padding: 1.5rem;
-      color: var(--text-light); /* Adjust color for theme */
+      color: var(--text-light);
       backdrop-filter: blur(16px);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
       box-shadow: 0 6px 18px var(--shadow);
@@ -209,7 +205,7 @@
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
-      border-radius: var(--radius-soft); /* Use soft radius for buttons */
+      border-radius: var(--radius-soft);
       text-decoration: none;
       font-weight: 500;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -245,32 +241,32 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow);
-      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.2s ease; /* Thay đổi easing và thêm transition cho transform khi click */
+      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.2s ease;
       z-index: 1000;
-      transform: scale(1); /* Đảm bảo nút ở trạng thái scale 1 ban đầu */
+      transform: scale(1);
     }
 
     .theme-toggle:hover {
-      transform: scale(1.1); /* Tăng scale khi di chuột vào */
+      transform: scale(1.1);
       box-shadow: 0 6px 16px var(--shadow);
     }
 
     .theme-toggle.animate {
-      transform: scale(0.9); /* Thu nhỏ khi click */
+      transform: scale(0.9);
     }
 
     /* Language Switcher */
     .lang-switcher {
       position: fixed;
-      bottom: 80px; /* Đặt cao hơn nút theme toggle */
+      bottom: 80px;
       right: 20px;
       background: var(--section-bg);
       border-radius: var(--radius-soft);
       box-shadow: 0 4px 12px var(--shadow);
       display: flex;
-      overflow: hidden; /* Đảm bảo góc bo tròn */
+      overflow: hidden;
       border: 1px solid var(--border-color);
-      z-index: 999; /* Đặt dưới nút theme toggle */
+      z-index: 999;
     }
 
     .lang-switcher button {
@@ -293,13 +289,54 @@
       background: rgba(255, 255, 255, 0.1);
       transform: translateY(-2px);
     }
-    
-    /* Ẩn nội dung theo ngôn ngữ */
-    .lang-en { display: none; }
-    .lang-vi { display: block; }
-    body.en .lang-en { display: block; }
-    body.en .lang-vi { display: none; }
 
+    /* Hiệu ứng chuyển đổi ngôn ngữ */
+    .lang-content {
+      /* Tạo ngữ cảnh cho các phần tử ngôn ngữ con */
+      position: relative; /* Quan trọng để các phần tử con dùng absolute không phá vỡ layout */
+      min-height: 2em; /* Đảm bảo đủ chiều cao để tránh nhảy layout trong quá trình transition */
+      overflow: hidden; /* Cắt bớt phần overflow trong quá trình transition nếu cần */
+      transition: all 0.5s ease-in-out; /* Transition cho chính container */
+    }
+
+    .lang-content > * { /* Áp dụng cho các thẻ trực tiếp bên trong lang-content */
+      position: absolute; /* Đặt vị trí tuyệt đối để chúng có thể chồng lên nhau và transition mượt */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      box-sizing: border-box; /* Đảm bảo padding không làm tràn */
+      padding: inherit; /* Thừa kế padding từ cha nếu muốn */
+      display: block; /* Mặc định là block để chiếm không gian */
+      margin: 0; /* Loại bỏ margin mặc định để tránh nhảy layout */
+    }
+    
+    /* Trạng thái mặc định: tiếng Việt hiển thị */
+    body:not(.en) .lang-content .lang-vi {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    body:not(.en) .lang-content .lang-en {
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      display: none; /* Ẩn hẳn khi không active và đã transition xong */
+    }
+
+    /* Trạng thái khi chuyển sang tiếng Anh */
+    body.en .lang-content .lang-en {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    body.en .lang-content .lang-vi {
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      display: none; /* Ẩn hẳn khi không active và đã transition xong */
+    }
 
     /* AdSense Container Styling */
     .ad-container {
@@ -315,7 +352,6 @@
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 1.2s;
     }
-
 
     /* Animations */
     @keyframes fadeInDown {
@@ -340,7 +376,7 @@
       }
     }
 
-    /* Responsive Design Adjustments for header */
+    /* Responsive Design Adjustments */
     @media (max-width: 768px) {
       header {
         padding: 3rem 1rem;
@@ -417,7 +453,7 @@
         right: 15px;
       }
       .lang-switcher {
-        bottom: 70px; /* Điều chỉnh vị trí cho mobile */
+        bottom: 70px;
       }
       .lang-switcher button {
         padding: 8px 12px;
@@ -426,19 +462,29 @@
     }
   </style>
 </head>
-<body lang="vi"> <header>
-    <h1 class="lang-vi">Bản ROM Tùy Chỉnh của intelgigabyte9299</h1>
-    <h1 class="lang-en">intelgigabyte9299's Custom ROM Builds</h1>
-    <p class="lang-vi">Samsung Galaxy A71 4G • Nhà phát triển Android từ Việt Nam</p>
-    <p class="lang-en">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+<body lang="vi">
+
+  <header>
+    <div class="lang-content">
+      <h1 class="lang-vi">Bản ROM Tùy Chỉnh của intelgigabyte9299</h1>
+      <h1 class="lang-en">intelgigabyte9299's Custom ROM Builds</h1>
+    </div>
+    <div class="lang-content">
+      <p class="lang-vi">Samsung Galaxy A71 4G • Nhà phát triển Android từ Việt Nam</p>
+      <p class="lang-en">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+    </div>
   </header>
 
   <div class="container">
     <section>
-      <h2 class="lang-vi">🧠 Về tôi</h2>
-      <h2 class="lang-en">🧠 About Me</h2>
-      <p class="lang-vi">Chào bạn! Tôi là <b>intelgigabyte9299</b> (tên thật: Nguyễn Mạnh Dũng), một nhà phát triển ROM tùy chỉnh và là người duy trì chính thức của <b>crDroid</b> cho Galaxy A71 4G. Trang web này là hồ sơ cá nhân của tôi – cảm ơn <b>anhdat1024</b> đã truyền cảm hứng ♥</p>
-      <p class="lang-en">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
+      <div class="lang-content">
+        <h2 class="lang-vi">🧠 Về tôi</h2>
+        <h2 class="lang-en">🧠 About Me</h2>
+      </div>
+      <div class="lang-content">
+        <p class="lang-vi">Chào bạn! Tôi là <b>intelgigabyte9299</b> (tên thật: Nguyễn Mạnh Dũng), một nhà phát triển ROM tùy chỉnh và là người duy trì chính thức của <b>crDroid</b> cho Galaxy A71 4G. Trang web này là hồ sơ cá nhân của tôi – cảm ơn <b>anhdat1024</b> đã truyền cảm hứng ♥</p>
+        <p class="lang-en">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
+      </div>
     </section>
 
     <div class="ad-container">
@@ -453,29 +499,39 @@
     </div>
 
     <section>
-      <h2 class="lang-vi">📱 ROM của tôi</h2>
-      <h2 class="lang-en">📱 My ROMs</h2>
+      <div class="lang-content">
+        <h2 class="lang-vi">📱 ROM của tôi</h2>
+        <h2 class="lang-en">📱 My ROMs</h2>
+      </div>
       <div class="rom-grid">
         <a class="rom-card" href="crdroid.html">
-          <div class="rom-title lang-vi">crDroid cho Samsung Galaxy A71 4G</div>
-          <div class="rom-title lang-en">crDroid For Samsung Galaxy A71 4G</div>
-          <div class="rom-status lang-vi">✅ Chính thức</div>
-          <div class="rom-status lang-en">✅ Official</div>
+          <div class="lang-content">
+            <div class="rom-title lang-vi">crDroid cho Samsung Galaxy A71 4G</div>
+            <div class="rom-title lang-en">crDroid For Samsung Galaxy A71 4G</div>
+          </div>
+          <div class="lang-content">
+            <div class="rom-status lang-vi">✅ Chính thức</div>
+            <div class="rom-status lang-en">✅ Official</div>
+          </div>
         </a>
       </div>
     </section>
 
     <section>
-      <h2 class="lang-vi">📦 Thiết bị được hỗ trợ</h2>
-      <h2 class="lang-en">📦 Supported Devices</h2>
-      <ul class="lang-vi">
-        <li>Samsung Galaxy A71 4G (a71)</li>
-        <li>Tham gia nhóm Telegram dưới đây để có liên kết tải xuống và cập nhật</li>
-      </ul>
-      <ul class="lang-en">
-        <li>Samsung Galaxy A71 4G (a71)</li>
-        <li>Join the Telegram group below for download links and updates</li>
-      </ul>
+      <div class="lang-content">
+        <h2 class="lang-vi">📦 Thiết bị được hỗ trợ</h2>
+        <h2 class="lang-en">📦 Supported Devices</h2>
+      </div>
+      <div class="lang-content">
+        <ul class="lang-vi">
+          <li>Samsung Galaxy A71 4G (a71)</li>
+          <li>Tham gia nhóm Telegram dưới đây để có liên kết tải xuống và cập nhật</li>
+        </ul>
+        <ul class="lang-en">
+          <li>Samsung Galaxy A71 4G (a71)</li>
+          <li>Join the Telegram group below for download links and updates</li>
+        </ul>
+      </div>
     </section>
 
     <div class="ad-container">
@@ -490,25 +546,31 @@
     </div>
 
     <section>
-      <h2 class="lang-vi">🛠️ Công cụ & Môi trường</h2>
-      <h2 class="lang-en">🛠️ Tools & Environment</h2>
-      <ul class="lang-vi">
-        <li>Ubuntu 25.04 LTS (WSL2)</li>
-        <li>Công cụ build: repo, git, clang, SDK</li>
-        <li>Source tree: AOSP, LineageOS</li>
-        <li>CI: GitHub Actions + OTA + GPG Signing</li>
-      </ul>
-      <ul class="lang-en">
-        <li>Ubuntu 25.04 LTS (WSL2)</li>
-        <li>Build tools: repo, git, clang, SDK</li>
-        <li>Source trees: AOSP, LineageOS</li>
-        <li>CI: GitHub Actions + OTA + GPG Signing</li>
-      </ul>
+      <div class="lang-content">
+        <h2 class="lang-vi">🛠️ Công cụ & Môi trường</h2>
+        <h2 class="lang-en">🛠️ Tools & Environment</h2>
+      </div>
+      <div class="lang-content">
+        <ul class="lang-vi">
+          <li>Ubuntu 25.04 LTS (WSL2)</li>
+          <li>Công cụ build: repo, git, clang, SDK</li>
+          <li>Source tree: AOSP, LineageOS</li>
+          <li>CI: GitHub Actions + OTA + GPG Signing</li>
+        </ul>
+        <ul class="lang-en">
+          <li>Ubuntu 25.04 LTS (WSL2)</li>
+          <li>Build tools: repo, git, clang, SDK</li>
+          <li>Source trees: AOSP, LineageOS</li>
+          <li>CI: GitHub Actions + OTA + GPG Signing</li>
+        </ul>
+      </div>
     </section>
 
     <section class="connect">
-      <h2 class="lang-vi">🌐 Kết nối với tôi</h2>
-      <h2 class="lang-en">🌐 Connect with Me</h2>
+      <div class="lang-content">
+        <h2 class="lang-vi">🌐 Kết nối với tôi</h2>
+        <h2 class="lang-en">🌐 Connect with Me</h2>
+      </div>
       <a href="https://crdroid.net/a71/11"><i class="fab fa-android"></i> crDroid</a>
       <a href="https://github.com/intelgigabyte"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://paypal.me/intelgigabyte9299"><i class="fab fa-paypal"></i> PayPal</a>
@@ -520,8 +582,10 @@
   </div>
 
   <footer>
-    <span class="lang-vi">&copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Được làm bằng ❤️ & tình yêu AOSP.</span>
-    <span class="lang-en">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
+    <div class="lang-content">
+      <span class="lang-vi">&copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Được làm bằng ❤️ & tình yêu AOSP.</span>
+      <span class="lang-en">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
+    </div>
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
@@ -574,21 +638,85 @@
       // Logic chuyển đổi ngôn ngữ
       const langViBtn = document.getElementById('lang-vi');
       const langEnBtn = document.getElementById('lang-en');
+      const allLangContent = document.querySelectorAll('.lang-content');
 
       const setLanguage = (lang) => {
-        if (lang === 'en') {
+        const isEnglish = lang === 'en';
+        const duration = 500; // Thời gian transition CSS (0.5s)
+
+        allLangContent.forEach(container => {
+          const viEl = container.querySelector('.lang-vi');
+          const enEl = container.querySelector('.lang-en');
+
+          if (viEl && enEl) {
+            if (isEnglish) {
+              // Ẩn tiếng Việt
+              viEl.style.opacity = '0';
+              viEl.style.transform = 'translateY(-10px)';
+              viEl.style.pointerEvents = 'none';
+
+              // Hiện tiếng Anh sau khi tiếng Việt bắt đầu ẩn
+              setTimeout(() => {
+                viEl.style.display = 'none'; // Ẩn hẳn sau khi transition
+                
+                // Chuẩn bị tiếng Anh để hiện ra
+                enEl.style.display = enEl.getAttribute('data-display') || 'block';
+                enEl.style.opacity = '0';
+                enEl.style.transform = 'translateY(10px)';
+                enEl.style.pointerEvents = 'auto';
+
+                // Kích hoạt transition cho tiếng Anh
+                void enEl.offsetWidth; // Trigger reflow
+                enEl.style.opacity = '1';
+                enEl.style.transform = 'translateY(0)';
+              }, duration / 2); // Bắt đầu hiện sau 1 nửa thời gian ẩn
+              
+            } else {
+              // Ẩn tiếng Anh
+              enEl.style.opacity = '0';
+              enEl.style.transform = 'translateY(-10px)';
+              enEl.style.pointerEvents = 'none';
+
+              // Hiện tiếng Việt sau khi tiếng Anh bắt đầu ẩn
+              setTimeout(() => {
+                enEl.style.display = 'none'; // Ẩn hẳn sau khi transition
+
+                // Chuẩn bị tiếng Việt để hiện ra
+                viEl.style.display = viEl.getAttribute('data-display') || 'block';
+                viEl.style.opacity = '0';
+                viEl.style.transform = 'translateY(10px)';
+                viEl.style.pointerEvents = 'auto';
+                
+                // Kích hoạt transition cho tiếng Việt
+                void viEl.offsetWidth; // Trigger reflow
+                viEl.style.opacity = '1';
+                viEl.style.transform = 'translateY(0)';
+              }, duration / 2); // Bắt đầu hiện sau 1 nửa thời gian ẩn
+            }
+          }
+        });
+
+        // Cập nhật class trên body và nút
+        if (isEnglish) {
           body.classList.add('en');
           langEnBtn.classList.add('active');
           langViBtn.classList.remove('active');
-          document.documentElement.lang = 'en'; // Cập nhật thuộc tính lang của thẻ html
+          document.documentElement.lang = 'en';
         } else {
           body.classList.remove('en');
           langViBtn.classList.add('active');
           langEnBtn.classList.remove('active');
-          document.documentElement.lang = 'vi'; // Cập nhật thuộc tính lang của thẻ html
+          document.documentElement.lang = 'vi';
         }
         localStorage.setItem('language', lang);
       };
+
+      // Lưu trữ display ban đầu của mỗi phần tử để khôi phục đúng
+      document.querySelectorAll('.lang-content > *').forEach(el => {
+        if (!el.getAttribute('data-display')) {
+          el.setAttribute('data-display', window.getComputedStyle(el).display);
+        }
+      });
 
       // Tải ngôn ngữ đã lưu hoặc mặc định là tiếng Việt
       const savedLang = localStorage.getItem('language');

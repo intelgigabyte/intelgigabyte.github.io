@@ -27,7 +27,7 @@
       --section-bg: var(--bg-glass);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-bg: rgba(255, 255, 255, 0.08);
-      --footer-text: #cbd5e1; /* Reused for general text in light mode */
+      --footer-text: #cbd5e1;
       --transition-speed: 0.6s;
     }
 
@@ -41,7 +41,7 @@
       --text-light: #f8fafc;
       --text-dark: #f8fafc;
       --border-color: rgba(255, 255, 255, 0.15);
-      --footer-text: #94a3b8; /* Used for general text now */
+      --footer-text: #94a3b8;
     }
 
     /* Light Mode Variables - Copied from index.html */
@@ -56,7 +56,7 @@
       --text-dark: #0f172a;
       --text-light: #334155;
       --border-color: rgba(0, 0, 0, 0.1);
-      --footer-text: #475569; /* Used for general text now */
+      --footer-text: #475569;
     }
 
     * {
@@ -66,26 +66,25 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif; /* Use Inter font */
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-light); /* Use text-light variable for body text */
+      color: var(--text-light);
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
       transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
-      padding: 0; /* Remove padding here, add to container */
-      display: flex;
-      flex-direction: column; /* For proper footer placement */
+      display: flex; /* Ensure body is flex to push footer down */
+      flex-direction: column;
     }
 
     .container {
-      max-width: 900px; /* Slightly smaller max-width for content page */
+      max-width: 900px;
       margin: auto;
-      padding: 2rem 1rem; /* Padding for content area */
-      flex-grow: 1; /* Allow container to grow and push footer down */
+      padding: 2rem 1rem;
+      flex-grow: 1; /* Allow container to grow */
     }
 
-    /* Glassmorphism Sections - Adapted from index.html */
+    /* Glassmorphism Sections */
     .content-section {
       background: var(--section-bg);
       border-radius: var(--radius-section);
@@ -95,42 +94,47 @@
       padding: 2rem;
       margin-bottom: 2rem;
       border: 1px solid var(--border-color);
-      animation: fadeIn 1s ease-out forwards;
-      opacity: 0;
+      animation: fadeIn 1s ease-out forwards; /* Apply animation */
+      opacity: 0; /* Initial opacity for animation */
       transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     }
 
+    /* Animation delays for sections */
     .content-section:nth-of-type(1) { animation-delay: 0.2s; }
     .content-section:nth-of-type(2) { animation-delay: 0.4s; }
     .content-section:nth-of-type(3) { animation-delay: 0.6s; }
+    .content-section:nth-of-type(4) { animation-delay: 0.8s; } /* Thêm delay nếu có nhiều section */
+
 
     /* Specific Styles for crDroid content */
     .banner {
       width: 100%;
-      border-radius: var(--radius-section); /* Apply border-radius to banner */
-      margin-bottom: 1.5rem; /* Add space below banner */
-      display: block; /* Ensure it's a block element */
-      animation: fadeInDown 1s ease-out; /* Animate banner */
-      box-shadow: 0 8px 20px var(--shadow); /* Add shadow to banner */
+      border-radius: var(--radius-section);
+      margin-bottom: 1.5rem;
+      display: block;
+      animation: fadeInDown 1s ease-out forwards; /* Animate banner */
+      opacity: 0; /* Initial opacity for animation */
+      box-shadow: 0 8px 20px var(--shadow);
     }
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.8rem; /* Slightly smaller than index.html header h1 */
+      font-size: 2.8rem;
       font-weight: 700;
-      color: var(--primary); /* Use primary color for main title */
-      text-align: center; /* Center the title */
-      margin-top: 0; /* Remove default margin-top */
+      color: var(--primary);
+      text-align: center;
+      margin-top: 0;
       margin-bottom: 2rem;
       text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-      animation: fadeInDown 1.2s ease-out; /* Animate title */
+      animation: fadeInDown 1.2s ease-out forwards; /* Animate title */
+      opacity: 0; /* Initial opacity for animation */
       transition: color var(--transition-speed) ease;
     }
 
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark); /* Use text-dark for headings */
+      color: var(--text-dark);
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
       transition: color var(--transition-speed) ease;
@@ -142,7 +146,7 @@
       color: var(--text-light);
     }
     .info strong {
-      color: var(--primary); /* Highlight strong text with primary color */
+      color: var(--primary);
       transition: color var(--transition-speed) ease;
     }
 
@@ -154,14 +158,14 @@
 
     .images {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for more flexible image grid */
-      gap: 1.5rem; /* Increased gap */
-      margin-top: 1.5rem; /* Space above images */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
     .images img {
       width: 100%;
-      border-radius: var(--radius-card); /* Apply card radius to images */
-      box-shadow: 0 4px 15px var(--shadow); /* Add shadow to images */
+      border-radius: var(--radius-card);
+      box-shadow: 0 4px 15px var(--shadow);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .images img:hover {
@@ -171,12 +175,12 @@
 
     .back {
       display: inline-block;
-      margin-top: 2rem; /* Adjusted margin-top */
-      padding: 0.75rem 1.5rem; /* Larger padding for button */
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
       text-decoration: none;
-      border-radius: var(--radius-soft); /* Apply soft radius */
+      border-radius: var(--radius-soft);
       font-weight: 600;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -192,7 +196,7 @@
       font-size: 0.9rem;
       color: var(--footer-text);
       transition: color var(--transition-speed) ease;
-      margin-top: 2rem; /* Space above footer */
+      margin-top: 2rem;
     }
 
     /* Theme Toggle Button - Copied from index.html */
@@ -250,7 +254,7 @@
         margin-bottom: 1.5rem;
       }
       .images {
-        grid-template-columns: 1fr; /* Stack images on small screens */
+        grid-template-columns: 1fr;
         gap: 1rem;
       }
       .back {
@@ -277,6 +281,21 @@
         right: 15px;
       }
     }
+
+    /* AdSense Specific Styling */
+    .ad-container {
+      margin: 2rem auto;
+      text-align: center;
+      max-width: 728px; /* Max width for common ad sizes */
+      background: var(--section-bg);
+      border-radius: var(--radius-soft);
+      padding: 1rem;
+      box-shadow: 0 4px 12px var(--shadow);
+      border: 1px solid var(--border-color);
+      opacity: 0; /* For animation */
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.8s; /* Adjust delay as needed, after content sections */
+    }
   </style>
 </head>
 <body>
@@ -292,17 +311,17 @@
       </div>
     </div>
 
-    <div class="content-section" style="text-align: center;">
-      <h2>📢 Quảng cáo</h2>
-      <ins class="adsbygoogle"
+    <div class="ad-container">
+      <h2>📢 Advertisement</h2> <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
-           data-ad-slot="YOUR_AD_UNIT_SLOT_ID"  data-ad-format="auto"
+           data-ad-slot="YOUR_AD_UNIT_SLOT_ID_1"  data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <script>
            (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
-      </div>
+    </div>
+
     <div class="content-section">
       <h2>✨ Key Features</h2>
       <div class="features">
@@ -364,10 +383,16 @@
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        applyTheme('dark-mode');
+        applyTheme('dark-mode'); // Default to dark mode if nothing saved
       }
 
       themeToggle.addEventListener('click', () => {
+        // Add a temporary class for animation if you want a visual click feedback
+        themeToggle.classList.add('animate');
+        setTimeout(() => {
+          themeToggle.classList.remove('animate');
+        }, 300); // Remove the class after the animation duration
+
         if (body.classList.contains('dark-mode')) {
           applyTheme('light-mode');
         } else {

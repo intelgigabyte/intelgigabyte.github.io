@@ -3,56 +3,364 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>crDroid</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>crDroid - intelgigabyte9299</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" /> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
+    /* Global Variables - Copied from index.html for consistency */
+    :root {
+      --primary: #3b82f6;
+      --secondary: #9333ea;
+      --bg-glass: rgba(255, 255, 255, 0.15);
+      --shadow: rgba(0, 0, 0, 0.2);
+      --text-dark: #0f172a;
+      --text-light: #f8fafc;
+      --radius-soft: 12px;
+      --radius-card: 16px;
+      --radius-section: 20px;
+      --background-start: #0f172a;
+      --background-end: #1e293b;
+      --section-bg: var(--bg-glass);
+      --border-color: rgba(255, 255, 255, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --footer-text: #cbd5e1; /* Reused for general text in light mode */
+      --transition-speed: 0.6s;
+    }
+
+    /* Dark Mode Variables - Copied from index.html */
+    body.dark-mode {
+      --background-start: #0f172a;
+      --background-end: #1e293b;
+      --section-bg: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --shadow: rgba(0, 0, 0, 0.4);
+      --text-light: #f8fafc;
+      --text-dark: #f8fafc;
+      --border-color: rgba(255, 255, 255, 0.15);
+      --footer-text: #94a3b8; /* Used for general text now */
+    }
+
+    /* Light Mode Variables - Copied from index.html */
+    body.light-mode {
+      --primary: #1d4ed8;
+      --secondary: #6d28d9;
+      --background-start: #e0f2fe;
+      --background-end: #d1e9fb;
+      --section-bg: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --shadow: rgba(0, 0, 0, 0.15);
+      --text-dark: #0f172a;
+      --text-light: #334155;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --footer-text: #475569; /* Used for general text now */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      margin: 0; padding: 20px;
-      font-family: 'Poppins', sans-serif;
-      background: #121212; color: #eee;
+      font-family: 'Inter', sans-serif; /* Use Inter font */
+      background: linear-gradient(120deg, var(--background-start), var(--background-end));
+      color: var(--text-light); /* Use text-light variable for body text */
+      min-height: 100vh;
+      background-attachment: fixed;
+      background-size: cover;
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+      padding: 0; /* Remove padding here, add to container */
+      display: flex;
+      flex-direction: column; /* For proper footer placement */
     }
-    .banner { width:100%; border-radius:10px; }
-    h1 { margin-top:20px; }
-    .features, .info { margin:20px 0; }
+
+    .container {
+      max-width: 900px; /* Slightly smaller max-width for content page */
+      margin: auto;
+      padding: 2rem 1rem; /* Padding for content area */
+      flex-grow: 1; /* Allow container to grow and push footer down */
+    }
+
+    /* Glassmorphism Sections - Adapted from index.html */
+    .content-section {
+      background: var(--section-bg);
+      border-radius: var(--radius-section);
+      box-shadow: 0 8px 24px var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+
+    .content-section:nth-of-type(1) { animation-delay: 0.2s; }
+    .content-section:nth-of-type(2) { animation-delay: 0.4s; }
+    .content-section:nth-of-type(3) { animation-delay: 0.6s; }
+
+    /* Specific Styles for crDroid content */
+    .banner {
+      width: 100%;
+      border-radius: var(--radius-section); /* Apply border-radius to banner */
+      margin-bottom: 1.5rem; /* Add space below banner */
+      display: block; /* Ensure it's a block element */
+      animation: fadeInDown 1s ease-out; /* Animate banner */
+      box-shadow: 0 8px 20px var(--shadow); /* Add shadow to banner */
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem; /* Slightly smaller than index.html header h1 */
+      font-weight: 700;
+      color: var(--primary); /* Use primary color for main title */
+      text-align: center; /* Center the title */
+      margin-top: 0; /* Remove default margin-top */
+      margin-bottom: 2rem;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 1.2s ease-out; /* Animate title */
+      transition: color var(--transition-speed) ease;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark); /* Use text-dark for headings */
+      border-left: 5px solid var(--primary);
+      padding-left: 1rem;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .info p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+    .info strong {
+      color: var(--primary); /* Highlight strong text with primary color */
+      transition: color var(--transition-speed) ease;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
     .images {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjusted for more flexible image grid */
+      gap: 1.5rem; /* Increased gap */
+      margin-top: 1.5rem; /* Space above images */
     }
-    .images img { width:100%; border-radius:8px; }
+    .images img {
+      width: 100%;
+      border-radius: var(--radius-card); /* Apply card radius to images */
+      box-shadow: 0 4px 15px var(--shadow); /* Add shadow to images */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .images img:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
     .back {
-      display:inline-block; margin-top:30px;
-      padding:10px 15px; background:#333;
-      color:#fff; text-decoration:none; border-radius:8px;
+      display: inline-block;
+      margin-top: 2rem; /* Adjusted margin-top */
+      padding: 0.75rem 1.5rem; /* Larger padding for button */
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-soft); /* Apply soft radius */
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .back:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--footer-text);
+      transition: color var(--transition-speed) ease;
+      margin-top: 2rem; /* Space above footer */
+    }
+
+    /* Theme Toggle Button - Copied from index.html */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    /* Animations - Copied from index.html */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design - Adapted for crDroid.html */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem 0.8rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+        padding-left: 0.8rem;
+      }
+      .content-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .images {
+        grid-template-columns: 1fr; /* Stack images on small screens */
+        gap: 1rem;
+      }
+      .back {
+        padding: 0.65rem 1.2rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      .content-section {
+        padding: 1rem;
+      }
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <img src="https://i.postimg.cc/PfYdpkh4/170225142-a35db9ff-1427-4256-859c-14b255502c50.png" alt="crDroid Banner" class="banner"/>
-  <h1>crDroid</h1>
-  <div class="info">
-    <p><strong>Status:</strong> Official (based on LineageOS)</p>
-    <p><strong>Supported device:</strong> Samsung Galaxy A71 4G</p>
+  <div class="container">
+    <img src="https://i.postimg.cc/PfYdpkh4/170225142-a35db9ff-1427-4256-859c-14b255502c50.png" alt="crDroid Banner" class="banner"/>
+    <h1>crDroid</h1>
+
+    <div class="content-section">
+      <h2>ℹ️ Information</h2>
+      <div class="info">
+        <p><strong>Status:</strong> Official (based on LineageOS)</p>
+        <p><strong>Supported device:</strong> Samsung Galaxy A71 4G</p>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>✨ Key Features</h2>
+      <div class="features">
+        <ul>
+          <li>Advanced button customization (e.g. wake device, torch)</li>
+          <li>Status bar & Quick Settings tuning (icons, rows, layout)</li>
+          <li>Lock screen options (charging animation, AOD, pickup)</li>
+          <li>Multiple navbar styles, gestures, icon packs</li>
+          <li>Notification tweaks: heads-up, clipboard, flashlight blink</li>
+          <li>Sound improvements: adaptive playback, volume panel control</li>
+          <li>Misc tools: Game space, Pocket detection, sensor blocking</li>
+          <li>Monthly security and feature updates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>🖼️ Screenshots</h2>
+      <div class="images">
+        <img src="https://i.postimg.cc/1tc7CJ15/photo-2025-07-23-11-47-22.jpg" alt="Screenshot 1"/>
+        <img src="https://i.postimg.cc/7P9QSsNK/photo-2025-07-23-11-47-38.jpg" alt="Screenshot 2"/>
+        <img src="https://i.postimg.cc/sD06NMqS/photo-2025-07-23-11-47-41.jpg" alt="Screenshot 3"/>
+        <img src="https://i.postimg.cc/HWrB7YVk/photo-2025-07-23-11-47-45.jpg" alt="Screenshot 4"/>
+        <img src="https://i.postimg.cc/XNtxfRCc/photo-2025-07-23-11-47-48.jpg" alt="Screenshot 5"/>
+      </div>
+    </div>
+
+    <a href="index.html" class="back">⬅️ Back to Home</a>
   </div>
-  <div class="features">
-    <h2>Key Features</h2>
-    <ul>
-      <li>Advanced button customization (e.g. wake device, torch)</li>
-      <li>Status bar & Quick Settings tuning (icons, rows, layout)</li>
-      <li>Lock screen options (charging animation, AOD, pickup)</li>
-      <li>Multiple navbar styles, gestures, icon packs</li>
-      <li>Notification tweaks: heads-up, clipboard, flashlight blink</li>
-      <li>Sound improvements: adaptive playback, volume panel control</li>
-      <li>Misc tools: Game space, Pocket detection, sensor blocking</li>
-      <li>Monthly security and feature updates :contentReference[oaicite:0]{index=0}</li>
-    </ul>
-  </div>
-  <div class="images">
-    <img src="https://i.postimg.cc/1tc7CJ15/photo-2025-07-23-11-47-22.jpg" alt="Screenshot 1"/>
-    <img src="https://i.postimg.cc/7P9QSsNK/photo-2025-07-23-11-47-38.jpg" alt="Screenshot 2"/>
-    <img src="https://i.postimg.cc/sD06NMqS/photo-2025-07-23-11-47-41.jpg" alt="Screenshot 3"/>
-    <img src="https://i.postimg.cc/HWrB7YVk/photo-2025-07-23-11-47-45.jpg" alt="Screenshot 4"/>
-    <img src="https://i.postimg.cc/XNtxfRCc/photo-2025-07-23-11-47-48.jpg" alt="Screenshot 5"/>
-  </div>
-  <a href="index.html" class="back">⬅️ Back to Home</a>
+
+  <footer>
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with 😍 & Android love.
+  </footer>
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script>
+    // Theme Toggle Logic - Copied from index.html
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      const applyTheme = (theme) => {
+        if (theme === 'light-mode') {
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        localStorage.setItem('theme', theme);
+      };
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else {
+        applyTheme('dark-mode');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+          applyTheme('light-mode');
+        } else {
+          applyTheme('dark-mode');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="vi"> <head>
+<html lang="vi">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>intelgigabyte9299 Bio - Home</title>
@@ -290,53 +291,50 @@
       transform: translateY(-2px);
     }
 
-    /* Hiệu ứng chuyển đổi ngôn ngữ */
-    .lang-content {
-      /* Tạo ngữ cảnh cho các phần tử ngôn ngữ con */
-      position: relative; /* Quan trọng để các phần tử con dùng absolute không phá vỡ layout */
-      min-height: 2em; /* Đảm bảo đủ chiều cao để tránh nhảy layout trong quá trình transition */
-      overflow: hidden; /* Cắt bớt phần overflow trong quá trình transition nếu cần */
-      transition: all 0.5s ease-in-out; /* Transition cho chính container */
+    /* CSS cho hiệu ứng chuyển đổi ngôn ngữ */
+    /* Container cho nội dung song ngữ */
+    .lang-container {
+        /* Không cần position: relative nếu nội dung là flow bình thường */
+        /* min-height có thể cần thiết nếu nội dung có chiều cao khác nhau giữa các ngôn ngữ */
+        /* transition: opacity 0.3s ease; */ /* Có thể thêm transition cho container nếu muốn */
     }
 
-    .lang-content > * { /* Áp dụng cho các thẻ trực tiếp bên trong lang-content */
-      position: absolute; /* Đặt vị trí tuyệt đối để chúng có thể chồng lên nhau và transition mượt */
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      box-sizing: border-box; /* Đảm bảo padding không làm tràn */
-      padding: inherit; /* Thừa kế padding từ cha nếu muốn */
-      display: block; /* Mặc định là block để chiếm không gian */
-      margin: 0; /* Loại bỏ margin mặc định để tránh nhảy layout */
-    }
-    
-    /* Trạng thái mặc định: tiếng Việt hiển thị */
-    body:not(.en) .lang-content .lang-vi {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-    body:not(.en) .lang-content .lang-en {
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      display: none; /* Ẩn hẳn khi không active và đã transition xong */
+    /* Ẩn/Hiện và hiệu ứng cho các phần tử ngôn ngữ cụ thể */
+    .lang-vi, .lang-en {
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        /* margin-top: 0; */ /* Đảm bảo không có margin gây dịch chuyển bất ngờ */
+        /* margin-bottom: 0; */
     }
 
-    /* Trạng thái khi chuyển sang tiếng Anh */
-    body.en .lang-content .lang-en {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
+    /* Ban đầu, tiếng Anh ẩn */
+    body:not(.en) .lang-en {
+        opacity: 0;
+        transform: translateY(10px); /* Bắt đầu từ dưới */
+        /* display: none; */ /* Không dùng display:none ở đây để transition hoạt động */
+        pointer-events: none; /* Ngăn chặn tương tác khi ẩn */
     }
-    body.en .lang-content .lang-vi {
-      opacity: 0;
-      transform: translateY(-10px);
-      pointer-events: none;
-      display: none; /* Ẩn hẳn khi không active và đã transition xong */
+
+    /* Ban đầu, tiếng Việt hiển thị */
+    body:not(.en) .lang-vi {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
+
+    /* Khi body có class 'en', tiếng Việt ẩn và tiếng Anh hiển thị */
+    body.en .lang-vi {
+        opacity: 0;
+        transform: translateY(-10px); /* Trượt lên trên khi ẩn */
+        /* display: none; */
+        pointer-events: none;
+    }
+
+    body.en .lang-en {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
 
     /* AdSense Container Styling */
     .ad-container {
@@ -465,11 +463,11 @@
 <body lang="vi">
 
   <header>
-    <div class="lang-content">
+    <div class="lang-container">
       <h1 class="lang-vi">Bản ROM Tùy Chỉnh của intelgigabyte9299</h1>
       <h1 class="lang-en">intelgigabyte9299's Custom ROM Builds</h1>
     </div>
-    <div class="lang-content">
+    <div class="lang-container">
       <p class="lang-vi">Samsung Galaxy A71 4G • Nhà phát triển Android từ Việt Nam</p>
       <p class="lang-en">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
     </div>
@@ -477,11 +475,11 @@
 
   <div class="container">
     <section>
-      <div class="lang-content">
+      <div class="lang-container">
         <h2 class="lang-vi">🧠 Về tôi</h2>
         <h2 class="lang-en">🧠 About Me</h2>
       </div>
-      <div class="lang-content">
+      <div class="lang-container">
         <p class="lang-vi">Chào bạn! Tôi là <b>intelgigabyte9299</b> (tên thật: Nguyễn Mạnh Dũng), một nhà phát triển ROM tùy chỉnh và là người duy trì chính thức của <b>crDroid</b> cho Galaxy A71 4G. Trang web này là hồ sơ cá nhân của tôi – cảm ơn <b>anhdat1024</b> đã truyền cảm hứng ♥</p>
         <p class="lang-en">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
       </div>
@@ -499,17 +497,17 @@
     </div>
 
     <section>
-      <div class="lang-content">
+      <div class="lang-container">
         <h2 class="lang-vi">📱 ROM của tôi</h2>
         <h2 class="lang-en">📱 My ROMs</h2>
       </div>
       <div class="rom-grid">
         <a class="rom-card" href="crdroid.html">
-          <div class="lang-content">
+          <div class="lang-container">
             <div class="rom-title lang-vi">crDroid cho Samsung Galaxy A71 4G</div>
             <div class="rom-title lang-en">crDroid For Samsung Galaxy A71 4G</div>
           </div>
-          <div class="lang-content">
+          <div class="lang-container">
             <div class="rom-status lang-vi">✅ Chính thức</div>
             <div class="rom-status lang-en">✅ Official</div>
           </div>
@@ -518,11 +516,11 @@
     </section>
 
     <section>
-      <div class="lang-content">
+      <div class="lang-container">
         <h2 class="lang-vi">📦 Thiết bị được hỗ trợ</h2>
         <h2 class="lang-en">📦 Supported Devices</h2>
       </div>
-      <div class="lang-content">
+      <div class="lang-container">
         <ul class="lang-vi">
           <li>Samsung Galaxy A71 4G (a71)</li>
           <li>Tham gia nhóm Telegram dưới đây để có liên kết tải xuống và cập nhật</li>
@@ -546,11 +544,11 @@
     </div>
 
     <section>
-      <div class="lang-content">
+      <div class="lang-container">
         <h2 class="lang-vi">🛠️ Công cụ & Môi trường</h2>
         <h2 class="lang-en">🛠️ Tools & Environment</h2>
       </div>
-      <div class="lang-content">
+      <div class="lang-container">
         <ul class="lang-vi">
           <li>Ubuntu 25.04 LTS (WSL2)</li>
           <li>Công cụ build: repo, git, clang, SDK</li>
@@ -567,7 +565,7 @@
     </section>
 
     <section class="connect">
-      <div class="lang-content">
+      <div class="lang-container">
         <h2 class="lang-vi">🌐 Kết nối với tôi</h2>
         <h2 class="lang-en">🌐 Connect with Me</h2>
       </div>
@@ -582,7 +580,7 @@
   </div>
 
   <footer>
-    <div class="lang-content">
+    <div class="lang-container">
       <span class="lang-vi">&copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Được làm bằng ❤️ & tình yêu AOSP.</span>
       <span class="lang-en">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
     </div>
@@ -638,65 +636,12 @@
       // Logic chuyển đổi ngôn ngữ
       const langViBtn = document.getElementById('lang-vi');
       const langEnBtn = document.getElementById('lang-en');
-      const allLangContent = document.querySelectorAll('.lang-content');
 
+      // Hàm để set ngôn ngữ
       const setLanguage = (lang) => {
         const isEnglish = lang === 'en';
-        const duration = 500; // Thời gian transition CSS (0.5s)
+        const transitionDuration = 400; // Phải khớp với transition duration trong CSS
 
-        allLangContent.forEach(container => {
-          const viEl = container.querySelector('.lang-vi');
-          const enEl = container.querySelector('.lang-en');
-
-          if (viEl && enEl) {
-            if (isEnglish) {
-              // Ẩn tiếng Việt
-              viEl.style.opacity = '0';
-              viEl.style.transform = 'translateY(-10px)';
-              viEl.style.pointerEvents = 'none';
-
-              // Hiện tiếng Anh sau khi tiếng Việt bắt đầu ẩn
-              setTimeout(() => {
-                viEl.style.display = 'none'; // Ẩn hẳn sau khi transition
-                
-                // Chuẩn bị tiếng Anh để hiện ra
-                enEl.style.display = enEl.getAttribute('data-display') || 'block';
-                enEl.style.opacity = '0';
-                enEl.style.transform = 'translateY(10px)';
-                enEl.style.pointerEvents = 'auto';
-
-                // Kích hoạt transition cho tiếng Anh
-                void enEl.offsetWidth; // Trigger reflow
-                enEl.style.opacity = '1';
-                enEl.style.transform = 'translateY(0)';
-              }, duration / 2); // Bắt đầu hiện sau 1 nửa thời gian ẩn
-              
-            } else {
-              // Ẩn tiếng Anh
-              enEl.style.opacity = '0';
-              enEl.style.transform = 'translateY(-10px)';
-              enEl.style.pointerEvents = 'none';
-
-              // Hiện tiếng Việt sau khi tiếng Anh bắt đầu ẩn
-              setTimeout(() => {
-                enEl.style.display = 'none'; // Ẩn hẳn sau khi transition
-
-                // Chuẩn bị tiếng Việt để hiện ra
-                viEl.style.display = viEl.getAttribute('data-display') || 'block';
-                viEl.style.opacity = '0';
-                viEl.style.transform = 'translateY(10px)';
-                viEl.style.pointerEvents = 'auto';
-                
-                // Kích hoạt transition cho tiếng Việt
-                void viEl.offsetWidth; // Trigger reflow
-                viEl.style.opacity = '1';
-                viEl.style.transform = 'translateY(0)';
-              }, duration / 2); // Bắt đầu hiện sau 1 nửa thời gian ẩn
-            }
-          }
-        });
-
-        // Cập nhật class trên body và nút
         if (isEnglish) {
           body.classList.add('en');
           langEnBtn.classList.add('active');
@@ -710,13 +655,6 @@
         }
         localStorage.setItem('language', lang);
       };
-
-      // Lưu trữ display ban đầu của mỗi phần tử để khôi phục đúng
-      document.querySelectorAll('.lang-content > *').forEach(el => {
-        if (!el.getAttribute('data-display')) {
-          el.setAttribute('data-display', window.getComputedStyle(el).display);
-        }
-      });
 
       // Tải ngôn ngữ đã lưu hoặc mặc định là tiếng Việt
       const savedLang = localStorage.getItem('language');

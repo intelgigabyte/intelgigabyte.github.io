@@ -15,24 +15,27 @@
       --shadow: rgba(0, 0, 0, 0.2);
       --text-dark: #0f172a;
       --text-light: #f8fafc;
-      --radius: 20px;
+      --radius-soft: 12px; /* New: Softer radius for general elements */
+      --radius-card: 16px; /* New: Slightly larger radius for cards */
+      --radius-section: 20px; /* New: Even larger radius for sections */
       --background-start: #0f172a;
       --background-end: #1e293b;
       --section-bg: var(--bg-glass);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-bg: rgba(255, 255, 255, 0.08);
       --footer-text: #cbd5e1;
+      --transition-speed: 0.6s; /* Unified transition speed */
     }
 
     /* Dark Mode Variables */
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
-      --section-bg: rgba(255, 255, 255, 0.08); /* Slightly darker glass effect */
-      --card-bg: rgba(255, 255, 255, 0.05); /* Even darker cards */
+      --section-bg: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
       --text-light: #f8fafc;
-      --text-dark: #f8fafc; /* Adjust for dark mode */
+      --text-dark: #f8fafc;
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
     }
@@ -65,34 +68,37 @@
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      transition: background 0.5s ease, color 0.5s ease; /* Smooth theme transition */
+      transition: background var(--transition-speed) ease, color var(--transition-speed) ease; /* Use unified speed */
     }
 
     header {
-      padding: 3rem 1rem; /* Keep existing padding */
+      padding: 3rem 1rem;
       text-align: center;
       color: white;
       box-shadow: 0 8px 20px var(--shadow);
-      animation: fadeInDown 1s ease-out; /* Keep existing animation */
-      /* Updated gradient direction for more pop */
+      animation: fadeInDown 1s ease-out;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-bottom-left-radius: var(--radius-section); /* Rounded bottom corners for header */
+      border-bottom-right-radius: var(--radius-section);
+      /* Add overflow hidden to prevent children from spilling out of rounded corners */
+      overflow: hidden;
     }
 
     header h1 {
-      font-family: 'Space Grotesk', sans-serif; /* Apply Space Grotesk here */
-      font-size: 3.2rem; /* Slightly increase font size for more impact */
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.2rem;
       font-weight: 700;
-      letter-spacing: -0.05em; /* A bit tighter letter spacing for modern look */
-      margin-bottom: 0.5rem; /* Add some space below the title */
-      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle text shadow for depth */
+      letter-spacing: -0.05em;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     header p {
-      font-size: 1.25rem; /* Slightly larger for better readability */
-      margin-top: 0.5rem; /* Keep this */
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
       opacity: 0.9;
-      line-height: 1.4; /* Improve line spacing */
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+      line-height: 1.4;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .container {
@@ -103,15 +109,16 @@
 
     section {
       background: var(--section-bg);
-      border-radius: var(--radius);
+      border-radius: var(--radius-section); /* Use new section radius */
       box-shadow: 0 8px 24px var(--shadow);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       padding: 2rem;
       margin-bottom: 2rem;
       border: 1px solid var(--border-color);
-      animation: fadeIn 1s ease-out forwards; /* Animation */
-      opacity: 0; /* Start hidden for animation */
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Ensure smooth theme transition */
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -124,10 +131,10 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark); /* Adjust color for theme */
+      color: var(--text-dark);
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
-      transition: color 0.5s ease;
+      transition: color var(--transition-speed) ease; /* Use unified speed */
     }
 
     .rom-grid {
@@ -138,11 +145,11 @@
 
     .rom-card {
       background: var(--card-bg);
-      border-radius: var(--radius);
+      border-radius: var(--radius-card); /* Use new card radius */
       padding: 1.5rem;
-      color: var(--text-light); /* Adjust color for theme */
+      color: var(--text-light);
       backdrop-filter: blur(16px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease; /* Ensure smooth theme transition */
       box-shadow: 0 6px 18px var(--shadow);
       text-decoration: none;
       border: 1px solid var(--border-color);
@@ -175,7 +182,7 @@
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
-      border-radius: 8px;
+      border-radius: var(--radius-soft); /* Use soft radius for buttons */
       text-decoration: none;
       font-weight: 500;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -191,7 +198,7 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: var(--footer-text);
-      transition: color 0.5s ease;
+      transition: color var(--transition-speed) ease; /* Use unified speed */
     }
 
     /* Theme Toggle Button */
@@ -246,14 +253,14 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       header {
-        padding: 2.5rem 1rem; /* Slightly less padding on smaller screens */
+        padding: 2.5rem 1rem;
       }
       header h1 {
-        font-size: 2.5rem; /* Adjusted for tablets */
+        font-size: 2.5rem;
         letter-spacing: -0.04em;
       }
       header p {
-        font-size: 1.1rem; /* Adjusted for tablets */
+        font-size: 1.1rem;
       }
 
       .container {
@@ -271,7 +278,7 @@
       }
 
       .rom-grid {
-        grid-template-columns: 1fr; /* Stack cards on small screens */
+        grid-template-columns: 1fr;
       }
 
       .rom-card {
@@ -283,7 +290,7 @@
       }
 
       .connect a {
-        display: block; /* Stack buttons vertically */
+        display: block;
         margin: 0.5rem 0;
         text-align: center;
       }
@@ -294,11 +301,11 @@
         padding: 2rem 1rem;
       }
       header h1 {
-        font-size: 2rem; /* Back to original smaller size for mobile */
+        font-size: 2rem;
         letter-spacing: -0.03em;
       }
       header p {
-        font-size: 0.95rem; /* Slightly smaller for mobile */
+        font-size: 0.95rem;
       }
 
       h2 {
@@ -373,7 +380,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & Android love.
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with 😍 & Android love.
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
@@ -381,37 +388,38 @@
   </button>
 
   <script>
-    // script.js content (Logic cho nút chuyển đổi chế độ sáng/tối)
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
 
-      // Kiểm tra sở thích chủ đề đã lưu
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        body.classList.add(savedTheme);
-        if (savedTheme === 'light-mode') {
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-      } else {
-        // Mặc định là chế độ tối nếu chưa có sở thích nào được lưu
-        body.classList.add('dark-mode');
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      }
-
-      themeToggle.addEventListener('click', () => {
-        if (body.classList.contains('dark-mode')) {
+      // Function to apply theme immediately
+      const applyTheme = (theme) => {
+        if (theme === 'light-mode') {
           body.classList.remove('dark-mode');
           body.classList.add('light-mode');
           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          localStorage.setItem('theme', 'light-mode');
         } else {
           body.classList.remove('light-mode');
           body.classList.add('dark-mode');
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-          localStorage.setItem('theme', 'dark-mode');
+        }
+        localStorage.setItem('theme', theme);
+      };
+
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else {
+        // Default to dark mode if no preference is saved
+        applyTheme('dark-mode');
+      }
+
+      themeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+          applyTheme('light-mode');
+        } else {
+          applyTheme('dark-mode');
         }
       });
     });

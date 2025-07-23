@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -256,67 +256,6 @@
       transform: scale(0.9);
     }
 
-    /* Language Switcher */
-    .lang-switcher {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      background: var(--section-bg);
-      border-radius: var(--radius-soft);
-      box-shadow: 0 4px 12px var(--shadow);
-      display: flex;
-      overflow: hidden;
-      border: 1px solid var(--border-color);
-      z-index: 999;
-    }
-
-    .lang-switcher button {
-      background: none;
-      border: none;
-      color: var(--text-light);
-      padding: 10px 15px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    }
-
-    .lang-switcher button.active {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-    }
-
-    .lang-switcher button:not(.active):hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    /* CSS cho hiệu ứng chuyển đổi ngôn ngữ */
-    .lang-container {
-        /* Có thể thêm min-height nếu nội dung giữa các ngôn ngữ có sự chênh lệch chiều cao lớn */
-        /* Ví dụ: min-height: 50px; */
-    }
-
-    .lang-vi, .lang-en {
-        transition: opacity 0.4s ease-in-out; /* Chỉ transition opacity */
-        /* Loại bỏ transform để chữ không dịch chuyển */
-    }
-
-    /* Chỉ định opacity và pointer-events trong CSS, display sẽ được JS kiểm soát */
-    body:not(.en) .lang-en,
-    body.en .lang-vi {
-        opacity: 0;
-        pointer-events: none;
-        /* display: none sẽ được JS thêm vào sau khi transition opacity kết thúc */
-    }
-
-    body:not(.en) .lang-vi,
-    body.en .lang-en {
-        opacity: 1;
-        pointer-events: auto;
-        /* display sẽ được JS thiết lập để hiển thị */
-    }
-
     /* AdSense Container Styling */
     .ad-container {
       margin: 2rem auto;
@@ -424,46 +363,27 @@
         padding: 1rem;
       }
 
-      .theme-toggle, .lang-switcher {
+      .theme-toggle {
         width: 45px;
         height: 45px;
         font-size: 1.3rem;
         bottom: 15px;
         right: 15px;
       }
-      .lang-switcher {
-        bottom: 70px;
-      }
-      .lang-switcher button {
-        padding: 8px 12px;
-        font-size: 0.8rem;
-      }
     }
   </style>
 </head>
-<body lang="vi">
+<body lang="en">
 
   <header>
-    <div class="lang-container">
-      <h1 class="lang-vi">Bản ROM Tùy Chỉnh của intelgigabyte9299</h1>
-      <h1 class="lang-en">intelgigabyte9299's Custom ROM Builds</h1>
-    </div>
-    <div class="lang-container">
-      <p class="lang-vi">Samsung Galaxy A71 4G • Nhà phát triển Android từ Việt Nam</p>
-      <p class="lang-en">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
-    </div>
+    <h1>intelgigabyte9299's Custom ROM Builds</h1>
+    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
   </header>
 
   <div class="container">
     <section>
-      <div class="lang-container">
-        <h2 class="lang-vi">🧠 Về tôi</h2>
-        <h2 class="lang-en">🧠 About Me</h2>
-      </div>
-      <div class="lang-container">
-        <p class="lang-vi">Chào bạn! Tôi là <b>intelgigabyte9299</b> (tên thật: Nguyễn Mạnh Dũng), một nhà phát triển ROM tùy chỉnh và là người duy trì chính thức của <b>crDroid</b> cho Galaxy A71 4G. Trang web này là hồ sơ cá nhân của tôi – cảm ơn <b>anhdat1024</b> đã truyền cảm hứng ♥</p>
-        <p class="lang-en">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
-      </div>
+      <h2>🧠 About Me</h2>
+      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
     </section>
 
     <div class="ad-container">
@@ -478,39 +398,21 @@
     </div>
 
     <section>
-      <div class="lang-container">
-        <h2 class="lang-vi">📱 ROM của tôi</h2>
-        <h2 class="lang-en">📱 My ROMs</h2>
-      </div>
+      <h2>📱 My ROMs</h2>
       <div class="rom-grid">
         <a class="rom-card" href="crdroid.html">
-          <div class="lang-container">
-            <div class="rom-title lang-vi">crDroid cho Samsung Galaxy A71 4G</div>
-            <div class="rom-title lang-en">crDroid For Samsung Galaxy A71 4G</div>
-          </div>
-          <div class="lang-container">
-            <div class="rom-status lang-vi">✅ Chính thức</div>
-            <div class="rom-status lang-en">✅ Official</div>
-          </div>
+          <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
+          <div class="rom-status">✅ Official</div>
         </a>
       </div>
     </section>
 
     <section>
-      <div class="lang-container">
-        <h2 class="lang-vi">📦 Thiết bị được hỗ trợ</h2>
-        <h2 class="lang-en">📦 Supported Devices</h2>
-      </div>
-      <div class="lang-container">
-        <ul class="lang-vi">
-          <li>Samsung Galaxy A71 4G (a71)</li>
-          <li>Tham gia nhóm Telegram dưới đây để có liên kết tải xuống và cập nhật</li>
-        </ul>
-        <ul class="lang-en">
-          <li>Samsung Galaxy A71 4G (a71)</li>
-          <li>Join the Telegram group below for download links and updates</li>
-        </ul>
-      </div>
+      <h2>📦 Supported Devices</h2>
+      <ul>
+        <li>Samsung Galaxy A71 4G (a71)</li>
+        <li>Join the Telegram group below for download links and updates</li>
+      </ul>
     </section>
 
     <div class="ad-container">
@@ -525,31 +427,17 @@
     </div>
 
     <section>
-      <div class="lang-container">
-        <h2 class="lang-vi">🛠️ Công cụ & Môi trường</h2>
-        <h2 class="lang-en">🛠️ Tools & Environment</h2>
-      </div>
-      <div class="lang-container">
-        <ul class="lang-vi">
-          <li>Ubuntu 25.04 LTS (WSL2)</li>
-          <li>Công cụ build: repo, git, clang, SDK</li>
-          <li>Source tree: AOSP, LineageOS</li>
-          <li>CI: GitHub Actions + OTA + GPG Signing</li>
-        </ul>
-        <ul class="lang-en">
-          <li>Ubuntu 25.04 LTS (WSL2)</li>
-          <li>Build tools: repo, git, clang, SDK</li>
-          <li>Source trees: AOSP, LineageOS</li>
-          <li>CI: GitHub Actions + OTA + GPG Signing</li>
-        </ul>
-      </div>
+      <h2>🛠️ Tools & Environment</h2>
+      <ul>
+        <li>Ubuntu 25.04 LTS (WSL2)</li>
+        <li>Build tools: repo, git, clang, SDK</li>
+        <li>Source trees: AOSP, LineageOS</li>
+        <li>CI: GitHub Actions + OTA + GPG Signing</li>
+      </ul>
     </section>
 
     <section class="connect">
-      <div class="lang-container">
-        <h2 class="lang-vi">🌐 Kết nối với tôi</h2>
-        <h2 class="lang-en">🌐 Connect with Me</h2>
-      </div>
+      <h2>🌐 Connect with Me</h2>
       <a href="https://crdroid.net/a71/11"><i class="fab fa-android"></i> crDroid</a>
       <a href="https://github.com/intelgigabyte"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://paypal.me/intelgigabyte9299"><i class="fab fa-paypal"></i> PayPal</a>
@@ -561,20 +449,12 @@
   </div>
 
   <footer>
-    <div class="lang-container">
-      <span class="lang-vi">&copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Được làm bằng ❤️ & tình yêu AOSP.</span>
-      <span class="lang-en">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
-    </div>
+    <span>&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
     <i class="fas fa-moon"></i>
   </button>
-
-  <div class="lang-switcher">
-    <button id="lang-vi" class="active">VI</button>
-    <button id="lang-en">EN</button>
-  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -613,105 +493,6 @@
           applyTheme('dark-mode');
         }
       });
-
-      // Logic chuyển đổi ngôn ngữ
-      const langViBtn = document.getElementById('lang-vi');
-      const langEnBtn = document.getElementById('lang-en');
-      const transitionDuration = 400; // Phải khớp với transition duration trong CSS
-
-      // --- BƯỚC QUAN TRỌNG: Lưu trữ thuộc tính display ban đầu một cách đáng tin cậy ---
-      const allLangElements = document.querySelectorAll('.lang-vi, .lang-en');
-      allLangElements.forEach(el => {
-        // Lưu trữ các style inline hiện có để khôi phục sau
-        const currentDisplay = el.style.display;
-        const currentVisibility = el.style.visibility;
-        const currentOpacity = el.style.opacity;
-        const currentPointerEvents = el.style.pointerEvents;
-
-        // Tạm thời hiển thị và ẩn bằng visibility để lấy display đúng
-        el.style.display = 'block'; // Hoặc bất kỳ giá trị hiển thị mặc định nào phù hợp (VD: 'inline-block', 'flex')
-        el.style.visibility = 'hidden';
-        el.style.opacity = '1'; // Đảm bảo opacity để getComputedStyle không trả về 0 do opacity
-        el.style.pointerEvents = 'auto'; // Đảm bảo pointer-events để getComputedStyle không trả về 'none'
-
-        // Buộc trình duyệt tính toán lại layout
-        void el.offsetWidth; 
-
-        // Lấy giá trị display đã tính toán của phần tử
-        const computedDisplay = window.getComputedStyle(el).display;
-        el.setAttribute('data-original-display', computedDisplay);
-
-        // Khôi phục lại các style inline ban đầu
-        el.style.display = currentDisplay;
-        el.style.visibility = currentVisibility;
-        el.style.opacity = currentOpacity;
-        el.style.pointerEvents = currentPointerEvents;
-      });
-      // --- KẾT THÚC BƯỚC QUAN TRỌNG ---
-
-
-      // Hàm để set ngôn ngữ
-      const setLanguage = (lang) => {
-        const isEnglish = lang === 'en';
-
-        const allViElements = document.querySelectorAll('.lang-vi');
-        const allEnElements = document.querySelectorAll('.lang-en');
-
-        // Bước 1: Ẩn nội dung ngôn ngữ hiện tại (Fade Out)
-        const elementsToFadeOut = isEnglish ? allViElements : allEnElements;
-        elementsToFadeOut.forEach(el => {
-          el.style.opacity = '0';
-          el.style.pointerEvents = 'none';
-          // Sau khi fade out, ẩn hoàn toàn (display: none) sau thời gian transition
-          setTimeout(() => {
-            el.style.display = 'none';
-          }, transitionDuration);
-        });
-
-        // Bước 2: Hiển thị nội dung ngôn ngữ mới (Fade In)
-        const elementsToFadeIn = isEnglish ? allEnElements : allViElements;
-        elementsToFadeIn.forEach(el => {
-          // Lấy giá trị display ban đầu đã lưu trữ
-          const originalDisplay = el.getAttribute('data-original-display') || 'block'; 
-          el.style.display = originalDisplay; // Đặt display trước
-
-          // Buộc trình duyệt reflow để đảm bảo transition opacity hoạt động
-          void el.offsetWidth; 
-          
-          el.style.opacity = '1'; // Sau đó đặt opacity để bắt đầu transition
-          el.style.pointerEvents = 'auto';
-        });
-
-        // Cập nhật class trên body và nút ngôn ngữ
-        body.classList.toggle('en', isEnglish);
-        langEnBtn.classList.toggle('active', isEnglish);
-        langViBtn.classList.toggle('active', !isEnglish);
-        document.documentElement.lang = lang; // Cập nhật thuộc tính lang của HTML
-        localStorage.setItem('language', lang);
-      };
-
-      // Khởi tạo ngôn ngữ khi trang tải (KHÔNG DÙNG ANIMATION để tránh flicker)
-      const savedLang = localStorage.getItem('language');
-      const initialLang = savedLang || 'vi'; // Mặc định là 'vi' nếu chưa có
-
-      // Áp dụng trạng thái hiển thị ban đầu
-      allLangElements.forEach(el => {
-          const originalDisplay = el.getAttribute('data-original-display') || 'block';
-          const isVisibleForInitialLang = (el.classList.contains('lang-vi') && initialLang === 'vi') ||
-                                         (el.classList.contains('lang-en') && initialLang === 'en');
-          
-          el.style.display = isVisibleForInitialLang ? originalDisplay : 'none';
-          el.style.opacity = isVisibleForInitialLang ? '1' : '0';
-          el.style.pointerEvents = isVisibleForInitialLang ? 'auto' : 'none';
-      });
-      
-      body.classList.toggle('en', initialLang === 'en');
-      langEnBtn.classList.toggle('active', initialLang === 'en');
-      langViBtn.classList.toggle('active', initialLang === 'vi');
-      document.documentElement.lang = initialLang;
-
-      langViBtn.addEventListener('click', () => setLanguage('vi'));
-      langEnBtn.addEventListener('click', () => setLanguage('en'));
     });
   </script>
 </body>

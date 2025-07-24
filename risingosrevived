@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>crDroid - intelgigabyte9299</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
+     crossorigin="anonymous"></script>
+  <style>
+    /* Global Variables - Unified for consistency */
+    :root {
+      --primary: #3b82f6;
+      --secondary: #9333ea;
+      --bg-glass: rgba(255, 255, 255, 0.15);
+      --shadow: rgba(0, 0, 0, 0.2);
+      --text-dark: #0f172a;
+      --text-light: #f8fafc;
+      --radius-soft: 12px;
+      --radius-card: 16px;
+      --radius-section: 20px;
+      --background-start: #0f172a;
+      --background-end: #1e293b;
+      --section-bg: var(--bg-glass);
+      --border-color: rgba(255, 255, 255, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --footer-text: #cbd5e1;
+      --transition-speed: 0.6s;
+      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Màu mới cho hiệu ứng focus */
+    }
+
+    /* Dark Mode Variables */
+    body.dark-mode {
+      --background-start: #0f172a;
+      --background-end: #1e293b;
+      --section-bg: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --shadow: rgba(0, 0, 0, 0.4);
+      --text-light: #f8fafc;
+      --text-dark: #f8fafc;
+      --border-color: rgba(255, 255, 255, 0.15);
+      --footer-text: #94a3b8;
+      --focus-glow-color: rgba(59, 130, 246, 0.5);
+    }
+
+    /* Light Mode Variables */
+    body.light-mode {
+      --primary: #1d4ed8;
+      --secondary: #6d28d9;
+      --background-start: #e0f2fe;
+      --background-end: #d1e9fb;
+      --section-bg: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --shadow: rgba(0, 0, 0, 0.15);
+      --text-dark: #0f172a;
+      --text-light: #334155;
+      --border-color: rgba(0, 0, 0, 0.1);
+      --footer-text: #475569;
+      --focus-glow-color: rgba(29, 78, 216, 0.3); /* Màu khác cho light mode */
+    }
+
+    /* Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(120deg, var(--background-start), var(--background-end));
+      color: var(--text-light);
+      min-height: 100vh;
+      background-attachment: fixed;
+      background-size: cover;
+      /* Smooth transition for theme changes */
+      transition: background var(--transition-speed) ease, 
+                  color var(--transition-speed) ease;
+      display: flex; /* Ensure body is flex to push footer down */
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1rem;
+      flex-grow: 1; /* Allow container to grow */
+    }
+
+    /* Glassmorphism Sections */
+    .content-section {
+      background: var(--section-bg);
+      border-radius: var(--radius-section);
+      box-shadow: 0 8px 24px var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+      animation: fadeIn 1s ease-out forwards; /* Apply animation */
+      opacity: 0; /* Initial opacity for animation */
+      /* Smooth transition for theme changes */
+      transition: background var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease,
+                  color var(--transition-speed) ease; /* Add color transition */
+    }
+
+    /* Animation delays for sections */
+    .content-section:nth-of-type(1) { animation-delay: 0.2s; }
+    .content-section:nth-of-type(2) { animation-delay: 0.4s; }
+    .content-section:nth-of-type(3) { animation-delay: 0.6s; }
+    .content-section:nth-of-type(4) { animation-delay: 0.8s; } 
+    .content-section:nth-of-type(5) { animation-delay: 1s; } 
+
+
+    /* Specific Styles for crDroid content */
+    .banner {
+      width: 100%;
+      border-radius: var(--radius-section);
+      margin-bottom: 1.5rem;
+      display: block;
+      animation: fadeInDown 1s ease-out forwards; /* Animate banner */
+      opacity: 0; /* Initial opacity for animation */
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 2rem;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      animation: fadeInDown 1.2s ease-out forwards; /* Animate title */
+      opacity: 0; /* Initial opacity for animation */
+      transition: color var(--transition-speed) ease;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+      border-left: 5px solid var(--primary);
+      padding-left: 1rem;
+      transition: color var(--transition-speed) ease;
+    }
+
+    .info p {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: var(--text-light);
+      transition: color var(--transition-speed) ease; /* Smooth transition for text */
+    }
+    .info strong {
+      color: var(--primary);
+      transition: color var(--transition-speed) ease;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      transition: color var(--transition-speed) ease; /* Smooth transition for list text */
+    }
+
+    .images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .images img {
+      width: 100%;
+      border-radius: var(--radius-card);
+      box-shadow: 0 4px 15px var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .images img:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+
+    /* Back Button Styling (similar to button-style from index.html) */
+    .back {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      text-decoration: none;
+      border-radius: var(--radius-soft);
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease; /* Thêm outline vào transition */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+      outline: none; /* Bỏ outline mặc định */
+    }
+    .back:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    /* Hiệu ứng khi nút Back được focus hoặc active */
+    .back:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    .back:active { /* Hiệu ứng khi click chuột xuống */
+        transform: translateY(0px) scale(0.98);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: var(--footer-text);
+      transition: color var(--transition-speed) ease;
+      margin-top: 2rem;
+    }
+
+    /* Theme Toggle Button - Unified with index.html */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px var(--shadow);
+      /* Bổ sung transition cho transform và box-shadow */
+      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                  box-shadow 0.2s ease, 
+                  background 0.2s ease, /* Thêm transition cho background */
+                  color 0.2s ease, /* Thêm transition cho màu icon */
+                  outline 0.2s ease; /* Thêm transition cho outline */
+      z-index: 1000;
+      transform: scale(1);
+      outline: none; /* Bỏ outline mặc định cho nút */
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    /* Hiệu ứng khi nút chỉnh sáng/tối được focus hoặc active */
+    .theme-toggle:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
+    }
+    .theme-toggle:active { /* Hiệu ứng khi click chuột xuống */
+        transform: scale(0.95);
+        box-shadow: 0 3px 8px var(--shadow);
+    }
+
+    .theme-toggle.animate {
+      transform: scale(0.9);
+    }
+
+    /* Animations - Copied from index.html */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive Design - Adapted for crDroid.html */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem 0.8rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+        padding-left: 0.8rem;
+      }
+      .content-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .images {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .back {
+        padding: 0.65rem 1.2rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      .content-section {
+        padding: 1rem;
+      }
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
+      }
+    }
+
+    /* AdSense Specific Styling */
+    .ad-container {
+      margin: 2rem auto;
+      text-align: center;
+      max-width: 728px; /* Max width for common ad sizes */
+      background: var(--section-bg);
+      border-radius: var(--radius-soft);
+      padding: 1rem;
+      box-shadow: 0 4px 12px var(--shadow);
+      border: 1px solid var(--border-color);
+      opacity: 0; /* For animation */
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.8s; /* Adjust delay as needed, after content sections */
+      /* Smooth transition for theme changes */
+      transition: background var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease;
+    }
+
+    /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
+    .back,
+    .theme-toggle {
+        -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
+        -moz-focus-inner: none; /* Cho Firefox */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://i.postimg.cc/HWXRK0Xx/20250724-124819.jpg" alt="RisingOS Revived Banner" class="banner"/>
+    <h1>RisingOS Revived</h1>
+
+    <div class="content-section">
+      <h2>ℹ️ Information</h2>
+      <div class="info">
+        <p><strong>Status:</strong> Official (based on LineageOS)</p>
+        <p><strong>Supported device:</strong> Samsung Galaxy A71 4G</p>
+      </div>
+    </div>
+
+    <div class="ad-container">
+      <h2>📢 Advertisement</h2> 
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7471263191510520"
+           data-ad-slot="YOUR_AD_UNIT_SLOT_ID_1"  data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <div class="content-section">
+      <h2>✨ Key Features</h2>
+      <div class="features">
+        <ul>
+  <li>Advanced UI customization: header images, clock styles, power menu themes</li>
+  <li>Ortus Launcher with Material You, icon packs, and freeform multitasking</li>
+  <li>Quick Settings tweaks: blur, transparency, landscape layout, slider styles</li>
+  <li>Lockscreen widgets: battery info, media controls, mini clock modules</li>
+  <li>Performance features: Smart 5G, Smart Pixels, strict standby policies</li>
+  <li>Enhanced security: app lock, hide ADB, screen capture indicator toggle</li>
+  <li>Audio tools: music ticker, status bar lyrics, pulse visualizer</li>
+  <li>File system support: exFAT, NTFS, ZRAM (unofficial builds)</li>
+  <li>Hardware tools: flashlight strength, refresh rate OC, GPU undervolt</li>
+  <li>Misc utilities: Game space, pocket mode, edge lighting, now bar</li>
+  <li>OTA support for updates and changelogs via built-in updater</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <h2>🖼️ Screenshots</h2>
+      <div class="images">
+        <img src="https://i.postimg.cc/br5WHdkG/20250724-104356.jpg" alt="Screenshot 1"/>
+        <img src="https://i.postimg.cc/W4VK7BF7/20250724-104357.jpg" alt="Screenshot 2"/>
+        <img src="https://i.postimg.cc/bvR5Vm1f/20250724-104359.jpg" alt="Screenshot 3"/>
+        <img src="https://i.postimg.cc/V6LVxXFr/20250724-104401.jpg" alt="Screenshot 4"/>
+        <img src="https://i.postimg.cc/HxZhdjSS/20250724-104403.jpg" alt="Screenshot 5"/>
+      </div>
+    </div>
+
+    <a href="index.html" class="back">⬅️ Back to Home</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with 😍 & Android love.
+  </footer>
+
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <script>
+    // Theme Toggle Logic - Unified for consistency
+    document.addEventListener('DOMContentLoaded', () => {
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      const applyTheme = (theme) => {
+        if (theme === 'light-mode') {
+          body.classList.remove('dark-mode');
+          body.classList.add('light-mode');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          body.classList.remove('light-mode');
+          body.classList.add('dark-mode');
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        localStorage.setItem('theme', theme);
+      };
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else {
+        applyTheme('dark-mode'); // Default to dark mode if nothing saved
+      }
+
+      themeToggle.addEventListener('click', () => {
+        themeToggle.classList.add('animate');
+        setTimeout(() => {
+          themeToggle.classList.remove('animate');
+        }, 300); // Remove the class after the animation duration
+
+        if (body.classList.contains('dark-mode')) {
+          applyTheme('light-mode');
+        } else {
+          applyTheme('dark-mode');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

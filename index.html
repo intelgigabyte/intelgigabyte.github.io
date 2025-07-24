@@ -167,6 +167,7 @@
       gap: 1.5rem;
     }
 
+    /* Change .rom-card from <a> to <div> */
     .rom-card {
       background: var(--card-bg);
       border-radius: var(--radius-card);
@@ -175,7 +176,7 @@
       backdrop-filter: blur(16px);
       transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
       box-shadow: 0 6px 18px var(--shadow);
-      text-decoration: none;
+      /* text-decoration: none; Removed for <div> */
       border: 1px solid var(--border-color);
       display: flex; /* Use flexbox for layout */
       flex-direction: column; /* Stack items vertically */
@@ -191,6 +192,8 @@
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.3rem;
+      /* Ensure title is clickable if card is not */
+      /* Add if you want to make the title itself a link, otherwise let the button handle it */
     }
 
     .rom-status {
@@ -415,7 +418,7 @@
     <section>
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
-        <a class="rom-card" href="crdroid.html">
+        <div class="rom-card">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
             <div class="rom-status">✅ Official</div>
@@ -423,7 +426,7 @@
           <div class="download-button-wrapper">
               <a href="https://crdroid.net/a71/11" class="button-style">Download Now</a>
           </div>
-        </a>
+        </div>
       </div>
     </section>
 

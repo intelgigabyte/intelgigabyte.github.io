@@ -6,84 +6,62 @@
   <title>intelgigabyte9299 Bio - Home</title>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
      crossorigin="anonymous"></script>
   <style>
     :root {
-      /* Màu sắc và các giá trị cơ bản */
-      --primary: #3b82f6; /* Xanh dương */
-      --secondary: #9333ea; /* Tím */
-      --accent: #5eead4; /* Xanh ngọc - màu nhấn mới */
-
-      /* Nền và bóng */
-      --bg-glass: rgba(255, 255, 255, 0.1); /* Nền mờ kính nhẹ */
-      --shadow: rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
-
-      /* Màu chữ */
-      --text-dark: #0f172a; /* Màu chữ tối cho light mode */
-      --text-light: #f8fafc; /* Màu chữ sáng cho dark mode */
-
-      /* Bo tròn góc */
+      --primary: #3b82f6;
+      --secondary: #9333ea;
+      --bg-glass: rgba(255, 255, 255, 0.15);
+      --shadow: rgba(0, 0, 0, 0.2);
+      --text-dark: #0f172a;
+      --text-light: #f8fafc;
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
-
-      /* Màu nền cho body */
-      --background-start: #0f172a; /* Bắt đầu gradient nền */
-      --background-end: #1e293b; /* Kết thúc gradient nền */
-
-      /* Màu nền cho các section và card */
+      --background-start: #0f172a;
+      --background-end: #1e293b;
       --section-bg: var(--bg-glass);
-      --card-bg: rgba(255, 255, 255, 0.05); /* Card hơi trong suốt hơn section */
-
-      /* Màu viền */
-      --border-color: rgba(255, 255, 255, 0.1);
-
-      /* Màu chữ footer */
+      --border-color: rgba(255, 255, 255, 0.2);
+      --card-bg: rgba(255, 255, 255, 0.08);
       --footer-text: #cbd5e1;
-
-      /* Tốc độ chuyển động */
-      --transition-speed: 0.5s;
+      --transition-speed: 0.6s;
     }
 
-    /* Chế độ tối (Dark Mode) */
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
-      --section-bg: rgba(255, 255, 255, 0.05);
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --shadow: rgba(0, 0, 0, 0.3);
+      --section-bg: rgba(255, 255, 255, 0.08);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --shadow: rgba(0, 0, 0, 0.4);
       --text-light: #f8fafc;
       --text-dark: #f8fafc;
-      --border-color: rgba(255, 255, 255, 0.1);
+      --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
     }
 
-    /* Chế độ sáng (Light Mode) */
     body.light-mode {
       --primary: #1d4ed8;
       --secondary: #6d28d9;
       --background-start: #e0f2fe;
       --background-end: #d1e9fb;
-      --section-bg: rgba(255, 255, 255, 0.5);
-      --card-bg: rgba(255, 255, 255, 0.7);
-      --shadow: rgba(0, 0, 0, 0.08);
+      --section-bg: rgba(255, 255, 255, 0.7);
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --shadow: rgba(0, 0, 0, 0.15);
       --text-dark: #0f172a;
       --text-light: #334155;
-      --border-color: rgba(0, 0, 0, 0.05);
+      --border-color: rgba(0, 0, 0, 0.1);
       --footer-text: #475569;
     }
 
-    /* Reset CSS cơ bản */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    /* Body chung */
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(120deg, var(--background-start), var(--background-end));
@@ -94,54 +72,58 @@
       transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
     }
 
-    /* Header mới */
     header {
-      padding: 3rem 1.5rem; /* Padding vừa phải */
+      padding: 3.5rem 1rem;
       text-align: center;
       color: white;
-      animation: fadeInDown 0.8s ease-out; /* Animation mượt mà hơn */
-      /* Gradient ngang tinh tế cho header */
-      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-      border-bottom-left-radius: var(--radius-soft);
-      border-bottom-right-radius: var(--radius-soft);
-      margin-bottom: 2rem; /* Tạo khoảng cách với nội dung phía dưới */
-      transition: background 0.3s ease; /* Chuyển động background khi hover */
-      position: relative; /* Đảm bảo z-index hoạt động */
-      z-index: 1; /* Đặt z-index để header luôn ở trên */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Bóng đổ nhẹ nhàng */
+      box-shadow: 0 10px 25px var(--shadow);
+      animation: fadeInDown 1s ease-out;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-bottom-left-radius: var(--radius-section);
+      border-bottom-right-radius: var(--radius-section);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
-    header:hover {
-      background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%); /* Đảo ngược gradient khi hover */
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+                  radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+      z-index: -1;
+      opacity: 0.8;
+      pointer-events: none;
     }
-
-    /* Lớp phủ hoặc họa tiết trên header, giờ được loại bỏ để tối giản */
-    /* header::before và header::after không được dùng trong style mới này */
 
     header h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.2rem; /* Kích thước font vừa phải cho sự lịch lãm */
+      font-size: 3.8rem;
       font-weight: 700;
-      letter-spacing: -0.05em; /* Khoảng cách chữ vừa đủ */
-      margin-bottom: 0.4rem;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ cho chữ */
-      line-height: 1.2; /* Chiều cao dòng hợp lý */
-      word-wrap: break-word; /* Đảm bảo chữ tự xuống dòng nếu quá dài */
-      overflow-wrap: break-word;
+      letter-spacing: -0.06em;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      line-height: 1.1;
+      transition: all 0.5s ease;
+    }
+
+    header h1:hover {
+        transform: scale(1.02);
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-top: 0.6rem;
-      opacity: 0.9;
+      font-size: 1.4rem;
+      margin-top: 0.8rem;
+      opacity: 0.95;
       line-height: 1.5;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      max-width: 800px; /* Giới hạn chiều rộng để tránh tràn */
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      word-wrap: break-word; /* Đảm bảo chữ tự xuống dòng nếu quá dài */
-      overflow-wrap: break-word;
     }
 
     .container {
@@ -153,170 +135,155 @@
     section {
       background: var(--section-bg);
       border-radius: var(--radius-section);
-      box-shadow: 0 6px 18px var(--shadow);
-      backdrop-filter: blur(12px); /* Giảm blur nhẹ */
-      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       padding: 2rem;
       margin-bottom: 2rem;
       border: 1px solid var(--border-color);
-      animation: fadeIn 0.8s ease-out forwards;
+      animation: fadeIn 1s ease-out forwards;
       opacity: 0;
       transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     }
 
-    /* Animation delay cho các section */
-    section:nth-of-type(1) { animation-delay: 0.1s; }
-    section:nth-of-type(2) { animation-delay: 0.2s; }
-    section:nth-of-type(3) { animation-delay: 0.3s; }
-    section:nth-of-type(4) { animation-delay: 0.4s; }
-    section:nth-of-type(5) { animation-delay: 0.5s; }
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.4s; }
+    section:nth-of-type(3) { animation-delay: 0.6s; }
+    section:nth-of-type(4) { animation-delay: 0.8s; }
+    section:nth-of-type(5) { animation-delay: 1s; }
 
     h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
       color: var(--text-dark);
-      border-left: 4px solid var(--primary); /* Đường viền mỏng hơn */
-      padding-left: 0.8rem;
+      border-left: 5px solid var(--primary);
+      padding-left: 1rem;
       transition: color var(--transition-speed) ease;
     }
 
     .rom-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Min-width nhỏ hơn để linh hoạt */
-      gap: 1.2rem; /* Khoảng cách giữa các card nhỏ hơn */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
     }
 
     .rom-card {
       background: var(--card-bg);
       border-radius: var(--radius-card);
-      padding: 1.2rem; /* Padding nhỏ hơn */
+      padding: 1.5rem;
       color: var(--text-light);
-      backdrop-filter: blur(10px); /* Blur nhẹ hơn */
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-      box-shadow: 0 4px 12px var(--shadow); /* Bóng đổ nhẹ hơn */
+      backdrop-filter: blur(16px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+      box-shadow: 0 6px 18px var(--shadow);
       text-decoration: none;
       border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      display: flex; /* Use flexbox for layout */
+      flex-direction: column; /* Stack items vertically */
+      justify-content: space-between; /* Push download button to bottom */
     }
 
     .rom-card:hover {
-      transform: translateY(-4px); /* Nhấc lên ít hơn */
-      box-shadow: 0 8px 20px var(--shadow);
-    }
-
-    .rom-info {
-        margin-bottom: 0.8rem;
+      transform: translateY(-6px);
+      box-shadow: 0 10px 24px var(--shadow);
     }
 
     .rom-title {
-      font-size: 1.1rem; /* Font size nhỏ hơn */
+      font-size: 1.3rem;
       font-weight: 600;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
     }
 
     .rom-status {
-      font-size: 0.85rem; /* Font size nhỏ hơn */
-      opacity: 0.8;
-    }
-
-    .download-button {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background: var(--accent); /* Sử dụng màu accent cho nút tải về */
-        color: var(--text-dark); /* Chữ đen để nổi bật trên nền accent */
-        border-radius: var(--radius-soft);
-        text-decoration: none;
-        font-weight: 500;
-        margin-top: auto;
-        text-align: center;
-        transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease;
-    }
-
-    .download-button:hover {
-        background: #4fd1c5; /* Màu sáng hơn khi hover */
-        transform: translateY(-2px);
-        color: var(--text-light); /* Chữ trắng khi hover */
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin-bottom: 1rem; /* Space before button */
     }
 
     ul {
-      padding-left: 1rem;
-      line-height: 1.6;
+      padding-left: 1.2rem;
+      line-height: 1.7;
     }
 
-    .connect a {
+    /* Style for all generic buttons/links */
+    .button-style {
       display: inline-block;
-      margin: 0.4rem 0.8rem 0.4rem 0;
-      padding: 0.5rem 1.1rem;
+      margin: 0.5rem 1rem 0.5rem 0; /* Adjusted margin for consistency */
+      padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
       border-radius: var(--radius-soft);
       text-decoration: none;
       font-weight: 500;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Added shadow */
+      text-align: center; /* Center text inside button */
     }
 
-    .connect a:hover {
+    .button-style:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .download-button-wrapper {
+        text-align: center;
+        margin-top: auto; /* Push button to bottom of rom-card */
     }
 
     footer {
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.8rem;
+      padding: 2rem;
+      font-size: 0.9rem;
       color: var(--footer-text);
       transition: color var(--transition-speed) ease;
     }
 
-    /* Nút chuyển đổi chế độ sáng/tối */
+    /* Theme Toggle Button */
     .theme-toggle {
       position: fixed;
-      bottom: 15px;
-      right: 15px;
+      bottom: 20px;
+      right: 20px;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
       border: none;
       border-radius: 50%;
-      width: 40px; /* Kích thước nhỏ hơn */
-      height: 40px;
-      font-size: 1.2rem;
+      width: 50px;
+      height: 50px;
+      font-size: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 3px 10px var(--shadow);
+      box-shadow: 0 4px 12px var(--shadow);
       transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.2s ease;
       z-index: 1000;
       transform: scale(1);
     }
 
     .theme-toggle:hover {
-      transform: scale(1.05); /* Hiệu ứng hover nhẹ hơn */
-      box-shadow: 0 5px 14px var(--shadow);
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px var(--shadow);
     }
 
     .theme-toggle.animate {
       transform: scale(0.9);
     }
 
-    /* Container quảng cáo AdSense */
+    /* AdSense Container Styling */
     .ad-container {
-      margin: 1.5rem auto; /* Margin nhỏ hơn */
+      margin: 2rem auto;
       text-align: center;
       max-width: 728px;
       background: var(--section-bg);
       border-radius: var(--radius-soft);
-      padding: 0.8rem;
-      box-shadow: 0 3px 10px var(--shadow);
+      padding: 1rem;
+      box-shadow: 0 4px 12px var(--shadow);
       border: 1px solid var(--border-color);
       opacity: 0;
-      animation: fadeIn 0.8s ease-out forwards;
-      animation-delay: 0.6s;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 1.2s;
     }
 
-    /* Keyframe Animations */
+    /* Animations */
     @keyframes fadeInDown {
       from {
         opacity: 0;
@@ -331,7 +298,7 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(20px);
       }
       to {
         opacity: 1;
@@ -342,73 +309,77 @@
     /* Responsive Design Adjustments */
     @media (max-width: 768px) {
       header {
-        padding: 2.5rem 1rem;
-        margin-bottom: 1.5rem;
+        padding: 3rem 1rem;
       }
       header h1 {
-        font-size: 2.6rem;
+        font-size: 3rem;
+        letter-spacing: -0.05em;
       }
       header p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
       .container {
         padding: 1.5rem 0.8rem;
       }
+
       section {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
       }
+
       h2 {
-        font-size: 1.3rem;
-        padding-left: 0.6rem;
+        font-size: 1.4rem;
+        padding-left: 0.8rem;
       }
+
       .rom-grid {
         grid-template-columns: 1fr;
       }
+
       .rom-card {
-        padding: 1rem;
+        padding: 1.2rem;
       }
+
       .rom-title {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
-      .connect a {
+
+      .button-style { /* Apply to all buttons */
         display: block;
-        margin: 0.4rem 0;
-        text-align: center;
+        margin: 0.5rem auto;
       }
+
       .ad-container {
-        padding: 0.6rem;
-      }
-      .download-button {
-          padding: 0.4rem 0.8rem;
-          font-size: 0.8rem;
+        padding: 0.8rem;
       }
     }
 
     @media (max-width: 480px) {
       header {
-        padding: 2rem 1rem;
-        margin-bottom: 1rem;
+        padding: 2.5rem 1rem;
       }
       header h1 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
+        letter-spacing: -0.04em;
       }
       header p {
-        font-size: 0.95rem;
-        margin-top: 0.4rem;
+        font-size: 1rem;
+        margin-top: 0.6rem;
       }
       h2 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
+
       .rom-card {
-        padding: 0.8rem;
+        padding: 1rem;
       }
+
       .theme-toggle {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-        bottom: 12px;
-        right: 12px;
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
       }
     }
   </style>
@@ -416,23 +387,14 @@
 <body lang="en">
 
   <header>
-    <h1>intelgigabyte9299's</h1>
-    <p>Custom ROM Builds for Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+    <h1>intelgigabyte9299's Custom ROM Builds</h1>
+    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
   </header>
 
   <div class="container">
     <section>
-      <h2>🧠 About me and my Build Rom journey</h2>
-      <p>Hello! I’m  <strong>Nguyen Manh Dung</strong> — also known online as <strong>intelgigabyte9299</strong> — an Android developer driven by a deep passion for building, customizing, and maintaining ROMs, especially for the Samsung Galaxy A71 4G.</p>
-      <p>My journey into Android development didn’t begin with formal training or a perfect setup. It started in a small room, with an old laptop, spotty Wi-Fi, and countless hours spent scouring XDA forums, GitHub repos, and Telegram chats. I remember the very first time I tried to flash a ROM — my hands were literally shaking, afraid I’d brick my phone. But that fear quickly turned into curiosity… and then into obsession.</p>
-      <p>What began as a simple desire to tweak my device turned into late nights debugging broken builds, learning the internals of the Linux kernel, diving deep into the Android framework, and understanding the art of balancing performance, stability, and user experience. There were many moments of frustration — bootloops, failed builds, drivers refusing to work — but each challenge became a lesson. Over time, I grew from just a flashaholic into a full-stack Android ROM developer.</p>
-      <p>To me, a ROM is not just software. It’s a canvas. A blend of engineering and art. It’s where minimalism meets performance, and where open-source becomes a form of personal expression. I don’t chase features for the sake of novelty — instead, I believe in building ROMs that are fast, clean, secure, and user-focused, aiming to elevate the real-world experience rather than just ticking boxes.</p>
-      <p>Every ROM I build goes through rigorous testing on real hardware. I obsess over small things — optimizing animations, cleaning up unused services, improving battery life, and ensuring a smooth UI from first boot to daily use. Behind the scenes, I’ve integrated modern development workflows: GitHub Actions for CI/CD automation, GPG signing for authenticity, OTA delivery for user convenience, and active Git-based version control for long-term maintenance.</p>
-      <p>My work on the Galaxy A71 4G is more than just a hobby — it’s a commitment to pushing this device beyond its limits, and offering a trustworthy alternative to bloated, restrictive stock firmware. I believe in empowering users through clean, transparent, and well-optimized software.</p>
-      <p>If you’re using one of my ROMs, thank you. Your feedback and support fuel this entire journey. And if you’re a developer, designer, tester, or just a passionate Android enthusiast — my inbox is always open. I’d love to collaborate, learn, or simply exchange ideas.</p>
-      <p>This isn’t just about phones — it’s about community, creativity, and the belief that with enough dedication, even one person in a small room can build something amazing</p>
-      <p><strong>Credit ♥</strong></p>
-      <p>Thanks <strong>anhdat1024</strong> <strong>(Nguyen Phong)</strong> for the idea and code I relied on ♥</p>
+      <h2>🧠 About Me</h2>
+      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
     </section>
 
     <div class="ad-container">
@@ -450,11 +412,13 @@
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
         <a class="rom-card" href="crdroid.html">
-          <div class="rom-info">
+          <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
             <div class="rom-status">✅ Official</div>
           </div>
-          <a href="https://crdroid.net/a71/11" class="download-button" target="_blank" rel="noopener noreferrer">Download Now</a>
+          <div class="download-button-wrapper">
+              <a href="https://crdroid.net/a71/11" class="button-style">Download Now</a>
+          </div>
         </a>
       </div>
     </section>
@@ -490,17 +454,18 @@
 
     <section class="connect">
       <h2>🌐 Connect with Me</h2>
-      <a href="https://github.com/intelgigabyte"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://paypal.me/intelgigabyte9299"><i class="fab fa-paypal"></i> PayPal</a>
-      <a href="https://patreon.com/intelgigabyte9299"><i class="fab fa-patreon"></i> Patreon</a>
-      <a href="https://t.me/intelgigabyteshit"><i class="fab fa-telegram"></i> Telegram Channel</a>
-      <a href="https://t.me/doraemonintelgigabyte"><i class="fab fa-telegram"></i> Telegram Group</a>
-      <a href="https://facebook.com/intelgigabyte9299"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="https://crdroid.net/a71/11" class="button-style"><i class="fab fa-android"></i> crDroid</a>
+      <a href="https://github.com/intelgigabyte" class="button-style"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://paypal.me/intelgigabyte9299" class="button-style"><i class="fab fa-paypal"></i> PayPal</a>
+      <a href="https://patreon.com/intelgigabyte9299" class="button-style"><i class="fab fa-patreon"></i> Patreon</a>
+      <a href="https://t.me/intelgigabyteshit" class="button-style"><i class="fab fa-telegram"></i> Telegram Channel</a>
+      <a href="https://t.me/doraemonintelgigabyte" class="button-style"><i class="fab fa-telegram"></i> Telegram Group</a>
+      <a href="https://facebook.com/intelgigabyte9299" class="button-style"><i class="fab fa-facebook"></i> Facebook</a>
     </section>
   </div>
 
   <footer>
-    <span>&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love🧑‍💻🇻🇳.</span>
+    <span>&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
@@ -530,7 +495,7 @@
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        applyTheme('dark-mode'); // Mặc định là dark mode nếu chưa có cài đặt
+        applyTheme('dark-mode');
       }
 
       themeToggle.addEventListener('click', () => {

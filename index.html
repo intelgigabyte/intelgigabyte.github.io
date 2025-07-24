@@ -17,15 +17,15 @@
       --secondary: #9333ea; /* Purple */
       --bg-glass: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
       --shadow: rgba(0, 0, 0, 0.2);
-      
+
       /* Base text colors, used by theme-specific variables */
       --color-text-light-base: #f8fafc; /* For dark backgrounds (text is light) */
       --color-text-dark-base: #0f172a; /* For light backgrounds (text is dark) */
-      
+
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
-      
+
       /* Default to dark mode colors */
       --background-start: #0f172a;
       --background-end: #1e293b;
@@ -33,10 +33,10 @@
       --card-bg: rgba(255, 255, 255, 0.05);
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text-color: #94a3b8; /* Specific for footer */
-      
+
       --text-main: var(--color-text-light-base); /* General text color for sections etc. */
       --text-heading: var(--color-text-light-base); /* Heading text color */
-      
+
       --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
       --transition-speed: 0.6s;
     }
@@ -51,7 +51,7 @@
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
       --border-color: rgba(0, 0, 0, 0.1);
-      
+
       --text-main: #334155; /* Darker text for light backgrounds */
       --text-heading: var(--color-text-dark-base); /* Dark headings for light backgrounds */
       --footer-text-color: #475569;
@@ -494,7 +494,7 @@
     <section>
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
-        
+
         <div class="rom-card" data-url="crdroid.html">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
@@ -570,9 +570,18 @@
   </button>
 
   <script>
+    console.log('DOM Content Loaded event fired.'); // Debugging: Confirm script runs
     document.addEventListener('DOMContentLoaded', () => {
+      console.log('Inside DOMContentLoaded listener.'); // Debugging: Confirm listener executes
+
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
+
+      if (themeToggle) {
+          console.log('Theme toggle button found:', themeToggle); // Debugging: Log the found element
+      } else {
+          console.error('ERROR: Theme toggle button NOT found! Check ID in HTML.'); // Critical error if not found
+      }
 
       // --- Theme Toggle Logic ---
       const applyTheme = (theme) => {
@@ -580,45 +589,24 @@
           body.classList.remove('dark-mode');
           body.classList.add('light-mode');
           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          console.log('Applied light mode. Body classes:', body.className); // Debugging: Confirm class change
         } else {
           body.classList.remove('light-mode');
           body.classList.add('dark-mode');
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          console.log('Applied dark mode. Body classes:', body.className); // Debugging: Confirm class change
         }
         localStorage.setItem('theme', theme);
+        console.log('Saved theme to localStorage:', theme); // Debugging: Confirm localStorage update
       };
 
       // Apply saved theme or default to system preference/dark mode on load
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
+        console.log('Found saved theme in localStorage:', savedTheme); // Debugging: Confirm saved theme
         applyTheme(savedTheme);
       } else {
         // Check user's system preference for initial theme
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            applyTheme('light-mode');
-        } else {
-            applyTheme('dark-mode'); // Default to dark mode
-        }
-      }
-
-      themeToggle.addEventListener('click', () => {
-        themeToggle.classList.add('animate');
-        setTimeout(() => {
-          themeToggle.classList.remove('animate');
-        }, 300);
-        if (body.classList.contains('dark-mode')) {
-          applyTheme('light-mode');
-        } else {
-          applyTheme('dark-mode');
-        }
-      });
-
-      // --- ROM card click handler ---
-      const romCards = document.querySelectorAll('.rom-card');
-
-      romCards.forEach(romCard => {
-          romCard.addEventListener('click', (event) => {
-              // Check if the click originated from a download button (or its child) inside the current romCard
-              if (event.target.closest('.download-button')) {
-                  // If clicked on download button, let its href handle the navigation
-     
+            console.log('System prefers light mode. Applying light mode.'); // Debugging: System preference
+           

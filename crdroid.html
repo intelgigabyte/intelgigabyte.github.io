@@ -8,6 +8,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+      if (savedTheme === 'light-mode' || (!savedTheme && prefersLight)) {
+        document.documentElement.classList.add('light-mode');
+        document.body.classList.add('light-mode');
+      } else {
+        document.documentElement.classList.add('dark-mode');
+        document.body.classList.add('dark-mode');
+      }
+    })();
+  </script>
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
      crossorigin="anonymous"></script>
   <style>
@@ -17,13 +32,13 @@
       --secondary: #9333ea;
       --bg-glass: rgba(255, 255, 255, 0.15);
       --shadow: rgba(0, 0, 0, 0.2);
-      --text-dark: #0f172a;
-      --text-light: #f8fafc;
+      --text-dark: #0f172a; /* Màu chữ cho nền sáng */
+      --text-light: #f8fafc; /* Màu chữ cho nền tối */
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
-      --background-start: #0f172a;
-      --background-end: #1e293b;
+      --background-start: #0f172a; /* Mặc định dark mode */
+      --background-end: #1e293b; /* Mặc định dark mode */
       --section-bg: var(--bg-glass);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-bg: rgba(255, 255, 255, 0.08);
@@ -32,15 +47,15 @@
       --focus-glow-color: rgba(59, 130, 246, 0.5); /* Màu mới cho hiệu ứng focus */
     }
 
-    /* Dark Mode Variables */
+    /* Dark Mode Variables - (Giữ nguyên hoặc tùy chỉnh nếu muốn khác Root) */
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
       --section-bg: rgba(255, 255, 255, 0.08);
       --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
-      --text-light: #f8fafc;
-      --text-dark: #f8fafc;
+      --text-light: #f8fafc; /* Trong dark mode, text-light vẫn là màu chữ chính */
+      --text-dark: #f8fafc; /* Nếu bạn dùng text-dark cho tiêu đề, nó vẫn phải sáng */
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
       --focus-glow-color: rgba(59, 130, 246, 0.5);
@@ -55,8 +70,8 @@
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
-      --text-dark: #0f172a;
-      --text-light: #334155;
+      --text-dark: #0f172a; /* Trong light mode, text-dark là màu chữ chính */
+      --text-light: #334155; /* Và text-light sẽ tối hơn một chút */
       --border-color: rgba(0, 0, 0, 0.1);
       --footer-text: #475569;
       --focus-glow-color: rgba(29, 78, 216, 0.3); /* Màu khác cho light mode */
@@ -72,7 +87,7 @@
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-light);
+      color: var(--text-light); /* Mặc định cho toàn bộ body, sẽ thay đổi bởi theme */
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
@@ -132,7 +147,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 2.8rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--primary); /* H1 luôn màu primary */
       text-align: center;
       margin-top: 0;
       margin-bottom: 2rem;
@@ -145,7 +160,7 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark);
+      color: var(--text-dark); /* H2 dùng text-dark */
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
       transition: color var(--transition-speed) ease;
@@ -154,7 +169,7 @@
     .info p {
       margin-bottom: 0.5rem;
       font-size: 1rem;
-      color: var(--text-light);
+      color: var(--text-light); /* Paragraphs dùng text-light */
       transition: color var(--transition-speed) ease; /* Smooth transition for text */
     }
     .info strong {
@@ -165,7 +180,7 @@
     ul {
       padding-left: 1.2rem;
       line-height: 1.7;
-      color: var(--text-light);
+      color: var(--text-light); /* List items dùng text-light */
       transition: color var(--transition-speed) ease; /* Smooth transition for list text */
     }
 
@@ -417,43 +432,65 @@
   </button>
 
   <script>
-    // Theme Toggle Logic - Unified for consistency
+    console.log('DOM Content Loaded event fired for crDroid.html.');
     document.addEventListener('DOMContentLoaded', () => {
-      const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body;
+      console.log('Inside DOMContentLoaded listener for crDroid.html.');
 
+      const themeToggle = document.getElementById('theme-toggle');
+      const body = document.body; // Vẫn cần body để thao tác lớp
+
+      if (themeToggle) {
+          console.log('Theme toggle button found:', themeToggle);
+      } else {
+          console.error('ERROR: Theme toggle button NOT found! Check ID in HTML.');
+      }
+
+      // --- Theme Toggle Logic ---
       const applyTheme = (theme) => {
         if (theme === 'light-mode') {
+          document.documentElement.classList.remove('dark-mode'); // Cập nhật cả <html>
+          document.documentElement.classList.add('light-mode'); // Cập nhật cả <html>
           body.classList.remove('dark-mode');
           body.classList.add('light-mode');
           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          console.log('Applied light mode. Body classes:', body.className);
         } else {
+          document.documentElement.classList.remove('light-mode'); // Cập nhật cả <html>
+          document.documentElement.classList.add('dark-mode'); // Cập nhật cả <html>
           body.classList.remove('light-mode');
           body.classList.add('dark-mode');
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          console.log('Applied dark mode. Body classes:', body.className);
         }
         localStorage.setItem('theme', theme);
+        console.log('Saved theme to localStorage:', theme);
       };
 
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        applyTheme(savedTheme);
+      // Dựa vào class hiện tại của body/html để đặt icon chính xác khi DOMContentLoaded
+      if (document.documentElement.classList.contains('light-mode')) {
+           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       } else {
-        applyTheme('dark-mode'); // Default to dark mode if nothing saved
+           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       }
+      console.log('Initial button icon set based on current theme for crDroid.html.');
 
-      themeToggle.addEventListener('click', () => {
-        themeToggle.classList.add('animate');
-        setTimeout(() => {
-          themeToggle.classList.remove('animate');
-        }, 300); // Remove the class after the animation duration
 
-        if (body.classList.contains('dark-mode')) {
-          applyTheme('light-mode');
-        } else {
-          applyTheme('dark-mode');
-        }
-      });
+      if (themeToggle) { // Only add listener if button is found
+          themeToggle.addEventListener('click', () => {
+            console.log('Theme toggle button CLICKED on crDroid.html!');
+            themeToggle.classList.add('animate');
+            setTimeout(() => {
+              themeToggle.classList.remove('animate');
+            }, 300);
+
+            // Lấy theme hiện tại từ documentElement (hoặc body) để quyết định chuyển đổi
+            if (document.documentElement.classList.contains('dark-mode')) {
+              applyTheme('light-mode');
+            } else {
+              applyTheme('dark-mode');
+            }
+          });
+      }
     });
   </script>
 </body>

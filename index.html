@@ -280,10 +280,9 @@
     }
 
     /* Theme Toggle Button */
-    .theme-toggle {
+    .toggle-button { /* Dùng chung class cho cả theme và language toggle */
       position: fixed;
       bottom: 20px;
-      right: 20px;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
       border: none;
@@ -307,22 +306,32 @@
       outline: none; /* Bỏ outline mặc định cho nút */
     }
 
-    .theme-toggle:hover {
+    .toggle-button:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 16px var(--shadow);
     }
 
-    /* Hiệu ứng khi nút chỉnh sáng/tối được focus hoặc active */
-    .theme-toggle:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+    /* Hiệu ứng khi nút được focus hoặc active */
+    .toggle-button:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
         box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
     }
-    .theme-toggle:active { /* Hiệu ứng khi click chuột xuống */
+    .toggle-button:active { /* Hiệu ứng khi click chuột xuống */
         transform: scale(0.95);
         box-shadow: 0 3px 8px var(--shadow);
     }
 
-    .theme-toggle.animate {
+    .toggle-button.animate {
       transform: scale(0.9);
+    }
+
+    #theme-toggle {
+        right: 20px;
+    }
+
+    #language-toggle {
+        right: 80px; /* Đặt cách nút theme một khoảng */
+        font-size: 1rem; /* Kích thước chữ nhỏ hơn để hiển thị EN/VI */
+        font-weight: bold;
     }
 
     /* AdSense Container Styling */
@@ -413,6 +422,20 @@
       .ad-container {
         padding: 0.8rem;
       }
+      #theme-toggle {
+          bottom: 15px;
+          right: 15px;
+          width: 45px;
+          height: 45px;
+          font-size: 1.3rem;
+      }
+      #language-toggle {
+          bottom: 15px;
+          right: 70px; /* Điều chỉnh vị trí trên mobile */
+          width: 45px;
+          height: 45px;
+          font-size: 0.9rem; /* Kích thước chữ nhỏ hơn */
+      }
     }
 
     @media (max-width: 480px) {
@@ -434,20 +457,12 @@
       .rom-card {
         padding: 1rem;
       }
-
-      .theme-toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
-        bottom: 15px;
-        right: 15px;
-      }
     }
 
     /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
     .rom-card,
     .button-style,
-    .theme-toggle { /* Thêm .theme-toggle vào đây */
+    .toggle-button { /* Đã đổi từ .theme-toggle sang .toggle-button */
         -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
         -moz-focus-inner: none; /* Cho Firefox */
     }
@@ -456,14 +471,14 @@
 <body lang="en">
 
   <header>
-    <h1>intelgigabyte9299's Custom ROM Builds</h1>
-    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+    <h1 data-lang-key="headerTitle">intelgigabyte9299's Custom ROM Builds</h1>
+    <p data-lang-key="headerSubtitle">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
   </header>
 
   <div class="container">
     <section>
-      <h2>🧠 About Me</h2>
-      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
+      <h2 data-lang-key="aboutMeTitle">🧠 About Me</h2>
+      <p data-lang-key="aboutMeContent">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
     </section>
 
     <div class="ad-container">
@@ -478,23 +493,23 @@
     </div>
 
     <section>
-      <h2>📱 My ROMs</h2>
+      <h2 data-lang-key="myRomsTitle">📱 My ROMs</h2>
       <div class="rom-grid">
         <div class="rom-card" data-url="crdroid.html">
           <div>
-            <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
-            <div class="rom-status">✅ Official</div>
+            <div class="rom-title" data-lang-key="crdroidTitle">crDroid For Samsung Galaxy A71 4G</div>
+            <div class="rom-status" data-lang-key="crdroidStatus">✅ Official</div>
           </div>
           <div class="download-button-wrapper">
-              <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now</a>
+              <a href="https://crdroid.net/a71/11" class="button-style download-button" data-lang-key="downloadNowButton">Download Now</a>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2>📦 Supported Devices</h2>
-      <ul>
+      <h2 data-lang-key="supportedDevicesTitle">📦 Supported Devices</h2>
+      <ul data-lang-key="supportedDevicesList">
         <li>Samsung Galaxy A71 4G (a71)</li>
         <li>Join the Telegram group below for download links and updates</li>
       </ul>
@@ -512,8 +527,8 @@
     </div>
 
     <section>
-      <h2>🛠️ Tools & Environment</h2>
-      <ul>
+      <h2 data-lang-key="toolsEnvTitle">🛠️ Tools & Environment</h2>
+      <ul data-lang-key="toolsEnvList">
         <li>Ubuntu 25.04 LTS (WSL2)</li>
         <li>Build tools: repo, git, clang, SDK</li>
         <li>Source trees: AOSP, LineageOS</li>
@@ -522,30 +537,35 @@
     </section>
 
     <section class="connect">
-      <h2>🌐 Connect with Me</h2>
+      <h2 data-lang-key="connectTitle">🌐 Connect with Me</h2>
       <a href="https://github.com/intelgigabyte" class="button-style"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://paypal.me/intelgigabyte9299" class="button-style"><i class="fab fa-paypal"></i> PayPal</a>
       <a href="https://patreon.com/intelgigabyte9299" class="button-style"><i class="fab fa-patreon"></i> Patreon</a>
-      <a href="https://t.me/intelgigabyteshit" class="button-style"><i class="fab fa-telegram"></i> Telegram Channel</a>
-      <a href="https://t.me/doraemonintelgigabyte" class="button-style"><i class="fab fa-telegram"></i> Telegram Group</a>
+      <a href="https://t.me/intelgigabyteshit" class="button-style"><i class="fab fa-telegram"></i> <span data-lang-key="telegramChannel">Telegram Channel</span></a>
+      <a href="https://t.me/doraemonintelgigabyte" class="button-style"><i class="fab fa-telegram"></i> <span data-lang-key="telegramGroup">Telegram Group</span></a>
       <a href="https://facebook.com/intelgigabyte9299" class="button-style"><i class="fab fa-facebook"></i> Facebook</a>
     </section>
   </div>
 
   <footer>
-    <span>&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
+    <span data-lang-key="footerText">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
   </footer>
 
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
+  <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
     <i class="fas fa-moon"></i>
   </button>
 
+  <button id="language-toggle" class="toggle-button" aria-label="Toggle language between English and Vietnamese">
+    EN
+  </button>
+
   <script>
-    // Theme Toggle Script
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
+      const languageToggle = document.getElementById('language-toggle');
       const body = document.body;
 
+      // --- Theme Toggle Logic ---
       const applyTheme = (theme) => {
         if (theme === 'light-mode') {
           body.classList.remove('dark-mode');
@@ -563,7 +583,7 @@
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        applyTheme('dark-mode');
+        applyTheme('dark-mode'); // Default to dark mode if nothing saved
       }
 
       themeToggle.addEventListener('click', () => {
@@ -578,29 +598,16 @@
         }
       });
 
-      // Handle ROM card click
-      const romCard = document.querySelector('.rom-card');
-      if (romCard) { // Ensure the element exists before adding listener
-          romCard.addEventListener('click', (event) => {
-              // Kiểm tra xem phần tử được click có phải là nút download hay không
-              // Sử dụng class 'download-button' mới để xác định
-              if (event.target.closest('.download-button')) {
-                  console.log('Clicked on download button, preventing card navigation.');
-                  // Nếu là nút download, không làm gì cả để liên kết của nút hoạt động
-                  return;
-              }
-              
-              // Lấy URL từ thuộc tính data-url của thẻ rom-card
-              const url = romCard.dataset.url;
-              if (url) {
-                  console.log('Navigating to:', url);
-                  window.location.href = url;
-              } else {
-                  console.warn('No data-url found on rom-card for navigation.');
-              }
-          });
-      }
-    });
-  </script>
-</body>
-</html>
+      // --- Language Toggle Logic ---
+      const translations = {
+        en: {
+          headerTitle: "intelgigabyte9299's Custom ROM Builds",
+          headerSubtitle: "Samsung Galaxy A71 4G • Android Developer from Vietnam",
+          aboutMeTitle: "🧠 About Me",
+          aboutMeContent: "Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥",
+          myRomsTitle: "📱 My ROMs",
+          crdroidTitle: "crDroid For Samsung Galaxy A71 4G",
+          crdroidStatus: "✅ Official",
+          downloadNowButton: "Download Now",
+          supportedDevicesTitle: "📦 Supported Devices",
+          supportedDevicesList: "<li>Samsung Galaxy A71 4G (a71)</

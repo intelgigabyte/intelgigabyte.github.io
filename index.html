@@ -11,6 +11,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
      crossorigin="anonymous"></script>
   <style>
+    /* Global Variables - Unified for consistency */
     :root {
       --primary: #3b82f6;
       --secondary: #9333ea;
@@ -21,16 +22,17 @@
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
-      --background-start: #0f172a;
-      --background-end: #1e293b;
+      --background-start: #0f172a; /* Dark mode default */
+      --background-end: #1e293b;   /* Dark mode default */
       --section-bg: var(--bg-glass);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-bg: rgba(255, 255, 255, 0.08);
       --footer-text: #cbd5e1;
       --transition-speed: 0.6s;
-      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Màu mới cho hiệu ứng focus */
+      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
     }
 
+    /* Dark Mode Variables */
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
@@ -38,12 +40,13 @@
       --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
       --text-light: #f8fafc;
-      --text-dark: #f8fafc;
+      --text-dark: #f8fafc; /* Text in sections will be light in dark mode */
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
       --focus-glow-color: rgba(59, 130, 246, 0.5);
     }
 
+    /* Light Mode Variables */
     body.light-mode {
       --primary: #1d4ed8;
       --secondary: #6d28d9;
@@ -52,11 +55,11 @@
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
-      --text-dark: #0f172a;
-      --text-light: #334155;
+      --text-dark: #0f172a; /* Text in sections will be dark in light mode */
+      --text-light: #334155; /* General text color for content */
       --border-color: rgba(0, 0, 0, 0.1);
       --footer-text: #475569;
-      --focus-glow-color: rgba(29, 78, 216, 0.3); /* Màu khác cho light mode */
+      --focus-glow-color: rgba(29, 78, 216, 0.3);
     }
 
     * {
@@ -67,20 +70,21 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-light);
+      /* Use background-image for linear gradient and transition it */
+      background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
+      color: var(--text-light); /* Default text color for body, sections will override for text-dark */
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      /* Đảm bảo transition cho các thuộc tính màu sắc và nền */
-      transition: background var(--transition-speed) ease, 
+      /* Smooth transition for theme changes */
+      transition: background-image var(--transition-speed) ease, 
                   color var(--transition-speed) ease;
     }
 
     header {
       padding: 3.5rem 1rem;
       text-align: center;
-      color: white;
+      color: white; /* Header text color is always white for contrast */
       box-shadow: 0 10px 25px var(--shadow);
       animation: fadeInDown 1s ease-out;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -89,6 +93,8 @@
       overflow: hidden;
       position: relative;
       z-index: 1;
+      /* Ensure header background transitions with theme */
+      transition: background var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     }
 
     header::before {
@@ -148,11 +154,11 @@
       border: 1px solid var(--border-color);
       animation: fadeIn 1s ease-out forwards;
       opacity: 0;
-      /* Đảm bảo transition cho các thuộc tính màu sắc và nền */
+      /* Ensure transition for all relevant properties */
       transition: background var(--transition-speed) ease, 
                   border-color var(--transition-speed) ease, 
                   box-shadow var(--transition-speed) ease,
-                  color var(--transition-speed) ease; /* Thêm color transition */
+                  color var(--transition-speed) ease; /* Text color transition for section content */
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -164,9 +170,26 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark);
+      color: var(--text-dark); /* This should change with theme */
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
+      transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+    }
+
+    p { /* Ensure paragraphs within sections also transition color */
+        color: var(--text-light);
+        transition: color var(--transition-speed) ease;
+    }
+
+    p b { /* Bold text inside paragraphs should also transition color */
+        color: var(--primary); /* Maintain primary color for bold text */
+        transition: color var(--transition-speed) ease;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+      color: var(--text-light); /* Ensure list items transition color */
       transition: color var(--transition-speed) ease;
     }
 
@@ -176,12 +199,11 @@
       gap: 1.5rem;
     }
 
-    /* .rom-card now acts as the clickable area for crdroid.html */
     .rom-card {
       background: var(--card-bg);
       border-radius: var(--radius-card);
       padding: 1.5rem;
-      color: var(--text-light);
+      color: var(--text-light); /* Ensure text in card transitions */
       backdrop-filter: blur(16px);
       transition: transform 0.3s ease, box-shadow 0.3s ease, 
                   background var(--transition-speed) ease, 
@@ -189,10 +211,10 @@
                   border-color var(--transition-speed) ease;
       box-shadow: 0 6px 18px var(--shadow);
       border: 1px solid var(--border-color);
-      display: flex; /* Use flexbox for layout */
-      flex-direction: column; /* Stack items vertically */
-      justify-content: space-between; /* Push download button to bottom */
-      cursor: pointer; /* Indicate it's clickable */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
     }
 
     .rom-card:hover {
@@ -200,52 +222,45 @@
       box-shadow: 0 10px 24px var(--shadow);
     }
 
-    /* Hiệu ứng khi thẻ ROM được focus hoặc active */
-    .rom-card:focus-visible { /* Cho phép outline mặc định chỉ khi dùng bàn phím */
-        outline: none; /* Bỏ outline mặc định */
-        box-shadow: 0 0 0 4px var(--focus-glow-color), 0 10px 24px var(--shadow); /* Thêm box-shadow tùy chỉnh */
+    .rom-card:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 4px var(--focus-glow-color), 0 10px 24px var(--shadow);
     }
-    .rom-card:active { /* Hiệu ứng khi click chuột xuống */
+    .rom-card:active {
         transform: translateY(-3px) scale(0.99);
         box-shadow: 0 8px 20px var(--shadow);
     }
-
 
     .rom-title {
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.3rem;
-      transition: color var(--transition-speed) ease; /* Thêm transition cho title */
+      transition: color var(--transition-speed) ease;
     }
 
     .rom-status {
       font-size: 0.95rem;
       opacity: 0.85;
-      margin-bottom: 1rem; /* Space before button */
-      transition: color var(--transition-speed) ease; /* Thêm transition cho status */
-    }
-
-    ul {
-      padding-left: 1.2rem;
-      line-height: 1.7;
+      margin-bottom: 1rem;
+      transition: color var(--transition-speed) ease;
     }
 
     /* Style for all generic buttons/links */
     .button-style {
       display: inline-block;
-      margin: 0.5rem auto; /* Center button within flex item */
+      margin: 0.5rem auto;
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
       border-radius: var(--radius-soft);
       text-decoration: none;
       font-weight: 500;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease; /* Thêm outline vào transition */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Added shadow */
-      text-align: center; /* Center text inside button */
-      width: fit-content; /* Ensure button width fits content */
-      min-width: 150px; /* Optional: minimum width for button */
-      outline: none; /* Bỏ outline mặc định cho nút */
+      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease, background var(--transition-speed) ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+      width: fit-content;
+      min-width: 150px;
+      outline: none;
     }
 
     .button-style:hover {
@@ -253,20 +268,18 @@
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
 
-    /* Hiệu ứng khi nút được focus hoặc active */
-    .button-style:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+    .button-style:focus-visible {
         box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px rgba(0, 0, 0, 0.4);
     }
-    .button-style:active { /* Hiệu ứng khi click chuột xuống */
+    .button-style:active {
         transform: translateY(0px) scale(0.98);
         box-shadow: 0 3px 8px rgba(0,0,0,0.4);
     }
 
-
     .download-button-wrapper {
         text-align: center;
-        margin-top: auto; /* Push button to bottom of rom-card */
-        display: flex; /* Use flexbox to center the button horizontally */
+        margin-top: auto;
+        display: flex;
         justify-content: center;
     }
 
@@ -275,12 +288,11 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: var(--footer-text);
-      /* Đảm bảo transition cho màu chữ footer */
       transition: color var(--transition-speed) ease;
     }
 
     /* Theme Toggle Button */
-    .toggle-button { /* Dùng chung class cho cả theme và language toggle */
+    .toggle-button {
       position: fixed;
       bottom: 20px;
       background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -295,15 +307,15 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow);
-      /* Bổ sung transition cho transform và box-shadow */
       transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
                   box-shadow 0.2s ease, 
-                  background 0.2s ease, /* Thêm transition cho background */
-                  color 0.2s ease, /* Thêm transition cho màu icon */
-                  outline 0.2s ease; /* Thêm transition cho outline */
+                  background var(--transition-speed) ease, 
+                  color var(--transition-speed) ease, 
+                  outline 0.2s ease;
       z-index: 1000;
       transform: scale(1);
-      outline: none; /* Bỏ outline mặc định cho nút */
+      outline: none;
+      right: 20px; /* Only one toggle button, position it directly */
     }
 
     .toggle-button:hover {
@@ -311,27 +323,16 @@
       box-shadow: 0 6px 16px var(--shadow);
     }
 
-    /* Hiệu ứng khi nút được focus hoặc active */
-    .toggle-button:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+    .toggle-button:focus-visible {
         box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
     }
-    .toggle-button:active { /* Hiệu ứng khi click chuột xuống */
+    .toggle-button:active {
         transform: scale(0.95);
         box-shadow: 0 3px 8px var(--shadow);
     }
 
     .toggle-button.animate {
       transform: scale(0.9);
-    }
-
-    #theme-toggle {
-        right: 20px;
-    }
-
-    #language-toggle {
-        right: 80px; /* Đặt cách nút theme một khoảng */
-        font-size: 1rem; /* Kích thước chữ nhỏ hơn để hiển thị EN/VI */
-        font-weight: bold;
     }
 
     /* AdSense Container Styling */
@@ -347,7 +348,6 @@
       opacity: 0;
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 1.2s;
-      /* Đảm bảo transition cho các thuộc tính màu sắc và nền */
       transition: background var(--transition-speed) ease, 
                   border-color var(--transition-speed) ease, 
                   box-shadow var(--transition-speed) ease;
@@ -414,7 +414,7 @@
         font-size: 1.2rem;
       }
 
-      .button-style { /* Apply to all buttons */
+      .button-style {
         display: block;
         margin: 0.5rem auto;
       }
@@ -428,13 +428,6 @@
           width: 45px;
           height: 45px;
           font-size: 1.3rem;
-      }
-      #language-toggle {
-          bottom: 15px;
-          right: 70px; /* Điều chỉnh vị trí trên mobile */
-          width: 45px;
-          height: 45px;
-          font-size: 0.9rem; /* Kích thước chữ nhỏ hơn */
       }
     }
 
@@ -459,29 +452,30 @@
       }
     }
 
-    /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
+    /* Remove tap highlight on mobile for interactive elements */
     .rom-card,
     .button-style,
-    .toggle-button { /* Đã đổi từ .theme-toggle sang .toggle-button */
-        -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
-        -moz-focus-inner: none; /* Cho Firefox */
+    .toggle-button {
+        -webkit-tap-highlight-color: transparent;
+        -moz-focus-inner: none;
     }
   </style>
 </head>
 <body lang="en">
 
   <header>
-    <h1 data-lang-key="headerTitle">intelgigabyte9299's Custom ROM Builds</h1>
-    <p data-lang-key="headerSubtitle">Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+    <h1>intelgigabyte9299's Custom ROM Builds</h1>
+    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
   </header>
 
   <div class="container">
     <section>
-      <h2 data-lang-key="aboutMeTitle">🧠 About Me</h2>
-      <p data-lang-key="aboutMeContent">Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
+      <h2>🧠 About Me</h2>
+      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
     </section>
 
     <div class="ad-container">
+      <h2>📢 Advertisement</h2>
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
@@ -493,29 +487,30 @@
     </div>
 
     <section>
-      <h2 data-lang-key="myRomsTitle">📱 My ROMs</h2>
+      <h2>📱 My ROMs</h2>
       <div class="rom-grid">
         <div class="rom-card" data-url="crdroid.html">
           <div>
-            <div class="rom-title" data-lang-key="crdroidTitle">crDroid For Samsung Galaxy A71 4G</div>
-            <div class="rom-status" data-lang-key="crdroidStatus">✅ Official</div>
+            <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
+            <div class="rom-status">✅ Official</div>
           </div>
           <div class="download-button-wrapper">
-              <a href="https://crdroid.net/a71/11" class="button-style download-button" data-lang-key="downloadNowButton">Download Now</a>
+              <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now</a>
           </div>
         </div>
       </div>
     </section>
 
     <section>
-      <h2 data-lang-key="supportedDevicesTitle">📦 Supported Devices</h2>
-      <ul data-lang-key="supportedDevicesList">
+      <h2>📦 Supported Devices</h2>
+      <ul>
         <li>Samsung Galaxy A71 4G (a71)</li>
         <li>Join the Telegram group below for download links and updates</li>
       </ul>
     </section>
 
     <div class="ad-container">
+      <h2>📢 Advertisement</h2>
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
@@ -527,8 +522,8 @@
     </div>
 
     <section>
-      <h2 data-lang-key="toolsEnvTitle">🛠️ Tools & Environment</h2>
-      <ul data-lang-key="toolsEnvList">
+      <h2>🛠️ Tools & Environment</h2>
+      <ul>
         <li>Ubuntu 25.04 LTS (WSL2)</li>
         <li>Build tools: repo, git, clang, SDK</li>
         <li>Source trees: AOSP, LineageOS</li>
@@ -537,32 +532,27 @@
     </section>
 
     <section class="connect">
-      <h2 data-lang-key="connectTitle">🌐 Connect with Me</h2>
+      <h2>🌐 Connect with Me</h2>
       <a href="https://github.com/intelgigabyte" class="button-style"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://paypal.me/intelgigabyte9299" class="button-style"><i class="fab fa-paypal"></i> PayPal</a>
       <a href="https://patreon.com/intelgigabyte9299" class="button-style"><i class="fab fa-patreon"></i> Patreon</a>
-      <a href="https://t.me/intelgigabyteshit" class="button-style"><i class="fab fa-telegram"></i> <span data-lang-key="telegramChannel">Telegram Channel</span></a>
-      <a href="https://t.me/doraemonintelgigabyte" class="button-style"><i class="fab fa-telegram"></i> <span data-lang-key="telegramGroup">Telegram Group</span></a>
+      <a href="https://t.me/intelgigabyteshit" class="button-style"><i class="fab fa-telegram"></i> Telegram Channel</a>
+      <a href="https://t.me/doraemonintelgigabyte" class="button-style"><i class="fab fa-telegram"></i> Telegram Group</a>
       <a href="https://facebook.com/intelgigabyte9299" class="button-style"><i class="fab fa-facebook"></i> Facebook</a>
     </section>
   </div>
 
   <footer>
-    <span data-lang-key="footerText">&copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.</span>
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.
   </footer>
 
   <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
     <i class="fas fa-moon"></i>
   </button>
 
-  <button id="language-toggle" class="toggle-button" aria-label="Toggle language between English and Vietnamese">
-    EN
-  </button>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
-      const languageToggle = document.getElementById('language-toggle');
       const body = document.body;
 
       // --- Theme Toggle Logic ---
@@ -598,16 +588,27 @@
         }
       });
 
-      // --- Language Toggle Logic ---
-      const translations = {
-        en: {
-          headerTitle: "intelgigabyte9299's Custom ROM Builds",
-          headerSubtitle: "Samsung Galaxy A71 4G • Android Developer from Vietnam",
-          aboutMeTitle: "🧠 About Me",
-          aboutMeContent: "Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥",
-          myRomsTitle: "📱 My ROMs",
-          crdroidTitle: "crDroid For Samsung Galaxy A71 4G",
-          crdroidStatus: "✅ Official",
-          downloadNowButton: "Download Now",
-          supportedDevicesTitle: "📦 Supported Devices",
-          supportedDevicesList: "<li>Samsung Galaxy A71 4G (a71)</
+      // --- ROM card click handler ---
+      const romCard = document.querySelector('.rom-card');
+      if (romCard) {
+          romCard.addEventListener('click', (event) => {
+              // Check if the click originated from the download button or its child (icon/text)
+              if (event.target.closest('.download-button')) {
+                  // If clicked on download button, let its href handle the navigation
+                  console.log('Clicked on download button, preventing card navigation.');
+                  return; 
+              }
+              // Otherwise, navigate based on data-url
+              const url = romCard.dataset.url;
+              if (url) {
+                  console.log('Navigating to:', url);
+                  window.location.href = url;
+              } else {
+                  console.warn('No data-url found on rom-card for navigation.');
+              }
+          });
+      }
+    });
+  </script>
+</body>
+</html>

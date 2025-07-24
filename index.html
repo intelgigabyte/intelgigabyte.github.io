@@ -207,7 +207,7 @@
     /* Style for all generic buttons/links */
     .button-style {
       display: inline-block;
-      margin: 0.5rem 1rem 0.5rem 0; /* Adjusted margin for consistency */
+      margin: 0.5rem auto; /* Center button within flex item */
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
@@ -217,6 +217,8 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Added shadow */
       text-align: center; /* Center text inside button */
+      width: fit-content; /* Ensure button width fits content */
+      min-width: 150px; /* Optional: minimum width for button */
     }
 
     .button-style:hover {
@@ -227,6 +229,8 @@
     .download-button-wrapper {
         text-align: center;
         margin-top: auto; /* Push button to bottom of rom-card */
+        display: flex; /* Use flexbox to center the button horizontally */
+        justify-content: center;
     }
 
     footer {
@@ -454,7 +458,6 @@
 
     <section class="connect">
       <h2>🌐 Connect with Me</h2>
-      <a href="https://crdroid.net/a71/11" class="button-style"><i class="fab fa-android"></i> crDroid</a>
       <a href="https://github.com/intelgigabyte" class="button-style"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://paypal.me/intelgigabyte9299" class="button-style"><i class="fab fa-paypal"></i> PayPal</a>
       <a href="https://patreon.com/intelgigabyte9299" class="button-style"><i class="fab fa-patreon"></i> Patreon</a>
@@ -474,7 +477,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Logic chuyển đổi chế độ sáng/tối
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
 

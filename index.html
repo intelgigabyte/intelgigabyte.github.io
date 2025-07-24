@@ -1,744 +1,1118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>intelgigabyte9299 Bio - Custom ROMs for Galaxy A71 4G</title>
-  <meta name="description" content="Official and unofficial custom ROMs by intelgigabyte9299 for Samsung Galaxy A71 4G. Discover crDroid, WitAqua, RisingOS Revived and more, along with guides and support resources.">
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>intelgigabyte9299 Bio - Custom ROMs for Galaxy A71 4G</title>
+    <meta name="description" content="Official and unofficial custom ROMs by intelgigabyte9299 for Samsung Galaxy A71 4G. Discover crDroid, WitAqua, RisingOS Revived and more, along with guides and support resources.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" as="style" />
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" as="style" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" />
 
-  <script>
-    (function() {
-      const savedTheme = localStorage.getItem('theme');
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
 
-      if (savedTheme === 'light-mode' || (!savedTheme && prefersLight)) {
-        document.documentElement.classList.add('light-mode');
-      } else {
-        document.documentElement.classList.add('dark-mode');
-      }
-    })();
-  </script>
+            if (savedTheme === 'light-mode' || (!savedTheme && prefersLight)) {
+                document.documentElement.classList.add('light-mode');
+            } else {
+                document.documentElement.classList.add('dark-mode');
+            }
+        })();
+    </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
+            crossorigin="anonymous"></script>
 
-  <style>
-    /* Global Variables - Unified for consistency */
-    :root {
-      /* Base Colors */
-      --primary: #3b82f6; /* Blue */
-      --secondary: #9333ea; /* Purple */
-      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
+    <style>
+        /* Global Variables - Unified for consistency */
+        :root {
+            /* Base Colors */
+            --primary: #3b82f6; /* Blue */
+            --secondary: #9333ea; /* Purple */
+            --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
 
-      /* Glassmorphism Elements Base */
-      --bg-glass-base: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
-      --card-bg-base: rgba(255, 255, 255, 0.08);
+            /* Glassmorphism Elements Base */
+            --bg-glass-base: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
+            --card-bg-base: rgba(255, 255, 255, 0.08);
 
-      /* Text Colors Base */
-      --color-text-light-base: #f8fafc; /* For dark backgrounds (text is light) */
-      --color-text-dark-base: #0f172a; /* For light backgrounds (text is dark) */
+            /* Text Colors Base */
+            --color-text-light-base: #f8fafc; /* For dark backgrounds (text is light) */
+            --color-text-dark-base: #0f172a; /* For light backgrounds (text is dark) */
 
-      /* Border Colors Base */
-      --border-color-base: rgba(255, 255, 255, 0.2);
+            /* Border Colors Base */
+            --border-color-base: rgba(255, 255, 255, 0.2);
 
-      /* Shadows Base */
-      --shadow-base: rgba(0, 0, 0, 0.2);
+            /* Shadows Base */
+            --shadow-base: rgba(0, 0, 0, 0.2);
 
-      /* Radii */
-      --radius-soft: 12px;
-      --radius-card: 16px;
-      --radius-section: 20px;
+            /* Radii */
+            --radius-soft: 12px;
+            --radius-card: 16px;
+            --radius-section: 20px;
+            --radius-nav: 16px; /* New: for navigation bar */
 
-      /* Transition Speed */
-      --transition-speed: 0.6s;
+            /* Transition Speed */
+            --transition-speed: 0.6s;
 
-      /* Default (Dark Mode) Themed Variables - Applied to :root (html) directly */
-      --background-start: #0f172a;
-      --background-end: #1e293b;
-      --section-bg: var(--bg-glass-base);
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --shadow: rgba(0, 0, 0, 0.4);
-      --border-color: rgba(255, 255, 255, 0.15);
-      --footer-text-color: #94a3b8;
+            /* Default (Dark Mode) Themed Variables - Applied to :root (html) directly */
+            --background-start: #0f172a;
+            --background-end: #1e293b;
+            --section-bg: var(--bg-glass-base);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --shadow: rgba(0, 0, 0, 0.4);
+            --border-color: rgba(255, 255, 255, 0.15);
+            --footer-text-color: #94a3b8;
 
-      --text-main: var(--color-text-light-base);
-      --text-heading: var(--color-text-light-base);
-    }
+            --text-main: var(--color-text-light-base);
+            --text-heading: var(--color-text-light-base);
 
-    /* Light Mode Variables - Applied to html.light-mode */
-    html.light-mode {
-      --primary: #1d4ed8;
-      --secondary: #6d28d9;
-      --focus-glow-color: rgba(29, 78, 216, 0.3);
+            /* New: Nav colors */
+            --nav-bg: rgba(255, 255, 255, 0.1);
+            --nav-text: var(--color-text-light-base);
+            --nav-link-hover: var(--primary);
+        }
 
-      --background-start: #e0f2fe;
-      --background-end: #d1e9fb;
-      --section-bg: rgba(255, 255, 255, 0.7);
-      --card-bg: rgba(255, 255, 255, 0.85);
-      --shadow: rgba(0, 0, 0, 0.15);
-      --border-color: rgba(0, 0, 0, 0.1);
-      --footer-text-color: #475569;
+        /* Light Mode Variables - Applied to html.light-mode */
+        html.light-mode {
+            --primary: #1d4ed8;
+            --secondary: #6d28d9;
+            --focus-glow-color: rgba(29, 78, 216, 0.3);
 
-      --text-main: #334155;
-      --text-heading: var(--color-text-dark-base);
-    }
+            --background-start: #e0f2fe;
+            --background-end: #d1e9fb;
+            --section-bg: rgba(255, 255, 255, 0.7);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --shadow: rgba(0, 0, 0, 0.15);
+            --border-color: rgba(0, 0, 0, 0.1);
+            --footer-text-color: #475569;
 
-    /* Base Styles */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+            --text-main: #334155;
+            --text-heading: var(--color-text-dark-base);
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-main);
-      min-height: 100vh;
-      background-attachment: fixed;
-      background-size: cover;
-      transition: background-image var(--transition-speed) ease,
-                  color var(--transition-speed) ease,
-                  background-color var(--transition-speed) ease;
-    }
+            /* New: Nav colors */
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --nav-text: var(--color-text-dark-base);
+            --nav-link-hover: var(--primary);
+        }
 
-    header {
-      padding: 3.5rem 1rem;
-      text-align: center;
-      box-shadow: 0 10px 25px var(--shadow);
-      animation: fadeInDown 1s ease-out;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-bottom-left-radius: var(--radius-section);
-      border-bottom-right-radius: var(--radius-section);
-      overflow: hidden;
-      position: relative;
-      z-index: 1;
-      transition: background var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    }
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
-                  radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
-      z-index: -1;
-      opacity: 0.8;
-      pointer-events: none;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
+            color: var(--text-main);
+            min-height: 100vh;
+            background-attachment: fixed;
+            background-size: cover;
+            transition: background-image var(--transition-speed) ease,
+                        color var(--transition-speed) ease,
+                        background-color var(--transition-speed) ease;
+        }
 
-    header h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 3.8rem;
-      font-weight: 700;
-      letter-spacing: -0.06em;
-      margin-bottom: 0.8rem;
-      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-      line-height: 1.1;
-      color: white;
-      transition: all 0.5s ease;
-    }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 2rem 1rem;
+            padding-top: calc(2rem + 80px); /* Adjust for fixed navbar height */
+        }
 
-    header h1:hover {
-      transform: scale(1.02);
-    }
+        /* NEW: Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px var(--shadow);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
 
-    header p {
-      font-size: 1.4rem;
-      margin-top: 0.8rem;
-      opacity: 0.9;
-      line-height: 1.5;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      color: var(--color-text-light-base);
-      transition: color var(--transition-speed) ease;
-    }
+        .nav-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary); /* Keep brand color consistent */
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        .nav-brand:hover {
+            color: var(--secondary);
+        }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
 
-    section {
-      background: var(--section-bg);
-      border-radius: var(--radius-section);
-      box-shadow: 0 8px 24px var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid var(--border-color);
-      animation: fadeIn 1s ease-out forwards;
-      opacity: 0;
-      transition: background var(--transition-speed) ease,
-                  border-color var(--transition-speed) ease,
-                  box-shadow var(--transition-speed) ease,
-                  color var(--transition-speed) ease;
-    }
+        .nav-item a {
+            color: var(--nav-text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--radius-soft);
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: flex; /* Enable flexbox for icon and text alignment */
+            align-items: center; /* Vertically align icon and text */
+            gap: 0.5rem; /* Space between icon and text */
+        }
 
-    section:nth-of-type(1) { animation-delay: 0.2s; }
-    section:nth-of-type(2) { animation-delay: 0.4s; }
-    section:nth-of-type(3) { animation-delay: 0.6s; }
-    section:nth-of-type(4) { animation-delay: 0.8s; }
-    section:nth-of-type(5) { animation-delay: 1s; }
-    section:nth-of-type(6) { animation-delay: 1.2s; } /* For new sections */
+        .nav-item a:hover {
+            color: var(--nav-link-hover);
+            background-color: rgba(255, 255, 255, 0.1); /* Light highlight on hover */
+        }
 
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
-      color: var(--text-heading);
-      border-left: 5px solid var(--primary);
-      padding-left: 1rem;
-      transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
-    }
+        /* End NEW: Navigation Bar */
 
-    h3 {
-        font-size: 1.2rem;
-        margin-top: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: var(--text-heading);
-        transition: color var(--transition-speed) ease;
-    }
+        section {
+            background: var(--section-bg);
+            border-radius: var(--radius-section);
+            box-shadow: 0 8px 24px var(--shadow);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+            transition: background var(--transition-speed) ease,
+                        border-color var(--transition-speed) ease,
+                        box-shadow var(--transition-speed) ease,
+                        color var(--transition-speed) ease;
+        }
 
-    p {
-      color: var(--text-main);
-      transition: color var(--transition-speed) ease;
-      line-height: 1.6;
-      margin-bottom: 1rem; /* Added for better spacing */
-    }
+        section:nth-of-type(1) { animation-delay: 0.2s; }
+        section:nth-of-type(2) { animation-delay: 0.4s; }
+        section:nth-of-type(3) { animation-delay: 0.6s; }
+        section:nth-of-type(4) { animation-delay: 0.8s; }
+        section:nth-of-type(5) { animation-delay: 1s; }
+        section:nth-of-type(6) { animation-delay: 1.2s; } /* For new sections */
 
-    p b {
-      color: var(--primary);
-      transition: color var(--transition-speed) ease;
-    }
+        h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text-heading);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+        }
 
-    ul {
-      padding-left: 1.2rem;
-      line-height: 1.7;
-      color: var(--text-main);
-      transition: color var(--transition-speed) ease;
-      margin-bottom: 1rem; /* Added for better spacing */
-    }
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-heading);
+            transition: color var(--transition-speed) ease;
+        }
 
-    .rom-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Increased min-width for better content display */
-      gap: 1.8rem; /* Slightly larger gap */
-    }
+        p {
+            color: var(--text-main);
+            transition: color var(--transition-speed) ease;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
 
-    .rom-card {
-      background: var(--card-bg);
-      border-radius: var(--radius-card);
-      padding: 1.5rem;
-      color: var(--text-main);
-      backdrop-filter: blur(16px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease,
-                  background var(--transition-speed) ease,
-                  color var(--transition-speed) ease,
-                  border-color var(--transition-speed) ease;
-      box-shadow: 0 6px 18px var(--shadow);
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-    }
+        p b {
+            color: var(--primary);
+            transition: color var(--transition-speed) ease;
+        }
 
-    .rom-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 24px var(--shadow);
-    }
+        ul {
+            padding-left: 1.2rem;
+            line-height: 1.7;
+            color: var(--text-main);
+            transition: color var(--transition-speed) ease;
+            margin-bottom: 1rem;
+        }
 
-    .rom-card:focus-visible {
-        outline: none;
-        box-shadow: 0 0 0 4px var(--focus-glow-color), 0 10px 24px var(--shadow);
-    }
-    .rom-card:active {
-        transform: translateY(-3px) scale(0.99);
-        box-shadow: 0 8px 20px var(--shadow);
-    }
+        .rom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
 
-    .rom-title {
-      font-size: 1.4rem; /* Slightly larger title */
-      font-weight: 600;
-      margin-bottom: 0.5rem; /* Increased margin */
-      color: var(--text-heading);
-      transition: color var(--transition-speed) ease;
-    }
+        .rom-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-card);
+            padding: 1.5rem;
+            color: var(--text-main);
+            backdrop-filter: blur(16px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease,
+                        background var(--transition-speed) ease,
+                        color var(--transition-speed) ease,
+                        border-color var(--transition-speed) ease;
+            box-shadow: 0 6px 18px var(--shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
 
-    .rom-status {
-      font-size: 0.95rem;
-      opacity: 0.85;
-      margin-bottom: 1rem;
-      color: var(--text-main);
-      transition: color var(--transition-speed) ease;
-    }
+        .rom-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 24px var(--shadow);
+        }
 
-    .rom-description {
-        font-size: 1rem;
-        color: var(--text-main);
-        margin-bottom: 1.5rem; /* Important for spacing before buttons */
-        flex-grow: 1; /* Allows description to take up available space */
-    }
+        .rom-card:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 4px var(--focus-glow-color), 0 10px 24px var(--shadow);
+        }
+        .rom-card:active {
+            transform: translateY(-3px) scale(0.99);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
 
-    /* Style for all generic buttons/links */
-    .button-style {
-      display: inline-block;
-      margin: 0.5rem 0.5rem;
-      padding: 0.65rem 1.3rem;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-      border-radius: var(--radius-soft);
-      text-decoration: none;
-      font-weight: 500;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease, background var(--transition-speed) ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      text-align: center;
-      width: fit-content;
-      min-width: 150px;
-      outline: none;
-      white-space: nowrap;
-    }
+        .rom-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-heading);
+            transition: color var(--transition-speed) ease;
+        }
 
-    .button-style:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
+        .rom-status {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            transition: color var(--transition-speed) ease;
+        }
 
-    .button-style:focus-visible {
-        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px rgba(0, 0, 0, 0.4);
-    }
-    .button-style:active {
-        transform: translateY(0px) scale(0.98);
-        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
-    }
+        .rom-description {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
 
-    .download-button-wrapper {
-        text-align: center;
-        margin-top: auto;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
+        /* Style for all generic buttons/links */
+        .button-style {
+            display: inline-block;
+            margin: 0.5rem 0.5rem;
+            padding: 0.65rem 1.3rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: var(--radius-soft);
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease, background var(--transition-speed) ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            width: fit-content;
+            min-width: 150px;
+            outline: none;
+            white-space: nowrap;
+        }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: var(--footer-text-color);
-      transition: color var(--transition-speed) ease;
-    }
+        .button-style:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
 
-    /* Theme Toggle Button */
-    .toggle-button {
-      position: fixed;
-      bottom: 20px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
-                  box-shadow 0.2s ease,
-                  background var(--transition-speed) ease,
-                  color var(--transition-speed) ease,
-                  outline 0.2s ease;
-      z-index: 1000;
-      transform: scale(1);
-      outline: none;
-      right: 20px;
-    }
+        .button-style:focus-visible {
+            box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+        .button-style:active {
+            transform: translateY(0px) scale(0.98);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+        }
 
-    .toggle-button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 16px var(--shadow);
-    }
+        .download-button-wrapper {
+            text-align: center;
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-    .toggle-button:focus-visible {
-        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
-    }
-    .toggle-button:active {
-        transform: scale(0.95);
-        box-shadow: 0 3px 8px var(--shadow);
-    }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            color: var(--footer-text-color);
+            transition: color var(--transition-speed) ease;
+        }
 
-    .toggle-button.animate {
-      transform: scale(0.9);
-    }
+        /* Theme Toggle Button */
+        .toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                        box-shadow 0.2s ease,
+                        background var(--transition-speed) ease,
+                        color var(--transition-speed) ease,
+                        outline 0.2s ease;
+            z-index: 1000;
+            transform: scale(1);
+            outline: none;
+        }
 
-    /* AdSense Container Styling */
-    .ad-container {
-      margin: 2rem auto;
-      text-align: center;
-      max-width: 728px;
-      background: var(--section-bg);
-      border-radius: var(--radius-soft);
-      padding: 1rem;
-      box-shadow: 0 4px 12px var(--shadow);
-      border: 1px solid var(--border-color);
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-      animation-delay: 1.2s;
-      transition: background var(--transition-speed) ease,
-                  border-color var(--transition-speed) ease,
-                  box-shadow var(--transition-speed) ease,
-                  color var(--transition-speed) ease;
-    }
+        .toggle-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px var(--shadow);
+        }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .toggle-button:focus-visible {
+            box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
+        }
+        .toggle-button:active {
+            transform: scale(0.95);
+            box-shadow: 0 3px 8px var(--shadow);
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .toggle-button.animate {
+            transform: scale(0.9);
+        }
 
-    /* Responsive Design Adjustments */
-    @media (max-width: 768px) {
-      header {
-        padding: 3rem 1rem;
-      }
-      header h1 {
-        font-size: 3rem;
-        letter-spacing: -0.05em;
-      }
-      header p {
-        font-size: 1.2rem;
-      }
-      .container {
-        padding: 1.5rem 0.8rem;
-      }
+        /* AdSense Container Styling */
+        .ad-container {
+            margin: 2rem auto;
+            text-align: center;
+            max-width: 728px;
+            background: var(--section-bg);
+            border-radius: var(--radius-soft);
+            padding: 1rem;
+            box-shadow: 0 4px 12px var(--shadow);
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1.2s;
+            transition: background var(--transition-speed) ease,
+                        border-color var(--transition-speed) ease,
+                        box-shadow var(--transition-speed) ease,
+                        color var(--transition-speed) ease;
+        }
 
-      section {
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-      }
+        /* NEW: Changelog Modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001; /* Higher than toggle button */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
+            backdrop-filter: blur(8px); /* Blur effect for the background */
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            animation: fadeInModal 0.3s ease-out;
+        }
 
-      h2 {
-        font-size: 1.4rem;
-        padding-left: 0.8rem;
-      }
+        .modal-content {
+            background: var(--section-bg); /* Use section background for glass effect */
+            margin: auto;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-section);
+            box-shadow: 0 10px 30px var(--shadow);
+            max-width: 600px; /* Max width for the modal */
+            width: 95%; /* Responsive width */
+            position: relative;
+            animation: slideInFromTop 0.4s ease-out;
+            max-height: 90vh; /* Limit height to prevent overflow on small screens */
+            overflow-y: auto; /* Enable scrolling for long content */
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
 
-      .rom-grid {
-        grid-template-columns: 1fr;
-      }
+        .modal-content h2 {
+            margin-top: 0;
+            border-left: 5px solid var(--primary); /* Match section heading style */
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-heading);
+        }
 
-      .rom-card {
-        padding: 1.2rem;
-      }
+        .modal-content h3 { /* Style for changelog dates */
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            background: linear-gradient(to right, rgba(0,0,0,0), var(--primary), rgba(0,0,0,0));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none; /* Remove text shadow for this specific heading */
+            border: none; /* Remove left border */
+            padding: 0;
+        }
+        .modal-content h4 { /* Style for * sections */
+            font-size: 1.1rem;
+            color: var(--text-heading);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid var(--secondary); /* Small border for sub-sections */
+            padding-left: 0.7rem;
+        }
+        .modal-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-content ul ul { /* Nested lists for commits */
+            list-style-type: circle;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-top: 0.3rem;
+            margin-bottom: 0.3rem;
+        }
 
-      .rom-title {
-        font-size: 1.2rem;
-      }
 
-      .button-style {
-        display: block;
-        margin: 0.5rem auto;
-        min-width: unset;
-        width: 100%;
-      }
-      .download-button-wrapper {
-        flex-direction: column;
-      }
+        .modal-content p, .modal-content ul {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
 
-      .ad-container {
-        padding: 0.8rem;
-      }
-      .toggle-button {
-          bottom: 15px;
-          right: 15px;
-          width: 45px;
-          height: 45px;
-          font-size: 1.3rem;
-      }
-    }
+        .modal-close {
+            color: var(--text-main);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            text-decoration: none;
+            line-height: 1; /* Adjust line height to center "x" */
+        }
 
-    @media (max-width: 480px) {
-      header {
-        padding: 2.5rem 1rem;
-      }
-      header h1 {
-        font-size: 2.5rem;
-        letter-spacing: -0.04em;
-      }
-      header p {
-        font-size: 1rem;
-        margin-top: 0.6rem;
-      }
-      h2 {
-        font-size: 1.2rem;
-      }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: var(--primary);
+            text-decoration: none;
+        }
 
-      .rom-card {
-        padding: 1rem;
-      }
-    }
+        .modal-content strong {
+            color: var(--primary);
+        }
 
-    /* Remove tap highlight on mobile for interactive elements */
-    .rom-card,
-    .button-style,
-    .toggle-button {
-        -webkit-tap-highlight-color: transparent;
-        -moz-focus-inner: none;
-    }
-  </style>
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.6rem 1rem;
+            }
+            .nav-brand {
+                font-size: 1.4rem;
+            }
+            .nav-menu {
+                gap: 1rem;
+            }
+            .nav-item a {
+                font-size: 1rem;
+                padding: 0.4rem 0.6rem;
+            }
+            .container {
+                padding: 1.5rem 0.8rem;
+                padding-top: calc(1.5rem + 60px); /* Adjust for fixed navbar height */
+            }
+
+            section {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+                padding-left: 0.8rem;
+            }
+
+            .rom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rom-card {
+                padding: 1.2rem;
+            }
+
+            .rom-title {
+                font-size: 1.2rem;
+            }
+
+            .button-style {
+                display: block;
+                margin: 0.5rem auto;
+                min-width: unset;
+                width: 100%;
+            }
+            .download-button-wrapper {
+                flex-direction: column;
+            }
+
+            .ad-container {
+                padding: 0.8rem;
+            }
+            .toggle-button {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            .modal-content {
+                padding: 1.5rem;
+                width: 90%;
+            }
+            .modal-close {
+                font-size: 2rem;
+                top: 10px;
+                right: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                flex-direction: column; /* Stack menu items */
+                align-items: flex-end; /* Align to the right */
+                position: absolute;
+                top: 100%; /* Below the nav bar */
+                right: 0;
+                background: var(--nav-bg);
+                width: 100%;
+                padding: 1rem;
+                border-top: 1px solid var(--border-color);
+                box-shadow: 0 4px 20px var(--shadow);
+                display: none; /* Hidden by default */
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-toggle-icon { /* Hamburger icon */
+                display: block;
+                font-size: 1.8rem;
+                color: var(--nav-text);
+                cursor: pointer;
+            }
+            .nav-item {
+                width: 100%; /* Full width for stacked items */
+                text-align: right;
+            }
+
+            .container {
+                padding: 1rem;
+                padding-top: calc(1rem + 60px); /* Adjust for smaller nav height on mobile */
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .rom-card {
+                padding: 1rem;
+            }
+            .modal-content h3 { /* Smaller date heading on mobile */
+                font-size: 1.1rem;
+            }
+            .modal-content h4 { /* Smaller subsection heading on mobile */
+                font-size: 1rem;
+            }
+            .modal-content ul ul { /* Smaller nested list on mobile */
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hamburger icon for mobile */
+        .nav-toggle-icon {
+            display: none; /* Hidden on desktop */
+        }
+
+        /* Remove tap highlight on mobile for interactive elements */
+        .rom-card,
+        .button-style,
+        .toggle-button,
+        .modal-close,
+        .nav-item a,
+        .nav-brand {
+            -webkit-tap-highlight-color: transparent;
+            -moz-focus-inner: none;
+        }
+    </style>
 </head>
 <body lang="en">
 
-  <header>
-    <h1>intelgigabyte9299's Custom ROM Builds</h1>
-    <p>Dedicated Android ROM Developer for Samsung Galaxy A71 4G from Vietnam</p>
-  </header>
+    <nav>
+        <a href="index.html" class="nav-brand">intelgigabyte9299's Builds</a>
+        <div class="nav-toggle-icon" id="nav-toggle-icon"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li class="nav-item"><a href="#" id="changelog-btn"><i class="fas fa-file-alt"></i> ChangeLog Builds</a></li>
+            <li class="nav-item"><a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Group</a></li>
+            <li class="nav-item"><a href="https://github.com/intelgigabyte" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> My GitHub</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section>
+            <h2>🧠 About Me</h2>
+            <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyễn Mạnh Dũng), a Custom ROM developer and the official Maintainer of <b>crDroid</b> for Samsung Galaxy A71 4G. This website is where I share my projects and achievements. A special thanks to <b>anhdat1024</b> for being a great inspiration to me ♥.</p>
+            <p>With extensive experience in fine-tuning and optimizing the Android operating system, I constantly strive to deliver stable, fast, and feature-rich ROMs, helping users make the most of their devices.</p>
+        </section>
 
-  <div class="container">
-    <section>
-      <h2>🧠 About Me</h2>
-      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyễn Mạnh Dũng), a Custom ROM developer and the official Maintainer of <b>crDroid</b> for Samsung Galaxy A71 4G. This website is where I share my projects and achievements. A special thanks to <b>anhdat1024</b> for being a great inspiration to me ♥.</p>
-      <p>With extensive experience in fine-tuning and optimizing the Android operating system, I constantly strive to deliver stable, fast, and feature-rich ROMs, helping users make the most of their devices.</p>
-    </section>
+        <div class="ad-container">
+            <h2>📢 Advertisement</h2>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7471263191510520"
+                 data-ad-slot="YOUR_FIRST_AD_SLOT_ID_HERE"  data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
-    <div class="ad-container">
-      <h2>📢 Advertisement</h2>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7471263191510520"
-           data-ad-slot="YOUR_FIRST_AD_SLOT_ID_HERE"  data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+        <section>
+            <h2>📱 My ROMs</h2>
+            <p>Explore custom ROMs specially optimized for the Samsung Galaxy A71 4G, offering a pure Android experience, improved performance, and unique features.</p>
+            <div class="rom-grid">
+
+                <div class="rom-card" data-url="crdroid.html" tabindex="0" role="link" aria-label="Learn more about crDroid for Samsung Galaxy A71 4G">
+                    <div>
+                        <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
+                        <div class="rom-status">✅🧪 Official</div>
+                        <p class="rom-description">crDroid is a well-known custom ROM, based on LineageOS, focusing on performance, stability, and countless customizations. Enjoy a smooth Android experience with many advanced features not available on stock ROMs.</p>
+                    </div>
+                    <div class="download-button-wrapper">
+                        <a href="https://crdroid.net/a71/11" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
+                        <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download Recovery</a>
+                    </div>
+                </div>
+
+                <div class="rom-card" data-url="witaqua.html" tabindex="0" role="link" aria-label="Learn more about WitAqua for Samsung Galaxy A71 4G">
+                    <div>
+                        <div class="rom-title">WitAqua For Samsung Galaxy A71 4G</div>
+                        <div class="rom-status">❌🧪 Unofficial</div>
+                        <p class="rom-description">WitAqua brings a fresh perspective with a minimalist interface, focusing on gaming performance and battery optimization. It's an excellent choice for those seeking a lightweight and high-speed experience on their device.</p>
+                    </div>
+                    <div class="download-button-wrapper">
+                        <a href="https://pixeldrain.com/u/NS4cuAAH" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
+                        <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download Recovery</a>
+                    </div>
+                </div>
+
+                <div class="rom-card" data-url="risingosrevived.html" tabindex="0" role="link" aria-label="Learn more about RisingOS Revived for Samsung Galaxy A71 4G">
+                    <div>
+                        <div class="rom-title">RisingOS Revived For Samsung Galaxy A71 4G</div>
+                        <div class="rom-status">❌🧪 Unofficial</div>
+                        <p class="rom-description">RisingOS Revived is designed to bring your device back to life with superior performance and a modern user experience. Enjoy a finely tuned Android operating system, delivering stability and reliability.</p>
+                    </div>
+                    <div class="download-button-wrapper">
+                        <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/RisingOS_Revived-7.1-250711-0658-GAPPS-UNOFFICIAL-a71-ota.zip/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
+                        <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download Recovery</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>📖 General Installation Guide</h2>
+            <p>To ensure a smooth custom ROM installation process, please read the following guide carefully. Note that installing custom ROMs can be risky if not done correctly.</p>
+            <h3>Prerequisites:</h3>
+            <ul>
+                <li>Samsung Galaxy A71 4G phone (model a71) with an unlocked Bootloader.</li>
+                <li>ADB and Fastboot Drivers installed on your computer.</li>
+                <li>All important data on your phone has been backed up.</li>
+                <li>Phone battery is fully charged (at least 80%).</li>
+            </ul>
+            <h3>Basic Installation Steps:</h3>
+            <ol>
+                <li>Download the appropriate ROM and Recovery (TWRP) for your device from the links above.</li>
+                <li>Flash TWRP Recovery to your phone using Odin (on Windows) or via ADB/Fastboot (on Linux/macOS).</li>
+                <li>Reboot your phone into TWRP Recovery.</li>
+                <li>Perform a Wipe Data/Factory Reset (formatting data is recommended to avoid encryption issues).</li>
+                <li>Flash the downloaded ROM. Depending on the ROM, you might need to flash GApps (Google Apps) and Magisk (for root) additionally.</li>
+                <li>Reboot system and complete the initial setup process.</li>
+            </ol>
+            <p><b>Important Note:</b> Each ROM and Android version may have specific requirements or installation steps. Always refer to the detailed instructions on the ROM page or my Telegram group before proceeding.</p>
+        </section>
+
+        <div class="ad-container">
+            <h2>📢 Advertisement</h2>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7471263191510520"
+                 data-ad-slot="YOUR_SECOND_AD_SLOT_ID_HERE"  data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section>
+            <h2>📦 Supported Devices</h2>
+            <ul>
+                <li>Samsung Galaxy A71 4G (codename: a71)</li>
+                <li>Join the Telegram group below for download links, the latest updates, and direct support.</li>
+            </ul>
+        </section>
+
+        <div class="ad-container">
+            <h2>📢 Advertisement</h2>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7471263191510520"
+                 data-ad-slot="YOUR_THIRD_AD_SLOT_ID_HERE"  data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <section>
+            <h2>🛠️ Tools & Environment</h2>
+            <ul>
+                <li>Operating System: Ubuntu 25.04 LTS (on WSL2)</li>
+                <li>Build Tools: repo, git, clang, Android SDK Tools</li>
+                <li>Code Source: AOSP (Android Open Source Project), LineageOS</li>
+                <li>Continuous Integration (CI): GitHub Actions with OTA (Over-The-Air) and GPG Signing features to ensure build integrity.</li>
+                <li>All ROMs are built with meticulous care, ensuring the highest quality for users.</li>
+            </ul>
+        </section>
+
+        <section class="connect">
+            <h2>🔍 Find Me</h2>
+            <p>Connect with me on the following platforms for updates, technical support, or just to chat about the world of Custom ROMs!</p>
+            <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Donate)</a>
+            <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Donate)</a>
+            <a href="https://t.me/intelgigabyteshit" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Channel</a>
+            <a href="https://facebook.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
+        </section>
     </div>
 
-    <section>
-      <h2>📱 My ROMs</h2>
-      <p>Explore custom ROMs specially optimized for the Samsung Galaxy A71 4G, offering a pure Android experience, improved performance, and unique features.</p>
-      <div class="rom-grid">
+    <footer>
+        &copy; 2025 intelgigabyte9299. All Rights Reserved.
+    </footer>
 
-        <div class="rom-card" data-url="crdroid.html" tabindex="0" role="link" aria-label="Learn more about crDroid for Samsung Galaxy A71 4G">
-          <div>
-            <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
-            <div class="rom-status">✅🧪 Official</div>
-            <p class="rom-description">crDroid is a well-known custom ROM, based on LineageOS, focusing on performance, stability, and countless customizations. Enjoy a smooth Android experience with many advanced features not available on stock ROMs.</p>
-          </div>
-          <div class="download-button-wrapper">
-              <a href="https://crdroid.net/a71/11" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
-              <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download Recovery</a>
-          </div>
+    <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div id="changelogModal" class="modal">
+        <div class="modal-content">
+            <a href="#" class="modal-close" aria-label="Close changelog popup">&times;</a>
+            <h2>📋 Changelog Builds</h2>
+            <p>Here you'll find the latest updates and changes across all my custom ROM builds. Dates are in YYYY-MM-DD format.</p>
+
+            <h3>2025-07-20</h3>
+            <h4>* android</h4>
+            <ul>
+                <li>1d2de95 Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* bootable/recovery</h4>
+            <ul>
+                <li>3685c16 Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* device/lineage/sepolicy</h4>
+            <ul>
+                <li>5db88a2 Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* device/qcom/sepolicy_vndr/sm8750</h4>
+            <ul>
+                <li>89c7b4d7 qva: Extend extcon rules</li>
+            </ul>
+            <h4>* frameworks/av</h4>
+            <ul>
+                <li>cba44d8 Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* frameworks/base</h4>
+            <ul>
+                <li>e851ea4d9 Revert "Media: Limit Max album artwork bitmap size"</li>
+            </ul>
+            <h4>* hardware/lineage/interfaces</h4>
+            <ul>
+                <li>26489cd Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* hardware/qcom-caf/sm8750/audio/pal</h4>
+            <ul>
+                <li>b725b935 pal: opt-out libar-pal</li>
+            </ul>
+            <h4>* lineage-sdk</h4>
+            <ul>
+                <li>84cb9ff Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* packages/apps/crDroidSettings</h4>
+            <ul>
+                <li>7b7fdee crdroid: Remove dead nav bar animation</li>
+            </ul>
+            <h4>* system/core</h4>
+            <ul>
+                <li>032b78c Merge 'lineage-22.2' into 15.0</li>
+            </ul>
+            <h4>* vendor/lineage</h4>
+            <ul>
+                <li>afccf31 crdroid: Bump to version 11.7</li>
+            </ul>
+
+            <h3>2025-07-19</h3>
+            <h4>* packages/apps/Twelve</h4>
+            <ul>
+                <li>d465c3c Twelve: Trigger onFavoritesChanged on Jellyfin favorite toggle</li>
+            </ul>
+
+            <h3>2025-07-18</h3>
+            <h4>* external/ntfs-3g</h4>
+            <ul>
+                <li>e2415df4 config.h: Update version to 2022.10.3</li>
+            </ul>
+
+            <h3>2025-07-17</h3>
+            <h4>* device/samsung/sm7325-common</h4>
+            <ul>
+                <li>80e19c8 sm7325-common: overlay: Enable screen-off UDFPS unlock</li>
+            </ul>
+
+            <h3>2025-07-16</h3>
+            <h4>* device/samsung/a52sxq</h4>
+            <ul>
+                <li>efb51de a52sxq: Set UDFPS extension lib via soong config</li>
+            </ul>
+            <h4>* hardware/samsung</h4>
+            <ul>
+                <li>e79e923 Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Aperture</h4>
+            <ul>
+                <li>2f9d472 Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/AudioFX</h4>
+            <ul>
+                <li>381264b Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Camelot</h4>
+            <ul>
+                <li>841eccc Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Catapult</h4>
+            <ul>
+                <li>5e7895d Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Contacts</h4>
+            <ul>
+                <li>866430826 Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/DeskClock</h4>
+            <ul>
+                <li>353fcccc9 Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Glimpse</h4>
+            <ul>
+                <li>22730be Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Jelly</h4>
+            <ul>
+                <li>ebca57c Automatic translation import</li>
+            </ul>
+
+            <h3>2025-07-15</h3>
+            <p>No specific changes noted for this date.</p>
+
+            <h3>2025-07-14</h3>
+            <h4>* packages/apps/LMOFreeform</h4>
+            <ul>
+                <li>e62ecc3 Merge pull request #4 from tavukkdoner/15.0-4</li>
+            </ul>
+            <h4>* packages/apps/Launcher3</h4>
+            <ul>
+                <li>959b825 New translations (#497)</li>
+            </ul>
+
+            <h3>2025-07-13</h3>
+            <h4>* hardware/qcom-caf/sm8750/audio/agm</h4>
+            <ul>
+                <li>fd7e234 agm: include headers from pal</li>
+            </ul>
+            <h4>* packages/apps/TvSettings</h4>
+            <ul>
+                <li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>
+            </ul>
+
+            <h3>Archives / Older Builds:</h3>
+            <p>For previous changelogs or older build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
         </div>
-
-        <div class="rom-card" data-url="witaqua.html" tabindex="0" role="link" aria-label="Learn more about WitAqua for Samsung Galaxy A71 4G">
-            <div>
-              <div class="rom-title">WitAqua For Samsung Galaxy A71 4G</div>
-              <div class="rom-status">❌🧪 Unofficial</div>
-              <p class="rom-description">WitAqua brings a fresh perspective with a minimalist interface, focusing on gaming performance and battery optimization. It's an excellent choice for those seeking a lightweight and high-speed experience on their device.</p>
-            </div>
-            <div class="download-button-wrapper">
-                <a href="https://pixeldrain.com/u/NS4cuAAH" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
-                <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download Recovery</a>
-            </div>
-        </div>
-
-          <div class="rom-card" data-url="risingosrevived.html" tabindex="0" role="link" aria-label="Learn more about RisingOS Revived for Samsung Galaxy A71 4G">
-            <div>
-              <div class="rom-title">RisingOS Revived For Samsung Galaxy A71 4G</div>
-              <div class="rom-status">❌🧪 Unofficial</div>
-              <p class="rom-description">RisingOS Revived is designed to bring your device back to life with superior performance and a modern user experience. Enjoy a finely tuned Android operating system, delivering stability and reliability.</p>
-            </div>
-            <div class="download-button-wrapper">
-                <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/RisingOS_Revived-7.1-250711-0658-GAPPS-UNOFFICIAL-a71-ota.zip/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
-                <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download Recovery</a>
-            </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section>
-      <h2>📖 General Installation Guide</h2>
-      <p>To ensure a smooth custom ROM installation process, please read the following guide carefully. Note that installing custom ROMs can be risky if not done correctly.</p>
-      <h3>Prerequisites:</h3>
-      <ul>
-        <li>Samsung Galaxy A71 4G phone (model a71) with an unlocked Bootloader.</li>
-        <li>ADB and Fastboot Drivers installed on your computer.</li>
-        <li>All important data on your phone has been backed up.</li>
-        <li>Phone battery is fully charged (at least 80%).</li>
-      </ul>
-      <h3>Basic Installation Steps:</h3>
-      <ol>
-        <li>Download the appropriate ROM and Recovery (TWRP) for your device from the links above.</li>
-        <li>Flash TWRP Recovery to your phone using Odin (on Windows) or via ADB/Fastboot (on Linux/macOS).</li>
-        <li>Reboot your phone into TWRP Recovery.</li>
-        <li>Perform a Wipe Data/Factory Reset (formatting data is recommended to avoid encryption issues).</li>
-        <li>Flash the downloaded ROM. Depending on the ROM, you might need to flash GApps (Google Apps) and Magisk (for root) additionally.</li>
-        <li>Reboot system and complete the initial setup process.</li>
-      </ol>
-      <p><b>Important Note:</b> Each ROM and Android version may have specific requirements or installation steps. Always refer to the detailed instructions on the ROM page or my Telegram group before proceeding.</p>
-    </section>
-
-    <section>
-      <h2>📦 Supported Devices</h2>
-      <ul>
-        <li>Samsung Galaxy A71 4G (codename: a71)</li>
-        <li>Join the Telegram group below for download links, the latest updates, and direct support.</li>
-      </ul>
-    </section>
-
-    <div class="ad-container">
-      <h2>📢 Advertisement</h2>
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-7471263191510520"
-           data-ad-slot="YOUR_SECOND_AD_SLOT_ID_HERE"  data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
     </div>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement; // Target <html> element for theme classes
 
-    <section>
-      <h2>🛠️ Tools & Environment</h2>
-      <ul>
-        <li>Operating System: Ubuntu 25.04 LTS (on WSL2)</li>
-        <li>Build Tools: repo, git, clang, Android SDK Tools</li>
-        <li>Code Source: AOSP (Android Open Source Project), LineageOS</li>
-        <li>Continuous Integration (CI): GitHub Actions with OTA (Over-The-Air) and GPG Signing features to ensure build integrity.</li>
-        <li>All ROMs are built with meticulous care, ensuring the highest quality for users.</li>
-      </ul>
-    </section>
+            if (!themeToggle) {
+                console.error('ERROR: Theme toggle button not found!');
+                return;
+            }
 
-    <section class="connect">
-      <h2>🌐 Connect with Me</h2>
-      <p>Connect with me on the following platforms for updates, technical support, or just to chat about the world of Custom ROMs!</p>
-      <a href="https://github.com/intelgigabyte" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Support)</a>
-      <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Support)</a>
-      <a href="https://t.me/intelgigabyteshit" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Channel</a>
-      <a href="https://t.me/doraemonintelgigabyte" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Group</a>
-      <a href="https://facebook.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
-    </section>
-  </div>
+            // Set initial icon based on theme already applied by the head script
+            if (htmlElement.classList.contains('light-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
 
-  <footer>
-    &copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Made with ❤️ & AOSP love.
-  </footer>
+            const applyTheme = (theme) => {
+                if (theme === 'light-mode') {
+                    htmlElement.classList.remove('dark-mode');
+                    htmlElement.classList.add('light-mode');
+                    document.body.classList.remove('dark-mode'); // For backward compatibility
+                    document.body.classList.add('light-mode'); // For backward compatibility
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    htmlElement.classList.remove('light-mode');
+                    htmlElement.classList.add('dark-mode');
+                    document.body.classList.remove('light-mode'); // For backward compatibility
+                    document.body.classList.add('dark-mode'); // For backward compatibility
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+                localStorage.setItem('theme', theme);
+            };
 
-  <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
-    <i class="fas fa-moon"></i>
-  </button>
+            themeToggle.addEventListener('click', () => {
+                themeToggle.classList.add('animate');
+                setTimeout(() => {
+                    themeToggle.classList.remove('animate');
+                }, 300);
 
-  <script defer>
-    document.addEventListener('DOMContentLoaded', () => {
-      const themeToggle = document.getElementById('theme-toggle');
-      const htmlElement = document.documentElement;
+                if (htmlElement.classList.contains('dark-mode')) {
+                    applyTheme('light-mode');
+                } else {
+                    applyTheme('dark-mode');
+                }
+            });
 
-      if (!themeToggle) {
-        console.error('ERROR: Theme toggle button not found!');
-        return;
-      }
+            // --- ROM card click handler ---
+            const romCards = document.querySelectorAll('.rom-card');
 
-      // Set initial icon based on theme already applied by the head script
-      if (htmlElement.classList.contains('light-mode')) {
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      } else {
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      }
-
-      const applyTheme = (theme) => {
-        if (theme === 'light-mode') {
-          htmlElement.classList.remove('dark-mode');
-          htmlElement.classList.add('light-mode');
-          document.body.classList.remove('dark-mode'); // For backward compatibility
-          document.body.classList.add('light-mode'); // For backward compatibility
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-          htmlElement.classList.remove('light-mode');
-          htmlElement.classList.add('dark-mode');
-          document.body.classList.remove('light-mode'); // For backward compatibility
-          document.body.classList.add('dark-mode'); // For backward compatibility
-          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-        localStorage.setItem('theme', theme);
-      };
-
-      themeToggle.addEventListener('click', () => {
-        themeToggle.classList.add('animate');
-        setTimeout(() => {
-          themeToggle.classList.remove('animate');
-        }, 300);
-
-        if (htmlElement.classList.contains('dark-mode')) {
-          applyTheme('light-mode');
-        } else {
-          applyTheme('dark-mode');
-        }
-      });
-
-      // --- ROM card click handler ---
-      const romCards = document.querySelectorAll('.rom-card');
-
-      romCards.forEach(romCard => {
-          romCard.addEventListener('click', (event) => {
-              if (event.target.closest('.download-button')) {
-                  return;
-              }
-              const url = romCard.dataset.url;
-              if (url) {
-                  window.location.href = url;
-              } else {
-                  console.warn('No data-url found on rom-card for navigation.');
-              }
-          });
-          romCard.addEventListener('keypress', (event) => {
-              if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  if (!event.target.closest('.download-button')) {
+            romCards.forEach(romCard => {
+                romCard.addEventListener('click', (event) => {
+                    if (event.target.closest('.download-button')) {
+                        return;
+                    }
                     const url = romCard.dataset.url;
                     if (url) {
                         window.location.href = url;
+                    } else {
+                        console.warn('No data-url found on rom-card for navigation.');
                     }
-                  } else {
-                    event.target.click();
-                  }
-              }
-          });
-      });
-    });
-  </script>
+                });
+                romCard.addEventListener('keypress', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        if (!event.target.closest('.download-button')) {
+                            const url = romCard.dataset.url;
+                            if (url) {
+                                window.location.href = url;
+                            }
+                        } else {
+                            event.target.click();
+                        }
+                    }
+                });
+            });
+
+            // --- NEW: Changelog Modal Logic ---
+            const changelogBtn = document.getElementById('changelog-btn');
+            const changelogModal = document.getElementById('changelogModal');
+            const modalCloseBtn = document.querySelector('.modal-close');
+
+            if (changelogBtn) {
+                changelogBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    changelogModal.style.display = 'flex'; // Show the modal
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling on body
+                });
+            } else {
+                console.error('ERROR: Changelog button not found!');
+            }
+
+            if (modalCloseBtn) {
+                modalCloseBtn.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    changelogModal.style.display = 'none'; // Hide the modal
+                    document.body.style.overflow = ''; // Restore scrolling on body
+                });
+            } else {
+                console.error('ERROR: Modal close button not found!');
+            }
+
+            // Close modal when clicking outside of modal-content
+            changelogModal.addEventListener('click', (event) => {
+                if (event.target === changelogModal) {
+                    changelogModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // --- NEW: Mobile Navigation Toggle ---
+            const navToggleIcon = document.getElementById('nav-toggle-icon');
+            const navMenu = document.getElementById('nav-menu');
+
+            if (navToggleIcon && navMenu) {
+                navToggleIcon.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            } else {
+                console.error('ERROR: Navigation toggle elements not found!');
+            }
+        });
+    </script>
 </body>
 </html>

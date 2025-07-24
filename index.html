@@ -135,8 +135,10 @@
             top: 20px; /* Distance from the top */
             left: 50%; /* Center horizontally */
             transform: translateX(-50%); /* Adjust to true center */
-            max-width: 700px; /* Limit width */
-            width: calc(100% - 40px); /* Responsive width with side margins */
+            /* Using a combination of width and max-width for better control and to prevent "chìa ra ngoài" */
+            min-width: 320px; /* Ensure it's not too small on desktop */
+            max-width: 700px; /* Max width for the pill shape */
+            width: 95%; /* Make it 95% of viewport width, giving consistent margins */
             background: var(--nav-bg);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -149,6 +151,7 @@
             border-radius: var(--radius-nav-pill); /* Apply pill shape */
             border: 1px solid var(--border-color); /* Add border */
             transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-radius 0.3s ease, top 0.3s ease, width 0.3s ease, left 0.3s ease, transform 0.3s ease;
+            overflow-x: hidden; /* Prevent internal content from forcing horizontal overflow on nav itself */
         }
 
         .nav-brand {
@@ -579,6 +582,9 @@
             }
             .nav-menu {
                 gap: 0.8rem;
+                /* Allow menu items to wrap and center if they overflow on tablet */
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .nav-item a {
                 font-size: 0.95rem;
@@ -657,6 +663,7 @@
                 border-bottom: 1px solid var(--border-color); /* Add bottom border */
                 border-left: none;
                 border-right: none;
+                overflow-x: hidden; /* Ensure this is also applied on mobile */
             }
             .nav-brand {
                 font-size: 1.4rem; /* Slightly larger brand for mobile */
@@ -819,6 +826,18 @@
             </div>
         </section>
 
+        <div class="ad-container">
+            <h2>📢 Advertisement</h2>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7471263191510520"
+                 data-ad-slot="YOUR_SECOND_AD_SLOT_ID_HERE"  data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
         <section>
             <h2>📖 General Installation Guide</h2>
             <p>To ensure a smooth custom ROM installation process, please read the following guide carefully. Note that installing custom ROMs can be risky if not done correctly.</p>
@@ -846,7 +865,7 @@
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-7471263191510520"
-                 data-ad-slot="YOUR_SECOND_AD_SLOT_ID_HERE"  data-ad-format="auto"
+                 data-ad-slot="YOUR_THIRD_AD_SLOT_SLOT_ID_HERE"  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
@@ -885,19 +904,16 @@
         </section>
 
         <section class="connect">
-            <h2>🌐 Connect with Me</h2>
-            <p>Connect with me on the following platforms for updates, technical support, or just to chat about the world of Custom ROMs!</p>
-            <a href="https://github.com/intelgigabyte" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Support)</a>
-            <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Support)</a>
+            <h2>🔍ind Me
+            <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Donate)</a>
+            <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Donate)</a>
             <a href="https://t.me/intelgigabyteshit" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Channel</a>
-            <a href="https://t.me/doraemonintelgigabyte" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Group</a>
             <a href="https://facebook.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
         </section>
     </div>
 
     <footer>
-        &copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Made with ❤️ & AOSP love.
+        &copy; 2025 All Rights Reserved.
     </footer>
 
     <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
@@ -908,7 +924,7 @@
         <div class="modal-content">
             <a href="#" class="modal-close" aria-label="Close changelog popup">&times;</a>
             <h2>📋 Changelog Builds</h2>
-            <p>Here you'll find the latest updates and changes across all my custom ROM builds. Dates are in YYYY-MM-DD format.</p>
+            <p>Here you'll find the latest updates and changes across all my custom ROM builds</p>
 
             <h3>2025-07-20</h3>
             <h4>* android</h4>

@@ -28,6 +28,7 @@
       --card-bg: rgba(255, 255, 255, 0.08);
       --footer-text: #cbd5e1;
       --transition-speed: 0.6s;
+      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Màu mới cho hiệu ứng focus */
     }
 
     body.dark-mode {
@@ -40,6 +41,7 @@
       --text-dark: #f8fafc;
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
+      --focus-glow-color: rgba(59, 130, 246, 0.5);
     }
 
     body.light-mode {
@@ -54,6 +56,7 @@
       --text-light: #334155;
       --border-color: rgba(0, 0, 0, 0.1);
       --footer-text: #475569;
+      --focus-glow-color: rgba(29, 78, 216, 0.3); /* Màu khác cho light mode */
     }
 
     * {
@@ -188,6 +191,17 @@
       box-shadow: 0 10px 24px var(--shadow);
     }
 
+    /* Hiệu ứng khi thẻ ROM được focus hoặc active */
+    .rom-card:focus-visible { /* Cho phép outline mặc định chỉ khi dùng bàn phím */
+        outline: none; /* Bỏ outline mặc định */
+        box-shadow: 0 0 0 4px var(--focus-glow-color), 0 10px 24px var(--shadow); /* Thêm box-shadow tùy chỉnh */
+    }
+    .rom-card:active { /* Hiệu ứng khi click chuột xuống */
+        transform: translateY(-3px) scale(0.99);
+        box-shadow: 0 8px 20px var(--shadow);
+    }
+
+
     .rom-title {
       font-size: 1.3rem;
       font-weight: 600;
@@ -215,17 +229,28 @@
       border-radius: var(--radius-soft);
       text-decoration: none;
       font-weight: 500;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease; /* Thêm outline vào transition */
       box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Added shadow */
       text-align: center; /* Center text inside button */
       width: fit-content; /* Ensure button width fits content */
       min-width: 150px; /* Optional: minimum width for button */
+      outline: none; /* Bỏ outline mặc định cho nút */
     }
 
     .button-style:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
     }
+
+    /* Hiệu ứng khi nút được focus hoặc active */
+    .button-style:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+    .button-style:active { /* Hiệu ứng khi click chuột xuống */
+        transform: translateY(0px) scale(0.98);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+    }
+
 
     .download-button-wrapper {
         text-align: center;
@@ -386,6 +411,13 @@
         bottom: 15px;
         right: 15px;
       }
+    }
+
+    /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
+    .rom-card,
+    .button-style {
+        -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
+        -moz-focus-inner: none; /* Cho Firefox */
     }
   </style>
 </head>

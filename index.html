@@ -416,13 +416,13 @@
     <section>
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
-        <div class="rom-card" onclick="handleRomCardClick(event, 'crdroid.html')">
+        <div class="rom-card" data-url="crdroid.html">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
             <div class="rom-status">✅ Official</div>
           </div>
           <div class="download-button-wrapper">
-              <a href="https://crdroid.net/a71/11" class="button-style" data-is-download-button="true">Download Now</a>
+              <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now</a>
           </div>
         </div>
       </div>
@@ -513,18 +513,30 @@
           applyTheme('dark-mode');
         }
       });
-    });
 
-    // Handle ROM card click
-    function handleRomCardClick(event, url) {
-        // Check if the clicked element or its parent is the download button
-        if (event.target.closest('.button-style[data-is-download-button="true"]')) {
-            // If it's the download button, let its default link behavior happen
-            return;
-        }
-        // Otherwise, navigate to the specified URL (crdroid.html)
-        window.location.href = url;
-    }
+      // Handle ROM card click
+      const romCard = document.querySelector('.rom-card');
+      if (romCard) { // Ensure the element exists before adding listener
+          romCard.addEventListener('click', (event) => {
+              // Kiểm tra xem phần tử được click có phải là nút download hay không
+              // Sử dụng class 'download-button' mới để xác định
+              if (event.target.closest('.download-button')) {
+                  console.log('Clicked on download button, preventing card navigation.');
+                  // Nếu là nút download, không làm gì cả để liên kết của nút hoạt động
+                  return;
+              }
+              
+              // Lấy URL từ thuộc tính data-url của thẻ rom-card
+              const url = romCard.dataset.url;
+              if (url) {
+                  console.log('Navigating to:', url);
+                  window.location.href = url;
+              } else {
+                  console.warn('No data-url found on rom-card for navigation.');
+              }
+          });
+      }
+    });
   </script>
 </body>
 </html>

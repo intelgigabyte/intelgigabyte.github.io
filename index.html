@@ -6,6 +6,21 @@
   <title>intelgigabyte9299 Bio - Home</title>
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+
+      if (savedTheme === 'light-mode' || (!savedTheme && prefersLight)) {
+        document.documentElement.classList.add('light-mode');
+        document.body.classList.add('light-mode'); // Dùng body cho CSS hiện tại của bạn
+      } else {
+        document.documentElement.classList.add('dark-mode');
+        document.body.classList.add('dark-mode'); // Dùng body cho CSS hiện tại của bạn
+      }
+    })();
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
@@ -42,7 +57,7 @@
     }
 
     /* Light Mode Variables */
-    body.light-mode {
+    body.light-mode { /* Vẫn dùng body.light-mode vì CSS của bạn đã viết như vậy */
       --primary: #1d4ed8;
       --secondary: #6d28d9;
       --background-start: #e0f2fe;
@@ -57,6 +72,13 @@
       --footer-text-color: #475569;
       --focus-glow-color: rgba(29, 78, 216, 0.3);
     }
+
+    /* Cũng có thể định nghĩa light-mode/dark-mode cho html nếu muốn tùy biến cao hơn */
+    /* html.light-mode {
+      --primary: #1d4ed8;
+      // ...
+    } */
+
 
     * {
       box-sizing: border-box;
@@ -498,7 +520,7 @@
         <div class="rom-card" data-url="crdroid.html">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
-            <div class="rom-status">✅ Official</div>
+            <div class="rom-status">✅🧪 Official</div>
           </div>
           <div class="download-button-wrapper">
               <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now (ROM)</a>
@@ -509,7 +531,7 @@
         <div class="rom-card" data-url="risingosrevived.html">
             <div>
               <div class="rom-title">RisingOS Revived For Samsung Galaxy A71 4G</div>
-              <div class="rom-status">✅ Unofficial</div>
+              <div class="rom-status">❌🧪 Unofficial</div>
             </div>
             <div class="download-button-wrapper">
                 <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/RisingOS_Revived-7.1-250711-0658-GAPPS-UNOFFICIAL-a71-ota.zip/download" class="button-style download-button">Download Now (ROM)</a>
@@ -570,43 +592,84 @@
   </button>
 
   <script>
-    console.log('DOM Content Loaded event fired.'); // Debugging: Confirm script runs
+    console.log('DOM Content Loaded event fired.');
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('Inside DOMContentLoaded listener.'); // Debugging: Confirm listener executes
+      console.log('Inside DOMContentLoaded listener.');
 
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
 
       if (themeToggle) {
-          console.log('Theme toggle button found:', themeToggle); // Debugging: Log the found element
+          console.log('Theme toggle button found:', themeToggle);
       } else {
-          console.error('ERROR: Theme toggle button NOT found! Check ID in HTML.'); // Critical error if not found
+          console.error('ERROR: Theme toggle button NOT found! Check ID in HTML.');
       }
 
       // --- Theme Toggle Logic ---
       const applyTheme = (theme) => {
         if (theme === 'light-mode') {
+          document.documentElement.classList.remove('dark-mode'); // Cập nhật cả <html>
+          document.documentElement.classList.add('light-mode'); // Cập nhật cả <html>
           body.classList.remove('dark-mode');
           body.classList.add('light-mode');
           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          console.log('Applied light mode. Body classes:', body.className); // Debugging: Confirm class change
+          console.log('Applied light mode. Body classes:', body.className);
         } else {
+          document.documentElement.classList.remove('light-mode'); // Cập nhật cả <html>
+          document.documentElement.classList.add('dark-mode'); // Cập nhật cả <html>
           body.classList.remove('light-mode');
           body.classList.add('dark-mode');
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-          console.log('Applied dark mode. Body classes:', body.className); // Debugging: Confirm class change
+          console.log('Applied dark mode. Body classes:', body.className);
         }
         localStorage.setItem('theme', theme);
-        console.log('Saved theme to localStorage:', theme); // Debugging: Confirm localStorage update
+        console.log('Saved theme to localStorage:', theme);
       };
 
-      // Apply saved theme or default to system preference/dark mode on load
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        console.log('Found saved theme in localStorage:', savedTheme); // Debugging: Confirm saved theme
-        applyTheme(savedTheme);
+      // Dựa vào class hiện tại của body/html để đặt icon chính xác khi DOMContentLoaded
+      if (document.documentElement.classList.contains('light-mode')) {
+           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       } else {
-        // Check user's system preference for initial theme
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            console.log('System prefers light mode. Applying light mode.'); // Debugging: System preference
-           
+           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+      console.log('Initial button icon set based on current theme.');
+
+
+      if (themeToggle) { // Only add listener if button is found
+          themeToggle.addEventListener('click', () => {
+            console.log('Theme toggle button CLICKED!');
+            themeToggle.classList.add('animate');
+            setTimeout(() => {
+              themeToggle.classList.remove('animate');
+            }, 300);
+            // Lấy theme hiện tại từ documentElement (hoặc body) để quyết định chuyển đổi
+            if (document.documentElement.classList.contains('dark-mode')) {
+              applyTheme('light-mode');
+            } else {
+              applyTheme('dark-mode');
+            }
+          });
+      }
+
+      // --- ROM card click handler (không đổi) ---
+      const romCards = document.querySelectorAll('.rom-card');
+
+      romCards.forEach(romCard => {
+          romCard.addEventListener('click', (event) => {
+              if (event.target.closest('.download-button')) {
+                  // console.log('Clicked on a download button, preventing card navigation.');
+                  return; 
+              }
+              const url = romCard.dataset.url;
+              if (url) {
+                  // console.log('Navigating to:', url);
+                  window.location.href = url;
+              } else {
+                  // console.warn('No data-url found on rom-card for navigation.');
+              }
+          });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -13,12 +13,12 @@
   <style>
     /* Global Variables - Unified for consistency */
     :root {
-      --primary: #3b82f6;
-      --secondary: #9333ea;
-      --bg-glass: rgba(255, 255, 255, 0.15);
+      --primary: #3b82f6; /* Blue */
+      --secondary: #9333ea; /* Purple */
+      --bg-glass: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
       --shadow: rgba(0, 0, 0, 0.2);
-      --text-dark: #0f172a;
-      --text-light: #f8fafc;
+      --text-dark-mode: #f8fafc; /* Light text for dark mode */
+      --text-light-mode: #0f172a; /* Dark text for light mode */
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
@@ -39,8 +39,8 @@
       --section-bg: rgba(255, 255, 255, 0.08);
       --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
-      --text-light: #f8fafc;
-      --text-dark: #f8fafc; /* Text in sections will be light in dark mode */
+      --text-main: var(--text-dark-mode); /* General text color for sections etc. */
+      --text-heading: var(--text-dark-mode); /* Heading text color */
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
       --focus-glow-color: rgba(59, 130, 246, 0.5);
@@ -55,8 +55,8 @@
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
-      --text-dark: #0f172a; /* Text in sections will be dark in light mode */
-      --text-light: #334155; /* General text color for content */
+      --text-main: #334155; /* General text color for sections etc. */
+      --text-heading: var(--text-light-mode); /* Heading text color */
       --border-color: rgba(0, 0, 0, 0.1);
       --footer-text: #475569;
       --focus-glow-color: rgba(29, 78, 216, 0.3);
@@ -70,13 +70,11 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      /* Use background-image for linear gradient and transition it */
       background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-light); /* Default text color for body, sections will override for text-dark */
+      color: var(--text-main); /* Use --text-main for general body text */
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      /* Smooth transition for theme changes */
       transition: background-image var(--transition-speed) ease, 
                   color var(--transition-speed) ease;
     }
@@ -93,7 +91,6 @@
       overflow: hidden;
       position: relative;
       z-index: 1;
-      /* Ensure header background transitions with theme */
       transition: background var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
     }
 
@@ -154,11 +151,9 @@
       border: 1px solid var(--border-color);
       animation: fadeIn 1s ease-out forwards;
       opacity: 0;
-      /* Ensure transition for all relevant properties */
       transition: background var(--transition-speed) ease, 
                   border-color var(--transition-speed) ease, 
-                  box-shadow var(--transition-speed) ease,
-                  color var(--transition-speed) ease; /* Text color transition for section content */
+                  box-shadow var(--transition-speed) ease;
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -170,26 +165,26 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark); /* This should change with theme */
+      color: var(--text-heading); /* Use --text-heading for h2 */
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
       transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
     }
 
-    p { /* Ensure paragraphs within sections also transition color */
-        color: var(--text-light);
+    p { 
+        color: var(--text-main); /* Use --text-main for paragraphs */
         transition: color var(--transition-speed) ease;
     }
 
-    p b { /* Bold text inside paragraphs should also transition color */
-        color: var(--primary); /* Maintain primary color for bold text */
+    p b { 
+        color: var(--primary); /* Bold text uses primary color */
         transition: color var(--transition-speed) ease;
     }
 
     ul {
       padding-left: 1.2rem;
       line-height: 1.7;
-      color: var(--text-light); /* Ensure list items transition color */
+      color: var(--text-main); /* Use --text-main for list items */
       transition: color var(--transition-speed) ease;
     }
 
@@ -203,7 +198,7 @@
       background: var(--card-bg);
       border-radius: var(--radius-card);
       padding: 1.5rem;
-      color: var(--text-light); /* Ensure text in card transitions */
+      color: var(--text-main); /* Use --text-main for rom-card text */
       backdrop-filter: blur(16px);
       transition: transform 0.3s ease, box-shadow 0.3s ease, 
                   background var(--transition-speed) ease, 
@@ -248,7 +243,7 @@
     /* Style for all generic buttons/links */
     .button-style {
       display: inline-block;
-      margin: 0.5rem 0.5rem; /* Adjust margin for multiple buttons */
+      margin: 0.5rem 0.5rem; 
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
@@ -261,7 +256,7 @@
       width: fit-content;
       min-width: 150px;
       outline: none;
-      white-space: nowrap; /* Prevent text wrapping for button labels like "Download Now (ROM)" */
+      white-space: nowrap; 
     }
 
     .button-style:hover {
@@ -280,10 +275,10 @@
     .download-button-wrapper {
         text-align: center;
         margin-top: auto;
-        display: flex; /* Use flexbox for multiple buttons */
+        display: flex; 
         justify-content: center;
-        flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-        gap: 0.5rem; /* Space between buttons */
+        flex-wrap: wrap; 
+        gap: 0.5rem; 
     }
 
     footer {
@@ -318,7 +313,7 @@
       z-index: 1000;
       transform: scale(1);
       outline: none;
-      right: 20px; /* Only one toggle button, position it directly */
+      right: 20px; 
     }
 
     .toggle-button:hover {
@@ -418,13 +413,13 @@
       }
 
       .button-style {
-        display: block; /* Make buttons stack on small screens */
-        margin: 0.5rem auto; /* Center them */
-        min-width: unset; /* Remove min-width constraint */
-        width: 100%; /* Take full width */
+        display: block; 
+        margin: 0.5rem auto; 
+        min-width: unset; 
+        width: 100%; 
       }
       .download-button-wrapper {
-        flex-direction: column; /* Stack buttons vertically */
+        flex-direction: column; 
       }
 
 
@@ -592,11 +587,17 @@
         localStorage.setItem('theme', theme);
       };
 
+      // Apply saved theme or default to dark mode on load
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        applyTheme('dark-mode'); // Default to dark mode if nothing saved
+        // Check user's system preference for initial theme
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+            applyTheme('light-mode');
+        } else {
+            applyTheme('dark-mode'); // Default to dark mode
+        }
       }
 
       themeToggle.addEventListener('click', () => {
@@ -612,15 +613,27 @@
       });
 
       // --- ROM card click handler ---
-      // Select all rom-cards
       const romCards = document.querySelectorAll('.rom-card');
 
       romCards.forEach(romCard => {
           romCard.addEventListener('click', (event) => {
-              // Check if the click originated from a download button or its child (icon/text)
+              // Check if the click originated from a download button (or its child) inside the current romCard
               if (event.target.closest('.download-button')) {
                   // If clicked on download button, let its href handle the navigation
                   console.log('Clicked on a download button, preventing card navigation.');
                   return; 
               }
-           
+              // Otherwise, navigate based on data-url
+              const url = romCard.dataset.url;
+              if (url) {
+                  console.log('Navigating to:', url);
+                  window.location.href = url;
+              } else {
+                  console.warn('No data-url found on rom-card for navigation.');
+              }
+          });
+      });
+    });
+  </script>
+</body>
+</html>

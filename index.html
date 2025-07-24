@@ -72,7 +72,9 @@
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+      /* Đảm bảo transition cho các thuộc tính màu sắc và nền */
+      transition: background var(--transition-speed) ease, 
+                  color var(--transition-speed) ease;
     }
 
     header {
@@ -146,7 +148,11 @@
       border: 1px solid var(--border-color);
       animation: fadeIn 1s ease-out forwards;
       opacity: 0;
-      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      /* Đảm bảo transition cho các thuộc tính màu sắc và nền */
+      transition: background var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease,
+                  color var(--transition-speed) ease; /* Thêm color transition */
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -177,7 +183,10 @@
       padding: 1.5rem;
       color: var(--text-light);
       backdrop-filter: blur(16px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, 
+                  background var(--transition-speed) ease, 
+                  color var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease;
       box-shadow: 0 6px 18px var(--shadow);
       border: 1px solid var(--border-color);
       display: flex; /* Use flexbox for layout */
@@ -206,12 +215,14 @@
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.3rem;
+      transition: color var(--transition-speed) ease; /* Thêm transition cho title */
     }
 
     .rom-status {
       font-size: 0.95rem;
       opacity: 0.85;
       margin-bottom: 1rem; /* Space before button */
+      transition: color var(--transition-speed) ease; /* Thêm transition cho status */
     }
 
     ul {
@@ -264,6 +275,7 @@
       padding: 2rem;
       font-size: 0.9rem;
       color: var(--footer-text);
+      /* Đảm bảo transition cho màu chữ footer */
       transition: color var(--transition-speed) ease;
     }
 
@@ -284,14 +296,29 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow);
-      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), box-shadow 0.2s ease;
+      /* Bổ sung transition cho transform và box-shadow */
+      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                  box-shadow 0.2s ease, 
+                  background 0.2s ease, /* Thêm transition cho background */
+                  color 0.2s ease, /* Thêm transition cho màu icon */
+                  outline 0.2s ease; /* Thêm transition cho outline */
       z-index: 1000;
       transform: scale(1);
+      outline: none; /* Bỏ outline mặc định cho nút */
     }
 
     .theme-toggle:hover {
       transform: scale(1.1);
       box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    /* Hiệu ứng khi nút chỉnh sáng/tối được focus hoặc active */
+    .theme-toggle:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
+    }
+    .theme-toggle:active { /* Hiệu ứng khi click chuột xuống */
+        transform: scale(0.95);
+        box-shadow: 0 3px 8px var(--shadow);
     }
 
     .theme-toggle.animate {
@@ -311,6 +338,10 @@
       opacity: 0;
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 1.2s;
+      /* Đảm bảo transition cho các thuộc tính màu sắc và nền */
+      transition: background var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease;
     }
 
     /* Animations */
@@ -415,7 +446,8 @@
 
     /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
     .rom-card,
-    .button-style {
+    .button-style,
+    .theme-toggle { /* Thêm .theme-toggle vào đây */
         -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
         -moz-focus-inner: none; /* Cho Firefox */
     }

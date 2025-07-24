@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RisingOS Revived - intelgigabyte9299</title>
+  <title>RisingOS Revived - Custom ROM by intelgigabyte9299 for Galaxy A71 4G</title>
+  <meta name="description" content="Explore RisingOS Revived, an unofficial custom ROM based on LineageOS for the Samsung Galaxy A71 4G, developed by intelgigabyte9299. Discover its key features and screenshots.">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" as="style" />
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" />
 
   <script>
     (function() {
@@ -15,66 +17,77 @@
 
       if (savedTheme === 'light-mode' || (!savedTheme && prefersLight)) {
         document.documentElement.classList.add('light-mode');
-        document.body.classList.add('light-mode');
       } else {
         document.documentElement.classList.add('dark-mode');
-        document.body.classList.add('dark-mode');
       }
     })();
   </script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
      crossorigin="anonymous"></script>
+
   <style>
     /* Global Variables - Unified for consistency */
     :root {
-      --primary: #3b82f6;
-      --secondary: #9333ea;
-      --bg-glass: rgba(255, 255, 255, 0.15);
-      --shadow: rgba(0, 0, 0, 0.2);
-      --text-dark: #0f172a; /* Màu chữ cho nền sáng */
-      --text-light: #f8fafc; /* Màu chữ cho nền tối */
+      /* Base Colors */
+      --primary: #3b82f6; /* Blue */
+      --secondary: #9333ea; /* Purple */
+      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
+
+      /* Glassmorphism Elements Base */
+      --bg-glass-base: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
+      --card-bg-base: rgba(255, 255, 255, 0.08);
+
+      /* Text Colors Base */
+      --color-text-light-base: #f8fafc; /* For dark backgrounds (text is light) */
+      --color-text-dark-base: #0f172a; /* For light backgrounds (text is dark) */
+
+      /* Border Colors Base */
+      --border-color-base: rgba(255, 255, 255, 0.2);
+
+      /* Shadows Base */
+      --shadow-base: rgba(0, 0, 0, 0.2);
+
+      /* Radii */
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
-      --background-start: #0f172a; /* Mặc định dark mode */
-      --background-end: #1e293b; /* Mặc định dark mode */
-      --section-bg: var(--bg-glass);
-      --border-color: rgba(255, 255, 255, 0.2);
-      --card-bg: rgba(255, 255, 255, 0.08);
-      --footer-text: #cbd5e1;
-      --transition-speed: 0.6s;
-      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Màu mới cho hiệu ứng focus */
-    }
 
-    /* Dark Mode Variables - (Giữ nguyên hoặc tùy chỉnh nếu muốn khác Root) */
-    body.dark-mode {
+      /* Transition Speed */
+      --transition-speed: 0.6s;
+
+      /* Default (Dark Mode) Themed Variables - Applied to :root (html) directly */
       --background-start: #0f172a;
       --background-end: #1e293b;
-      --section-bg: rgba(255, 255, 255, 0.08);
+      --section-bg: var(--bg-glass-base);
       --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
-      --text-light: #f8fafc; /* Trong dark mode, text-light vẫn là màu chữ chính */
-      --text-dark: #f8fafc; /* Nếu bạn dùng text-dark cho tiêu đề, nó vẫn phải sáng */
       --border-color: rgba(255, 255, 255, 0.15);
-      --footer-text: #94a3b8;
-      --focus-glow-color: rgba(59, 130, 246, 0.5);
+      --footer-text-color: #94a3b8;
+
+      --text-main: var(--color-text-light-base); /* Used for general text */
+      --text-heading: var(--color-text-light-base); /* Used for headings in dark mode */
     }
 
-    /* Light Mode Variables */
-    body.light-mode {
+    /* Light Mode Variables - Applied to html.light-mode */
+    html.light-mode {
       --primary: #1d4ed8;
       --secondary: #6d28d9;
+      --focus-glow-color: rgba(29, 78, 216, 0.3);
+
       --background-start: #e0f2fe;
       --background-end: #d1e9fb;
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
-      --text-dark: #0f172a; /* Trong light mode, text-dark là màu chữ chính */
-      --text-light: #334155; /* Và text-light sẽ tối hơn một chút */
       --border-color: rgba(0, 0, 0, 0.1);
-      --footer-text: #475569;
-      --focus-glow-color: rgba(29, 78, 216, 0.3); /* Màu khác cho light mode */
+      --footer-text-color: #475569;
+
+      --text-main: #334155; /* Used for general text in light mode */
+      --text-heading: var(--color-text-dark-base); /* Used for headings in light mode */
     }
 
     /* Base Styles */
@@ -86,14 +99,14 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-light); /* Mặc định cho toàn bộ body, sẽ thay đổi bởi theme */
+      background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
+      color: var(--text-main);
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      /* Smooth transition for theme changes */
-      transition: background var(--transition-speed) ease, 
-                  color var(--transition-speed) ease;
+      transition: background-image var(--transition-speed) ease,
+                  color var(--transition-speed) ease,
+                  background-color var(--transition-speed) ease;
       display: flex; /* Ensure body is flex to push footer down */
       flex-direction: column;
     }
@@ -118,8 +131,8 @@
       animation: fadeIn 1s ease-out forwards; /* Apply animation */
       opacity: 0; /* Initial opacity for animation */
       /* Smooth transition for theme changes */
-      transition: background var(--transition-speed) ease, 
-                  border-color var(--transition-speed) ease, 
+      transition: background var(--transition-speed) ease,
+                  border-color var(--transition-speed) ease,
                   box-shadow var(--transition-speed) ease,
                   color var(--transition-speed) ease; /* Add color transition */
     }
@@ -128,8 +141,8 @@
     .content-section:nth-of-type(1) { animation-delay: 0.2s; }
     .content-section:nth-of-type(2) { animation-delay: 0.4s; }
     .content-section:nth-of-type(3) { animation-delay: 0.6s; }
-    .content-section:nth-of-type(4) { animation-delay: 0.8s; } 
-    .content-section:nth-of-type(5) { animation-delay: 1s; } 
+    .content-section:nth-of-type(4) { animation-delay: 0.8s; }
+    .content-section:nth-of-type(5) { animation-delay: 1s; }
 
 
     /* Specific Styles for RisingOS Revived content */
@@ -147,7 +160,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 2.8rem;
       font-weight: 700;
-      color: var(--primary); /* H1 luôn màu primary */
+      color: var(--primary); /* H1 always primary color */
       text-align: center;
       margin-top: 0;
       margin-bottom: 2rem;
@@ -160,7 +173,7 @@
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-dark); /* H2 dùng text-dark */
+      color: var(--text-heading); /* H2 uses text-heading */
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
       transition: color var(--transition-speed) ease;
@@ -169,7 +182,7 @@
     .info p {
       margin-bottom: 0.5rem;
       font-size: 1rem;
-      color: var(--text-light); /* Paragraphs dùng text-light */
+      color: var(--text-main); /* Paragraphs use text-main */
       transition: color var(--transition-speed) ease; /* Smooth transition for text */
     }
     .info strong {
@@ -180,7 +193,7 @@
     ul {
       padding-left: 1.2rem;
       line-height: 1.7;
-      color: var(--text-light); /* List items dùng text-light */
+      color: var(--text-main); /* List items use text-main */
       transition: color var(--transition-speed) ease; /* Smooth transition for list text */
     }
 
@@ -211,20 +224,20 @@
       text-decoration: none;
       border-radius: var(--radius-soft);
       font-weight: 600;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease; /* Thêm outline vào transition */
+      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       text-align: center;
-      outline: none; /* Bỏ outline mặc định */
+      outline: none; /* Remove default outline */
     }
     .back:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     }
-    /* Hiệu ứng khi nút Back được focus hoặc active */
-    .back:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+    /* Effects when Back button is focused or active */
+    .back:focus-visible { /* Show only when using keyboard */
         box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 15px rgba(0, 0, 0, 0.4);
     }
-    .back:active { /* Hiệu ứng khi click chuột xuống */
+    .back:active { /* Effect when mouse clicked down */
         transform: translateY(0px) scale(0.98);
         box-shadow: 0 3px 8px rgba(0,0,0,0.4);
     }
@@ -233,7 +246,7 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: var(--footer-text);
+      color: var(--footer-text-color); /* Uses footer-text-color from root/light-mode */
       transition: color var(--transition-speed) ease;
       margin-top: 2rem;
     }
@@ -255,15 +268,15 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow);
-      /* Bổ sung transition cho transform và box-shadow */
-      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
-                  box-shadow 0.2s ease, 
-                  background 0.2s ease, /* Thêm transition cho background */
-                  color 0.2s ease, /* Thêm transition cho màu icon */
-                  outline 0.2s ease; /* Thêm transition cho outline */
+      /* Add transition for transform and box-shadow */
+      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1),
+                  box-shadow 0.2s ease,
+                  background var(--transition-speed) ease, /* Add transition for background */
+                  color var(--transition-speed) ease, /* Add transition for icon color */
+                  outline 0.2s ease; /* Add transition for outline */
       z-index: 1000;
       transform: scale(1);
-      outline: none; /* Bỏ outline mặc định cho nút */
+      outline: none; /* Remove default outline for button */
     }
 
     .theme-toggle:hover {
@@ -271,11 +284,11 @@
       box-shadow: 0 6px 16px var(--shadow);
     }
 
-    /* Hiệu ứng khi nút chỉnh sáng/tối được focus hoặc active */
-    .theme-toggle:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+    /* Effects when theme toggle button is focused or active */
+    .theme-toggle:focus-visible { /* Show only when using keyboard */
         box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
     }
-    .theme-toggle:active { /* Hiệu ứng khi click chuột xuống */
+    .theme-toggle:active { /* Effect when mouse clicked down */
         transform: scale(0.95);
         box-shadow: 0 3px 8px var(--shadow);
     }
@@ -355,34 +368,34 @@
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 0.8s; /* Adjust delay as needed, after content sections */
       /* Smooth transition for theme changes */
-      transition: background var(--transition-speed) ease, 
-                  border-color var(--transition-speed) ease, 
+      transition: background var(--transition-speed) ease,
+                  border-color var(--transition-speed) ease,
                   box-shadow var(--transition-speed) ease;
     }
 
-    /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
+    /* Remove tap highlight on mobile for interactive elements */
     .back,
     .theme-toggle {
-        -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
-        -moz-focus-inner: none; /* Cho Firefox */
+        -webkit-tap-highlight-color: transparent; /* For Chrome/Safari on Android/iOS */
+        -moz-focus-inner: none; /* For Firefox */
     }
   </style>
 </head>
-<body>
+<body lang="en">
   <div class="container">
-    <img src="https://i.postimg.cc/2yNkYz0B/20250724-124819.jpg" alt="RisingOS Revived Banner" class="banner"/>
+    <img src="https://i.postimg.cc/2yNkYz0B/20250724-124819.jpg" alt="RisingOS Revived Banner for Samsung Galaxy A71 4G" class="banner"/>
     <h1>RisingOS Revived</h1>
 
     <div class="content-section">
       <h2>ℹ️ Information</h2>
       <div class="info">
-        <p><strong>Status:</strong> ❌🧪 Unfficial (based on LineageOS)</p>
+        <p><strong>Status:</strong> ❌🧪 Unofficial (based on LineageOS)</p>
         <p><strong>Supported device:</strong> Samsung Galaxy A71 4G</p>
       </div>
     </div>
 
     <div class="ad-container">
-      <h2>📢 Advertisement</h2> 
+      <h2>📢 Advertisement</h2>
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
@@ -406,7 +419,7 @@
           <li>Audio tools: music ticker, status bar lyrics, pulse visualizer</li>
           <li>File system support: exFAT, NTFS, ZRAM (unofficial builds)</li>
           <li>Hardware tools: flashlight strength, refresh rate OC, GPU undervolt</li>
-          <li>Misc utilities: Game space, pocket mode, edge lighting, now bar</li>
+          <li>Miscellaneous utilities: Game space, pocket mode, edge lighting, now bar</li>
           <li>OTA support for updates and changelogs via built-in updater</li>
         </ul>
       </div>
@@ -415,11 +428,11 @@
     <div class="content-section">
       <h2>🖼️ Screenshots</h2>
       <div class="images">
-        <img src="https://i.postimg.cc/br5WHdkG/20250724-104356.jpg" alt="Screenshot 1"/>
-        <img src="https://i.postimg.cc/W4VK7BF7/20250724-104357.jpg" alt="Screenshot 2"/>
-        <img src="https://i.postimg.cc/bvR5Vm1f/20250724-104359.jpg" alt="Screenshot 3"/>
-        <img src="https://i.postimg.cc/V6LVxXFr/20250724-104401.jpg" alt="Screenshot 4"/>
-        <img src="https://i.postimg.cc/HxZhdjSS/20250724-104403.jpg" alt="Screenshot 5"/>
+        <img src="https://i.postimg.cc/br5WHdkG/20250724-104356.jpg" alt="RisingOS Revived Screenshot 1: Home screen with custom wallpaper" loading="lazy"/>
+        <img src="https://i.postimg.cc/W4VK7BF7/20250724-104357.jpg" alt="RisingOS Revived Screenshot 2: Customized Quick Settings panel" loading="lazy"/>
+        <img src="https://i.postimg.cc/bvR5Vm1f/20250724-104359.jpg" alt="RisingOS Revived Screenshot 3: Settings menu showcasing customization options" loading="lazy"/>
+        <img src="https://i.postimg.cc/V6LVxXFr/20250724-104401.jpg" alt="RisingOS Revived Screenshot 4: Lock screen with unique clock style" loading="lazy"/>
+        <img src="https://i.postimg.cc/HxZhdjSS/20250724-104403.jpg" alt="RisingOS Revived Screenshot 5: App drawer with themed icons" loading="lazy"/>
       </div>
     </div>
 
@@ -427,7 +440,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with 😍 & Android love.
+    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & Android love.
   </footer>
 
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark and light mode">
@@ -435,65 +448,47 @@
   </button>
 
   <script>
-    console.log('DOM Content Loaded event fired for RisingOS Revived.html.');
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('Inside DOMContentLoaded listener for RisingOS Revived.html.');
-
       const themeToggle = document.getElementById('theme-toggle');
-      const body = document.body; // Vẫn cần body để thao tác lớp
+      const htmlElement = document.documentElement; // Target <html> element for theme classes
 
-      if (themeToggle) {
-          console.log('Theme toggle button found:', themeToggle);
-      } else {
-          console.error('ERROR: Theme toggle button NOT found! Check ID in HTML.');
+      if (!themeToggle) {
+        console.error('ERROR: Theme toggle button not found!');
+        return;
       }
 
-      // --- Theme Toggle Logic ---
+      // Set initial icon based on theme already applied by the head script
+      if (htmlElement.classList.contains('light-mode')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+
       const applyTheme = (theme) => {
         if (theme === 'light-mode') {
-          document.documentElement.classList.remove('dark-mode'); // Cập nhật cả <html>
-          document.documentElement.classList.add('light-mode'); // Cập nhật cả <html>
-          body.classList.remove('dark-mode');
-          body.classList.add('light-mode');
+          htmlElement.classList.remove('dark-mode');
+          htmlElement.classList.add('light-mode');
           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          console.log('Applied light mode. Body classes:', body.className);
         } else {
-          document.documentElement.classList.remove('light-mode'); // Cập nhật cả <html>
-          document.documentElement.classList.add('dark-mode'); // Cập nhật cả <html>
-          body.classList.remove('light-mode');
-          body.classList.add('dark-mode');
+          htmlElement.classList.remove('light-mode');
+          htmlElement.classList.add('dark-mode');
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-          console.log('Applied dark mode. Body classes:', body.className);
         }
         localStorage.setItem('theme', theme);
-        console.log('Saved theme to localStorage:', theme);
       };
 
-      // Dựa vào class hiện tại của body/html để đặt icon chính xác khi DOMContentLoaded
-      if (document.documentElement.classList.contains('light-mode')) {
-           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      } else {
-           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      }
-      console.log('Initial button icon set based on current theme for RisingOS Revived.html.');
+      themeToggle.addEventListener('click', () => {
+        themeToggle.classList.add('animate');
+        setTimeout(() => {
+          themeToggle.classList.remove('animate');
+        }, 300);
 
-
-      if (themeToggle) { // Only add listener if button is found
-          themeToggle.addEventListener('click', () => {
-            console.log('Theme toggle button CLICKED on RisingOS Revived.html!');
-            themeToggle.classList.add('animate');
-            setTimeout(() => {
-              themeToggle.classList.remove('animate');
-            }, 300);
-
-            // Lấy theme hiện tại từ documentElement (hoặc body) để quyết định chuyển đổi
-            if (document.documentElement.classList.contains('dark-mode')) {
-              applyTheme('light-mode');
-            } else {
-              applyTheme('dark-mode');
-            }
-          });
-      }
+        if (htmlElement.classList.contains('dark-mode')) {
+          applyTheme('light-mode');
+        } else {
+          applyTheme('dark-mode');
+        }
+      });
     });
   </script>
 </body>

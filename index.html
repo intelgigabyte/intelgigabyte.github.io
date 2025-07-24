@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>intelgigabyte9299 Bio - Home</title>
+  <title>intelgigabyte9299 Bio - Custom ROMs for Galaxy A71 4G</title>
+  <meta name="description" content="Official and unofficial custom ROMs by intelgigabyte9299 for Samsung Galaxy A71 4G. Discover crDroid, WitAqua, RisingOS Revived and more, along with guides and support resources.">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" as="style" />
@@ -12,7 +13,6 @@
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
-      // Check for user's system preference if no theme is saved
       const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
 
       if (savedTheme === 'light-mode' || (!savedTheme && prefersLight)) {
@@ -20,8 +20,6 @@
       } else {
         document.documentElement.classList.add('dark-mode');
       }
-      // Note: Body class is also added/removed by the main script for backward compatibility with existing CSS
-      // but ideally, all theme-dependent CSS variables should be on :root (html)
     })();
   </script>
 
@@ -64,14 +62,14 @@
       /* Default (Dark Mode) Themed Variables - Applied to :root (html) directly */
       --background-start: #0f172a;
       --background-end: #1e293b;
-      --section-bg: var(--bg-glass-base); /* rgba(255, 255, 255, 0.15) */
-      --card-bg: rgba(255, 255, 255, 0.05); /* Slightly darker than section-bg for contrast */
-      --shadow: rgba(0, 0, 0, 0.4); /* Stronger shadow in dark mode */
+      --section-bg: var(--bg-glass-base);
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --shadow: rgba(0, 0, 0, 0.4);
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text-color: #94a3b8;
 
-      --text-main: var(--color-text-light-base); /* Main body text in dark mode is light */
-      --text-heading: var(--color-text-light-base); /* Headings in dark mode are light */
+      --text-main: var(--color-text-light-base);
+      --text-heading: var(--color-text-light-base);
     }
 
     /* Light Mode Variables - Applied to html.light-mode */
@@ -84,12 +82,12 @@
       --background-end: #d1e9fb;
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
-      --shadow: rgba(0, 0, 0, 0.15); /* Lighter shadow in light mode */
+      --shadow: rgba(0, 0, 0, 0.15);
       --border-color: rgba(0, 0, 0, 0.1);
       --footer-text-color: #475569;
 
-      --text-main: #334155; /* Main body text in light mode is dark */
-      --text-heading: var(--color-text-dark-base); /* Headings in light mode are dark */
+      --text-main: #334155;
+      --text-heading: var(--color-text-dark-base);
     }
 
     /* Base Styles */
@@ -102,11 +100,10 @@
     body {
       font-family: 'Inter', sans-serif;
       background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-main); /* Dynamically changes with theme */
+      color: var(--text-main);
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      /* Smooth transition for theme changes on relevant properties */
       transition: background-image var(--transition-speed) ease,
                   color var(--transition-speed) ease,
                   background-color var(--transition-speed) ease;
@@ -148,7 +145,7 @@
       margin-bottom: 0.8rem;
       text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       line-height: 1.1;
-      color: white; /* H1 in header always white for strong contrast */
+      color: white;
       transition: all 0.5s ease;
     }
 
@@ -165,7 +162,7 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      color: var(--color-text-light-base); /* Text in header P is also light (always) */
+      color: var(--color-text-light-base);
       transition: color var(--transition-speed) ease;
     }
 
@@ -189,7 +186,7 @@
       transition: background var(--transition-speed) ease,
                   border-color var(--transition-speed) ease,
                   box-shadow var(--transition-speed) ease,
-                  color var(--transition-speed) ease; /* Ensure section text color transitions */
+                  color var(--transition-speed) ease;
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -197,44 +194,56 @@
     section:nth-of-type(3) { animation-delay: 0.6s; }
     section:nth-of-type(4) { animation-delay: 0.8s; }
     section:nth-of-type(5) { animation-delay: 1s; }
+    section:nth-of-type(6) { animation-delay: 1.2s; } /* For new sections */
 
     h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
-      color: var(--text-heading); /* Dynamically changes with theme */
+      color: var(--text-heading);
       border-left: 5px solid var(--primary);
       padding-left: 1rem;
       transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
     }
 
+    h3 {
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-heading);
+        transition: color var(--transition-speed) ease;
+    }
+
     p {
-      color: var(--text-main); /* Dynamically changes with theme */
+      color: var(--text-main);
       transition: color var(--transition-speed) ease;
+      line-height: 1.6;
+      margin-bottom: 1rem; /* Added for better spacing */
     }
 
     p b {
-      color: var(--primary); /* Bold text inside paragraphs uses primary color */
+      color: var(--primary);
       transition: color var(--transition-speed) ease;
     }
 
     ul {
       padding-left: 1.2rem;
       line-height: 1.7;
-      color: var(--text-main); /* Dynamically changes with theme */
+      color: var(--text-main);
       transition: color var(--transition-speed) ease;
+      margin-bottom: 1rem; /* Added for better spacing */
     }
 
     .rom-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Increased min-width for better content display */
+      gap: 1.8rem; /* Slightly larger gap */
     }
 
     .rom-card {
       background: var(--card-bg);
       border-radius: var(--radius-card);
       padding: 1.5rem;
-      color: var(--text-main); /* Dynamically changes with theme */
+      color: var(--text-main);
       backdrop-filter: blur(16px);
       transition: transform 0.3s ease, box-shadow 0.3s ease,
                   background var(--transition-speed) ease,
@@ -263,10 +272,10 @@
     }
 
     .rom-title {
-      font-size: 1.3rem;
+      font-size: 1.4rem; /* Slightly larger title */
       font-weight: 600;
-      margin-bottom: 0.3rem;
-      color: var(--text-heading); /* Often good for titles inside cards to be like headings */
+      margin-bottom: 0.5rem; /* Increased margin */
+      color: var(--text-heading);
       transition: color var(--transition-speed) ease;
     }
 
@@ -274,8 +283,15 @@
       font-size: 0.95rem;
       opacity: 0.85;
       margin-bottom: 1rem;
-      color: var(--text-main); /* Keep status text subtle */
+      color: var(--text-main);
       transition: color var(--transition-speed) ease;
+    }
+
+    .rom-description {
+        font-size: 1rem;
+        color: var(--text-main);
+        margin-bottom: 1.5rem; /* Important for spacing before buttons */
+        flex-grow: 1; /* Allows description to take up available space */
     }
 
     /* Style for all generic buttons/links */
@@ -284,7 +300,7 @@
       margin: 0.5rem 0.5rem;
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white; /* Button text always white for high contrast */
+      color: white;
       border-radius: var(--radius-soft);
       text-decoration: none;
       font-weight: 500;
@@ -323,7 +339,7 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: var(--footer-text-color); /* Dynamically changes with theme */
+      color: var(--footer-text-color);
       transition: color var(--transition-speed) ease;
     }
 
@@ -332,7 +348,7 @@
       position: fixed;
       bottom: 20px;
       background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white; /* Toggle button icon always white for high contrast */
+      color: white;
       border: none;
       border-radius: 50%;
       width: 50px;
@@ -375,7 +391,7 @@
     .ad-container {
       margin: 2rem auto;
       text-align: center;
-      max-width: 728px; /* Max width for common ad sizes */
+      max-width: 728px;
       background: var(--section-bg);
       border-radius: var(--radius-soft);
       padding: 1rem;
@@ -387,7 +403,7 @@
       transition: background var(--transition-speed) ease,
                   border-color var(--transition-speed) ease,
                   box-shadow var(--transition-speed) ease,
-                  color var(--transition-speed) ease; /* Ensure ad container text color transitions */
+                  color var(--transition-speed) ease;
     }
 
     /* Animations */
@@ -461,7 +477,6 @@
         flex-direction: column;
       }
 
-
       .ad-container {
         padding: 0.8rem;
       }
@@ -508,13 +523,14 @@
 
   <header>
     <h1>intelgigabyte9299's Custom ROM Builds</h1>
-    <p>Samsung Galaxy A71 4G • Android Developer from Vietnam</p>
+    <p>Dedicated Android ROM Developer for Samsung Galaxy A71 4G from Vietnam</p>
   </header>
 
   <div class="container">
     <section>
       <h2>🧠 About Me</h2>
-      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a custom ROM developer and official maintainer of <b>crDroid</b> for Galaxy A71 4G. This site is my portfolio – thanks to <b>anhdat1024</b> for the inspiration ♥</p>
+      <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyễn Mạnh Dũng), a Custom ROM developer and the official Maintainer of <b>crDroid</b> for Samsung Galaxy A71 4G. This website is where I share my projects and achievements. A special thanks to <b>anhdat1024</b> for being a great inspiration to me ♥.</p>
+      <p>With extensive experience in fine-tuning and optimizing the Android operating system, I constantly strive to deliver stable, fast, and feature-rich ROMs, helping users make the most of their devices.</p>
     </section>
 
     <div class="ad-container">
@@ -522,7 +538,7 @@
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
-           data-ad-slot="9876543210"  data-ad-format="auto"
+           data-ad-slot="YOUR_FIRST_AD_SLOT_ID_HERE"  data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <script>
            (adsbygoogle = window.adsbygoogle || []).push({});
@@ -531,12 +547,14 @@
 
     <section>
       <h2>📱 My ROMs</h2>
+      <p>Explore custom ROMs specially optimized for the Samsung Galaxy A71 4G, offering a pure Android experience, improved performance, and unique features.</p>
       <div class="rom-grid">
 
         <div class="rom-card" data-url="crdroid.html" tabindex="0" role="link" aria-label="Learn more about crDroid for Samsung Galaxy A71 4G">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
             <div class="rom-status">✅🧪 Official</div>
+            <p class="rom-description">crDroid is a well-known custom ROM, based on LineageOS, focusing on performance, stability, and countless customizations. Enjoy a smooth Android experience with many advanced features not available on stock ROMs.</p>
           </div>
           <div class="download-button-wrapper">
               <a href="https://crdroid.net/a71/11" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
@@ -548,6 +566,7 @@
             <div>
               <div class="rom-title">WitAqua For Samsung Galaxy A71 4G</div>
               <div class="rom-status">❌🧪 Unofficial</div>
+              <p class="rom-description">WitAqua brings a fresh perspective with a minimalist interface, focusing on gaming performance and battery optimization. It's an excellent choice for those seeking a lightweight and high-speed experience on their device.</p>
             </div>
             <div class="download-button-wrapper">
                 <a href="https://pixeldrain.com/u/NS4cuAAH" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
@@ -559,6 +578,7 @@
             <div>
               <div class="rom-title">RisingOS Revived For Samsung Galaxy A71 4G</div>
               <div class="rom-status">❌🧪 Unofficial</div>
+              <p class="rom-description">RisingOS Revived is designed to bring your device back to life with superior performance and a modern user experience. Enjoy a finely tuned Android operating system, delivering stability and reliability.</p>
             </div>
             <div class="download-button-wrapper">
                 <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/RisingOS_Revived-7.1-250711-0658-GAPPS-UNOFFICIAL-a71-ota.zip/download" class="button-style download-button" target="_blank" rel="noopener noreferrer">Download ROM</a>
@@ -570,10 +590,32 @@
     </section>
 
     <section>
+      <h2>📖 General Installation Guide</h2>
+      <p>To ensure a smooth custom ROM installation process, please read the following guide carefully. Note that installing custom ROMs can be risky if not done correctly.</p>
+      <h3>Prerequisites:</h3>
+      <ul>
+        <li>Samsung Galaxy A71 4G phone (model a71) with an unlocked Bootloader.</li>
+        <li>ADB and Fastboot Drivers installed on your computer.</li>
+        <li>All important data on your phone has been backed up.</li>
+        <li>Phone battery is fully charged (at least 80%).</li>
+      </ul>
+      <h3>Basic Installation Steps:</h3>
+      <ol>
+        <li>Download the appropriate ROM and Recovery (TWRP) for your device from the links above.</li>
+        <li>Flash TWRP Recovery to your phone using Odin (on Windows) or via ADB/Fastboot (on Linux/macOS).</li>
+        <li>Reboot your phone into TWRP Recovery.</li>
+        <li>Perform a Wipe Data/Factory Reset (formatting data is recommended to avoid encryption issues).</li>
+        <li>Flash the downloaded ROM. Depending on the ROM, you might need to flash GApps (Google Apps) and Magisk (for root) additionally.</li>
+        <li>Reboot system and complete the initial setup process.</li>
+      </ol>
+      <p><b>Important Note:</b> Each ROM and Android version may have specific requirements or installation steps. Always refer to the detailed instructions on the ROM page or my Telegram group before proceeding.</p>
+    </section>
+
+    <section>
       <h2>📦 Supported Devices</h2>
       <ul>
-        <li>Samsung Galaxy A71 4G (a71)</li>
-        <li>Join the Telegram group below for download links and updates</li>
+        <li>Samsung Galaxy A71 4G (codename: a71)</li>
+        <li>Join the Telegram group below for download links, the latest updates, and direct support.</li>
       </ul>
     </section>
 
@@ -582,7 +624,7 @@
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
-           data-ad-slot="1234567890"  data-ad-format="auto"
+           data-ad-slot="YOUR_SECOND_AD_SLOT_ID_HERE"  data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <script>
            (adsbygoogle = window.adsbygoogle || []).push({});
@@ -592,18 +634,20 @@
     <section>
       <h2>🛠️ Tools & Environment</h2>
       <ul>
-        <li>Ubuntu 25.04 LTS (WSL2)</li>
-        <li>Build tools: repo, git, clang, SDK</li>
-        <li>Source trees: AOSP, LineageOS</li>
-        <li>CI: GitHub Actions + OTA + GPG Signing</li>
+        <li>Operating System: Ubuntu 25.04 LTS (on WSL2)</li>
+        <li>Build Tools: repo, git, clang, Android SDK Tools</li>
+        <li>Code Source: AOSP (Android Open Source Project), LineageOS</li>
+        <li>Continuous Integration (CI): GitHub Actions with OTA (Over-The-Air) and GPG Signing features to ensure build integrity.</li>
+        <li>All ROMs are built with meticulous care, ensuring the highest quality for users.</li>
       </ul>
     </section>
 
     <section class="connect">
       <h2>🌐 Connect with Me</h2>
+      <p>Connect with me on the following platforms for updates, technical support, or just to chat about the world of Custom ROMs!</p>
       <a href="https://github.com/intelgigabyte" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal</a>
-      <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon</a>
+      <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Support)</a>
+      <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Support)</a>
       <a href="https://t.me/intelgigabyteshit" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Channel</a>
       <a href="https://t.me/doraemonintelgigabyte" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Group</a>
       <a href="https://facebook.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
@@ -611,7 +655,7 @@
   </div>
 
   <footer>
-    &copy; 2025 Nguyen Manh Dung (intelgigabyte9299) — Made with ❤️ & AOSP love.
+    &copy; 2025 Nguyễn Mạnh Dũng (intelgigabyte9299) — Made with ❤️ & AOSP love.
   </footer>
 
   <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
@@ -619,17 +663,13 @@
   </button>
 
   <script defer>
-    console.log('Main script loaded and deferred.'); // For debugging
-
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('DOMContentLoaded fired for main script.'); // For debugging
-
       const themeToggle = document.getElementById('theme-toggle');
-      const htmlElement = document.documentElement; // Reference to <html> element
+      const htmlElement = document.documentElement;
 
       if (!themeToggle) {
         console.error('ERROR: Theme toggle button not found!');
-        return; // Exit if button isn't found
+        return;
       }
 
       // Set initial icon based on theme already applied by the head script
@@ -638,37 +678,30 @@
       } else {
         themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       }
-      console.log('Initial theme toggle icon set.');
 
       const applyTheme = (theme) => {
         if (theme === 'light-mode') {
           htmlElement.classList.remove('dark-mode');
           htmlElement.classList.add('light-mode');
-          // For older CSS that might still rely on body class:
-          document.body.classList.remove('dark-mode');
-          document.body.classList.add('light-mode');
+          document.body.classList.remove('dark-mode'); // For backward compatibility
+          document.body.classList.add('light-mode'); // For backward compatibility
           themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-          console.log('Switched to light mode.');
         } else {
           htmlElement.classList.remove('light-mode');
           htmlElement.classList.add('dark-mode');
-          // For older CSS that might still rely on body class:
-          document.body.classList.remove('light-mode');
-          document.body.classList.add('dark-mode');
+          document.body.classList.remove('light-mode'); // For backward compatibility
+          document.body.classList.add('dark-mode'); // For backward compatibility
           themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-          console.log('Switched to dark mode.');
         }
         localStorage.setItem('theme', theme);
       };
 
       themeToggle.addEventListener('click', () => {
         themeToggle.classList.add('animate');
-        // Remove animation class after the duration
         setTimeout(() => {
           themeToggle.classList.remove('animate');
         }, 300);
 
-        // Toggle theme based on current html class
         if (htmlElement.classList.contains('dark-mode')) {
           applyTheme('light-mode');
         } else {
@@ -681,7 +714,6 @@
 
       romCards.forEach(romCard => {
           romCard.addEventListener('click', (event) => {
-              // Prevent navigation if a download button within the card was clicked
               if (event.target.closest('.download-button')) {
                   return;
               }
@@ -692,17 +724,15 @@
                   console.warn('No data-url found on rom-card for navigation.');
               }
           });
-          // Make the entire card focusable and clickable via keyboard
           romCard.addEventListener('keypress', (event) => {
               if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault(); // Prevent default space/enter action
-                  if (!event.target.closest('.download-button')) { // Only navigate if not on download button
+                  event.preventDefault();
+                  if (!event.target.closest('.download-button')) {
                     const url = romCard.dataset.url;
                     if (url) {
                         window.location.href = url;
                     }
                   } else {
-                    // If a download button was focused and Enter/Space pressed, trigger its click
                     event.target.click();
                   }
               }

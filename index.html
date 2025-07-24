@@ -18,42 +18,27 @@
       --bg-glass: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
       --shadow: rgba(0, 0, 0, 0.2);
       
-      /* Base text colors, will be used by theme-specific variables */
-      --color-text-light: #f8fafc; /* For dark backgrounds (text is light) */
-      --color-text-dark: #0f172a; /* For light backgrounds (text is dark) */
+      /* Base text colors, used by theme-specific variables */
+      --color-text-light-base: #f8fafc; /* For dark backgrounds (text is light) */
+      --color-text-dark-base: #0f172a; /* For light backgrounds (text is dark) */
       
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
       
-      --background-start: #0f172a; /* Dark mode default */
-      --background-end: #1e293b;   /* Dark mode default */
-      
-      --section-bg: var(--bg-glass);
-      --border-color: rgba(255, 255, 255, 0.2);
-      --card-bg: rgba(255, 255, 255, 0.08);
-      --footer-text-color: #cbd5e1; /* Specific for footer */
-      --header-text-color: white; /* Always white for header H1 */
-      --header-subtext-color: rgba(255, 255, 255, 0.95); /* Header P color, slightly less opaque white */
-
-      --transition-speed: 0.6s;
-      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
-    }
-
-    /* Dark Mode Variables */
-    body.dark-mode {
+      /* Default to dark mode colors */
       --background-start: #0f172a;
       --background-end: #1e293b;
       --section-bg: rgba(255, 255, 255, 0.08);
       --card-bg: rgba(255, 255, 255, 0.05);
-      --shadow: rgba(0, 0, 0, 0.4);
-      
-      --text-main: var(--color-text-light); /* General text color for sections etc. */
-      --text-heading: var(--color-text-light); /* Heading text color */
-      
       --border-color: rgba(255, 255, 255, 0.15);
-      --footer-text-color: #94a3b8;
-      --focus-glow-color: rgba(59, 130, 246, 0.5);
+      --footer-text-color: #94a3b8; /* Specific for footer */
+      
+      --text-main: var(--color-text-light-base); /* General text color for sections etc. */
+      --text-heading: var(--color-text-light-base); /* Heading text color */
+      
+      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
+      --transition-speed: 0.6s;
     }
 
     /* Light Mode Variables */
@@ -65,11 +50,10 @@
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
-      
-      --text-main: #334155; /* General text color for sections etc. */
-      --text-heading: var(--color-text-dark); /* Heading text color */
-      
       --border-color: rgba(0, 0, 0, 0.1);
+      
+      --text-main: #334155; /* Darker text for light backgrounds */
+      --text-heading: var(--color-text-dark-base); /* Dark headings for light backgrounds */
       --footer-text-color: #475569;
       --focus-glow-color: rgba(29, 78, 216, 0.3);
     }
@@ -83,18 +67,18 @@
     body {
       font-family: 'Inter', sans-serif;
       background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-main); /* Default body text color, sections will override */
+      color: var(--text-main); /* Default body text color */
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
       transition: background-image var(--transition-speed) ease, 
-                  color var(--transition-speed) ease;
+                  color var(--transition-speed) ease,
+                  background-color var(--transition-speed) ease; /* Added for completeness */
     }
 
     header {
       padding: 3.5rem 1rem;
       text-align: center;
-      /* Header text color is always white for contrast (H1 specifically) */
       box-shadow: 0 10px 25px var(--shadow);
       animation: fadeInDown 1s ease-out;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -126,9 +110,9 @@
       font-weight: 700;
       letter-spacing: -0.06em;
       margin-bottom: 0.8rem;
-      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Keep this shadow for contrast on header's gradient */
       line-height: 1.1;
-      color: var(--header-text-color); /* Always white */
+      color: white; /* H1 in header always white for strong contrast */
       transition: all 0.5s ease;
     }
 
@@ -139,13 +123,13 @@
     header p {
       font-size: 1.4rem;
       margin-top: 0.8rem;
-      opacity: 0.95;
+      opacity: 0.9; /* Slightly reduced opacity for subtext */
       line-height: 1.5;
-      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Lighter shadow for readability */
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      color: var(--header-subtext-color); /* Maintain slightly less opaque white for header subtext */
+      color: var(--color-text-light-base); /* Text in header P is also light (always) */
       transition: color var(--transition-speed) ease;
     }
 
@@ -168,7 +152,8 @@
       opacity: 0;
       transition: background var(--transition-speed) ease, 
                   border-color var(--transition-speed) ease, 
-                  box-shadow var(--transition-speed) ease;
+                  box-shadow var(--transition-speed) ease,
+                  color var(--transition-speed) ease; /* Ensure section text color transitions */
     }
 
     section:nth-of-type(1) { animation-delay: 0.2s; }
@@ -261,7 +246,7 @@
       margin: 0.5rem 0.5rem; 
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
+      color: white; /* Button text always white for high contrast */
       border-radius: var(--radius-soft);
       text-decoration: none;
       font-weight: 500;
@@ -309,7 +294,7 @@
       position: fixed;
       bottom: 20px;
       background: linear-gradient(to right, var(--primary), var(--secondary));
-      color: white;
+      color: white; /* Toggle button icon always white for high contrast */
       border: none;
       border-radius: 50%;
       width: 50px;
@@ -363,7 +348,8 @@
       animation-delay: 1.2s;
       transition: background var(--transition-speed) ease, 
                   border-color var(--transition-speed) ease, 
-                  box-shadow var(--transition-speed) ease;
+                  box-shadow var(--transition-speed) ease,
+                  color var(--transition-speed) ease; /* Ensure ad container text color transitions */
     }
 
     /* Animations */
@@ -607,10 +593,11 @@
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
+        // Check user's system preference for initial theme
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
             applyTheme('light-mode');
         } else {
-            applyTheme('dark-mode');
+            applyTheme('dark-mode'); // Default to dark mode
         }
       }
 
@@ -633,4 +620,5 @@
           romCard.addEventListener('click', (event) => {
               // Check if the click originated from a download button (or its child) inside the current romCard
               if (event.target.closest('.download-button')) {
-                  console.log('Clicked on a download button, preve
+                  // If clicked on download button, let its href handle the navigation
+     

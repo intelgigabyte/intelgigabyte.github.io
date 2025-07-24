@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>intelgigabyte9299 Bio - Custom ROMs for Galaxy A71 4G</title>
+    <title>intelgigabyte9299 Home - Custom ROMs for Galaxy A71 4G</title>
     <meta name="description" content="Official and unofficial custom ROMs by intelgigabyte9299 for Samsung Galaxy A71 4G. Discover crDroid, WitAqua, RisingOS Revived and more, along with guides and support resources.">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" as="style" />
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk&display=swap" as="style" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" crossorigin="anonymous" />
 
     <script>
+        // Theme preference loader to prevent FOUC (Flash Of Unstyled Content)
         (function() {
             const savedTheme = localStorage.getItem('theme');
             const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -55,7 +56,9 @@
             --radius-soft: 12px;
             --radius-card: 16px;
             --radius-section: 20px;
-            --radius-nav: 16px; /* New: for navigation bar */
+            --radius-nav-desktop: 9999px; /* Pill shape for desktop */
+            --radius-nav-mobile: 16px; /* Less rounded for mobile */
+
 
             /* Transition Speed */
             --transition-speed: 0.6s;
@@ -72,7 +75,7 @@
             --text-main: var(--color-text-light-base);
             --text-heading: var(--color-text-light-base);
 
-            /* New: Nav colors */
+            /* Nav colors */
             --nav-bg: rgba(255, 255, 255, 0.1);
             --nav-text: var(--color-text-light-base);
             --nav-link-hover: var(--primary);
@@ -95,7 +98,7 @@
             --text-main: #334155;
             --text-heading: var(--color-text-dark-base);
 
-            /* New: Nav colors */
+            /* Nav colors */
             --nav-bg: rgba(255, 255, 255, 0.8);
             --nav-text: var(--color-text-dark-base);
             --nav-link-hover: var(--primary);
@@ -124,15 +127,18 @@
             max-width: 1100px;
             margin: auto;
             padding: 2rem 1rem;
-            padding-top: calc(2rem + 80px); /* Adjust for fixed navbar height */
+            /* Adjust padding-top based on nav height and its top offset */
+            padding-top: calc(2rem + 60px); /* Default for desktop (approx nav height + top offset) */
         }
 
-        /* NEW: Navigation Bar */
+        /* Navigation Bar (Pill Shape for Desktop) */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 20px; /* Distance from the top */
+            left: 50%; /* Center horizontally */
+            transform: translateX(-50%); /* Adjust to true center */
+            max-width: 700px; /* Limit width on larger screens */
+            width: calc(100% - 40px); /* Responsive width with side margins */
             background: var(--nav-bg);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -141,18 +147,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            padding: 0.6rem 1.5rem; /* Reduced vertical padding for smaller height */
+            border-radius: var(--radius-nav-desktop); /* Apply pill shape */
+            border: 1px solid var(--border-color); /* Add border */
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-radius 0.3s ease;
         }
 
         .nav-brand {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.2rem; /* Slightly smaller brand font */
             font-weight: 700;
-            color: var(--primary); /* Keep brand color consistent */
+            color: var(--primary);
             text-decoration: none;
             transition: color var(--transition-speed) ease;
+            white-space: nowrap; /* Prevent wrapping */
+            flex-shrink: 0; /* Prevent shrinking on small screens */
         }
         .nav-brand:hover {
             color: var(--secondary);
@@ -160,30 +169,40 @@
 
         .nav-menu {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem; /* Slightly reduced gap */
             list-style: none;
+            margin-left: auto; /* Push menu to the right */
         }
 
         .nav-item a {
             color: var(--nav-text);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            padding: 0.5rem 0.8rem;
+            font-size: 1rem; /* Slightly smaller font size */
+            padding: 0.4rem 0.7rem; /* Adjusted padding */
             border-radius: var(--radius-soft);
             transition: color 0.3s ease, background-color 0.3s ease;
-            display: flex; /* Enable flexbox for icon and text alignment */
-            align-items: center; /* Vertically align icon and text */
-            gap: 0.5rem; /* Space between icon and text */
+            display: flex;
+            align-items: center;
+            gap: 0.4rem; /* Reduced gap between icon and text */
+            white-space: nowrap; /* Prevent wrapping for nav items */
         }
 
         .nav-item a:hover {
             color: var(--nav-link-hover);
-            background-color: rgba(255, 255, 255, 0.1); /* Light highlight on hover */
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* End NEW: Navigation Bar */
+        /* Hamburger icon for mobile */
+        .nav-toggle-icon {
+            display: none; /* Hidden on desktop by default */
+            font-size: 1.6rem;
+            color: var(--nav-text);
+            cursor: pointer;
+            margin-left: 1rem; /* Space from brand */
+        }
 
+        /* Sections and Content */
         section {
             background: var(--section-bg);
             border-radius: var(--radius-section);
@@ -418,7 +437,7 @@
                         color var(--transition-speed) ease;
         }
 
-        /* NEW: Changelog Modal */
+        /* Changelog Modal */
         .modal {
             display: none; /* Hidden by default */
             position: fixed;
@@ -431,7 +450,7 @@
             background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black overlay */
             backdrop-filter: blur(8px); /* Blur effect for the background */
             -webkit-backdrop-filter: blur(8px);
-            display: flex;
+            display: flex; /* Using flexbox to center content */
             align-items: center;
             justify-content: center;
             padding: 1rem;
@@ -473,8 +492,8 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: none; /* Remove text shadow for this specific heading */
-            border: none; /* Remove left border */
+            text-shadow: none;
+            border: none;
             padding: 0;
         }
         .modal-content h4 { /* Style for * sections */
@@ -482,7 +501,7 @@
             color: var(--text-heading);
             margin-top: 1rem;
             margin-bottom: 0.5rem;
-            border-left: 3px solid var(--secondary); /* Small border for sub-sections */
+            border-left: 3px solid var(--secondary);
             padding-left: 0.7rem;
         }
         .modal-content ul {
@@ -499,7 +518,6 @@
             margin-bottom: 0.3rem;
         }
 
-
         .modal-content p, .modal-content ul {
             color: var(--text-main);
             margin-bottom: 1rem;
@@ -515,7 +533,7 @@
             cursor: pointer;
             transition: color 0.3s ease;
             text-decoration: none;
-            line-height: 1; /* Adjust line height to center "x" */
+            line-height: 1;
         }
 
         .modal-close:hover,
@@ -552,24 +570,27 @@
 
         /* Responsive Design Adjustments */
         @media (max-width: 768px) {
+            .container {
+                padding-top: calc(1.5rem + 70px); /* Adjust for fixed navbar height on mid-sized screens */
+            }
             nav {
-                padding: 0.6rem 1rem;
+                top: 15px; /* Slightly closer to top on tablets */
+                padding: 0.5rem 1rem;
+                border-radius: var(--radius-nav-mobile); /* Less rounded on tablet */
+                width: calc(100% - 30px); /* Fill more width on tablet */
+                max-width: unset; /* Remove max-width constraint */
             }
             .nav-brand {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
             }
             .nav-menu {
-                gap: 1rem;
+                gap: 0.8rem;
             }
             .nav-item a {
-                font-size: 1rem;
-                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+                padding: 0.3rem 0.5rem;
+                gap: 0.3rem;
             }
-            .container {
-                padding: 1.5rem 0.8rem;
-                padding-top: calc(1.5rem + 60px); /* Adjust for fixed navbar height */
-            }
-
             section {
                 padding: 1.5rem;
                 margin-bottom: 1.5rem;
@@ -624,58 +645,73 @@
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+                padding-top: calc(1rem + 60px); /* Adjust for smaller nav height on mobile */
+            }
+            nav {
+                top: 10px; /* Closer to top on small mobiles */
+                padding: 0.6rem 1rem; /* Adjust padding for hamburger */
+                width: calc(100% - 20px); /* Max width for mobile */
+                border-radius: var(--radius-nav-mobile); /* Use mobile radius */
+                justify-content: space-between; /* Ensure space between brand and toggle */
+            }
+            .nav-brand {
+                font-size: 1rem; /* Smaller font on very small screens */
+                flex-grow: 1; /* Allow brand to take available space */
+            }
+            .nav-toggle-icon {
+                display: block; /* Show hamburger icon */
+            }
             .nav-menu {
+                display: none; /* Hidden by default */
                 flex-direction: column; /* Stack menu items */
                 align-items: flex-end; /* Align to the right */
                 position: absolute;
-                top: 100%; /* Below the nav bar */
-                right: 0;
-                background: var(--nav-bg);
+                top: calc(100% + 10px); /* Below the nav bar with a small gap */
+                left: 0;
                 width: 100%;
+                background: var(--nav-bg);
+                backdrop-filter: blur(15px); /* Apply blur to dropdown */
+                -webkit-backdrop-filter: blur(15px);
                 padding: 1rem;
                 border-top: 1px solid var(--border-color);
                 box-shadow: 0 4px 20px var(--shadow);
-                display: none; /* Hidden by default */
+                border-radius: var(--radius-soft); /* Rounded corners for the dropdown */
+                overflow: hidden; /* Ensure content stays within border-radius */
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                transform: translateY(-10px); /* Start slightly above */
+                opacity: 0;
             }
             .nav-menu.active {
-                display: flex;
-            }
-            .nav-toggle-icon { /* Hamburger icon */
-                display: block;
-                font-size: 1.8rem;
-                color: var(--nav-text);
-                cursor: pointer;
+                display: flex; /* Show when active */
+                transform: translateY(0); /* Slide into place */
+                opacity: 1;
             }
             .nav-item {
                 width: 100%; /* Full width for stacked items */
                 text-align: right;
             }
-
-            .container {
-                padding: 1rem;
-                padding-top: calc(1rem + 60px); /* Adjust for smaller nav height on mobile */
+            .nav-item a {
+                justify-content: flex-end; /* Align content to the right when stacked */
+                padding: 0.6rem 0.8rem; /* More padding for easier tapping */
             }
+
             h2 {
                 font-size: 1.2rem;
             }
-
             .rom-card {
                 padding: 1rem;
             }
-            .modal-content h3 { /* Smaller date heading on mobile */
+            .modal-content h3 {
                 font-size: 1.1rem;
             }
-            .modal-content h4 { /* Smaller subsection heading on mobile */
+            .modal-content h4 {
                 font-size: 1rem;
             }
-            .modal-content ul ul { /* Smaller nested list on mobile */
+            .modal-content ul ul {
                 font-size: 0.9rem;
             }
-        }
-
-        /* Hamburger icon for mobile */
-        .nav-toggle-icon {
-            display: none; /* Hidden on desktop */
         }
 
         /* Remove tap highlight on mobile for interactive elements */
@@ -684,7 +720,8 @@
         .toggle-button,
         .modal-close,
         .nav-item a,
-        .nav-brand {
+        .nav-brand,
+        .nav-toggle-icon { /* Add nav-toggle-icon here */
             -webkit-tap-highlight-color: transparent;
             -moz-focus-inner: none;
         }
@@ -698,8 +735,8 @@
         <ul class="nav-menu" id="nav-menu">
             <li class="nav-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
             <li class="nav-item"><a href="#" id="changelog-btn"><i class="fas fa-file-alt"></i> ChangeLog Builds</a></li>
-            <li class="nav-item"><a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Group</a></li>
-            <li class="nav-item"><a href="https://github.com/intelgigabyte" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> My GitHub</a></li>
+            <li class="nav-item"><a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram</a></li>
+            <li class="nav-item"><a href="https://github.com/intelgigabyte" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a></li>
         </ul>
     </nav>
     <div class="container">
@@ -812,7 +849,7 @@
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-7471263191510520"
-                 data-ad-slot="YOUR_THIRD_AD_SLOT_ID_HERE"  data-ad-format="auto"
+                 data-ad-slot="YOUR_THIRD_AD_SLOT_SLOT_HERE"  data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
@@ -831,7 +868,7 @@
         </section>
 
         <section class="connect">
-            <h2>🔍 Find Me</h2>
+            <h2>🔍 Connect with Me</h2>
             <p>Connect with me on the following platforms for updates, technical support, or just to chat about the world of Custom ROMs!</p>
             <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Donate)</a>
             <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Donate)</a>
@@ -852,7 +889,7 @@
         <div class="modal-content">
             <a href="#" class="modal-close" aria-label="Close changelog popup">&times;</a>
             <h2>📋 Changelog Builds</h2>
-            <p>Here you'll find the latest updates and changes across all my custom ROM builds. Dates are in YYYY-MM-DD format.</p>
+            <p>Here you'll find the latest updates and changes across all my custom ROM builds. Dates are in 2025-07-20 format.</p>
 
             <h3>2025-07-20</h3>
             <h4>* android</h4>
@@ -1043,6 +1080,7 @@
 
             romCards.forEach(romCard => {
                 romCard.addEventListener('click', (event) => {
+                    // Prevent navigation if a download button within the card was clicked
                     if (event.target.closest('.download-button')) {
                         return;
                     }
@@ -1055,20 +1093,20 @@
                 });
                 romCard.addEventListener('keypress', (event) => {
                     if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
+                        event.preventDefault(); // Prevent default scroll for spacebar
                         if (!event.target.closest('.download-button')) {
                             const url = romCard.dataset.url;
                             if (url) {
                                 window.location.href = url;
                             }
                         } else {
-                            event.target.click();
+                            event.target.click(); // Trigger click on the button itself
                         }
                     }
                 });
             });
 
-            // --- NEW: Changelog Modal Logic ---
+            // --- Changelog Modal Logic ---
             const changelogBtn = document.getElementById('changelog-btn');
             const changelogModal = document.getElementById('changelogModal');
             const modalCloseBtn = document.querySelector('.modal-close');
@@ -1076,7 +1114,7 @@
             if (changelogBtn) {
                 changelogBtn.addEventListener('click', (e) => {
                     e.preventDefault(); // Prevent default link behavior
-                    changelogModal.style.display = 'flex'; // Show the modal
+                    changelogModal.style.display = 'flex'; // Show the modal using flex to center
                     document.body.style.overflow = 'hidden'; // Prevent scrolling on body
                 });
             } else {
@@ -1101,13 +1139,33 @@
                 }
             });
 
-            // --- NEW: Mobile Navigation Toggle ---
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && changelogModal.style.display === 'flex') {
+                    changelogModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            });
+
+
+            // --- Mobile Navigation Toggle (Hamburger) ---
             const navToggleIcon = document.getElementById('nav-toggle-icon');
             const navMenu = document.getElementById('nav-menu');
 
             if (navToggleIcon && navMenu) {
                 navToggleIcon.addEventListener('click', () => {
                     navMenu.classList.toggle('active');
+                    // Toggle aria-expanded for accessibility
+                    const isExpanded = navToggleIcon.getAttribute('aria-expanded') === 'true' || false;
+                    navToggleIcon.setAttribute('aria-expanded', !isExpanded);
+                });
+
+                // Close menu if a link is clicked (for better UX on mobile)
+                navMenu.querySelectorAll('.nav-item a').forEach(item => {
+                    item.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        navToggleIcon.setAttribute('aria-expanded', 'false');
+                    });
                 });
             } else {
                 console.error('ERROR: Navigation toggle elements not found!');

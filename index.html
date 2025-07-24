@@ -17,17 +17,25 @@
       --secondary: #9333ea; /* Purple */
       --bg-glass: rgba(255, 255, 255, 0.15); /* Semi-transparent white for glass effect */
       --shadow: rgba(0, 0, 0, 0.2);
-      --text-dark-mode: #f8fafc; /* Light text for dark mode */
-      --text-light-mode: #0f172a; /* Dark text for light mode */
+      
+      /* Base text colors, will be used by theme-specific variables */
+      --color-text-light: #f8fafc; /* For dark backgrounds (text is light) */
+      --color-text-dark: #0f172a; /* For light backgrounds (text is dark) */
+      
       --radius-soft: 12px;
       --radius-card: 16px;
       --radius-section: 20px;
+      
       --background-start: #0f172a; /* Dark mode default */
       --background-end: #1e293b;   /* Dark mode default */
+      
       --section-bg: var(--bg-glass);
       --border-color: rgba(255, 255, 255, 0.2);
       --card-bg: rgba(255, 255, 255, 0.08);
-      --footer-text: #cbd5e1;
+      --footer-text-color: #cbd5e1; /* Specific for footer */
+      --header-text-color: white; /* Always white for header H1 */
+      --header-subtext-color: rgba(255, 255, 255, 0.95); /* Header P color, slightly less opaque white */
+
       --transition-speed: 0.6s;
       --focus-glow-color: rgba(59, 130, 246, 0.5); /* Primary color for focus glow */
     }
@@ -39,10 +47,12 @@
       --section-bg: rgba(255, 255, 255, 0.08);
       --card-bg: rgba(255, 255, 255, 0.05);
       --shadow: rgba(0, 0, 0, 0.4);
-      --text-main: var(--text-dark-mode); /* General text color for sections etc. */
-      --text-heading: var(--text-dark-mode); /* Heading text color */
+      
+      --text-main: var(--color-text-light); /* General text color for sections etc. */
+      --text-heading: var(--color-text-light); /* Heading text color */
+      
       --border-color: rgba(255, 255, 255, 0.15);
-      --footer-text: #94a3b8;
+      --footer-text-color: #94a3b8;
       --focus-glow-color: rgba(59, 130, 246, 0.5);
     }
 
@@ -55,10 +65,12 @@
       --section-bg: rgba(255, 255, 255, 0.7);
       --card-bg: rgba(255, 255, 255, 0.85);
       --shadow: rgba(0, 0, 0, 0.15);
+      
       --text-main: #334155; /* General text color for sections etc. */
-      --text-heading: var(--text-light-mode); /* Heading text color */
+      --text-heading: var(--color-text-dark); /* Heading text color */
+      
       --border-color: rgba(0, 0, 0, 0.1);
-      --footer-text: #475569;
+      --footer-text-color: #475569;
       --focus-glow-color: rgba(29, 78, 216, 0.3);
     }
 
@@ -71,7 +83,7 @@
     body {
       font-family: 'Inter', sans-serif;
       background-image: linear-gradient(120deg, var(--background-start), var(--background-end));
-      color: var(--text-main); /* Use --text-main for general body text */
+      color: var(--text-main); /* Default body text color, sections will override */
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
@@ -82,7 +94,7 @@
     header {
       padding: 3.5rem 1rem;
       text-align: center;
-      color: white; /* Header text color is always white for contrast */
+      /* Header text color is always white for contrast (H1 specifically) */
       box-shadow: 0 10px 25px var(--shadow);
       animation: fadeInDown 1s ease-out;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -116,6 +128,7 @@
       margin-bottom: 0.8rem;
       text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       line-height: 1.1;
+      color: var(--header-text-color); /* Always white */
       transition: all 0.5s ease;
     }
 
@@ -132,6 +145,8 @@
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
+      color: var(--header-subtext-color); /* Maintain slightly less opaque white for header subtext */
+      transition: color var(--transition-speed) ease;
     }
 
     .container {
@@ -177,7 +192,7 @@
     }
 
     p b { 
-        color: var(--primary); /* Bold text uses primary color */
+        color: var(--primary); /* Bold text inside paragraphs uses primary color */
         transition: color var(--transition-speed) ease;
     }
 
@@ -285,7 +300,7 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: var(--footer-text);
+      color: var(--footer-text-color); /* Use specific footer text color variable */
       transition: color var(--transition-speed) ease;
     }
 
@@ -497,7 +512,7 @@
         <div class="rom-card" data-url="crdroid.html">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
-            <div class="rom-status">🧪✅ Official</div>
+            <div class="rom-status">✅ Official</div>
           </div>
           <div class="download-button-wrapper">
               <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now (ROM)</a>
@@ -508,7 +523,7 @@
         <div class="rom-card" data-url="risingosrevived.html">
             <div>
               <div class="rom-title">RisingOS Revived For Samsung Galaxy A71 4G</div>
-              <div class="rom-status">🧪❌ Unofficial</div>
+              <div class="rom-status">✅ Unofficial</div>
             </div>
             <div class="download-button-wrapper">
                 <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/RisingOS_Revived-7.1-250711-0658-GAPPS-UNOFFICIAL-a71-ota.zip/download" class="button-style download-button">Download Now (ROM)</a>
@@ -587,16 +602,15 @@
         localStorage.setItem('theme', theme);
       };
 
-      // Apply saved theme or default to dark mode on load
+      // Apply saved theme or default to system preference/dark mode on load
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme) {
         applyTheme(savedTheme);
       } else {
-        // Check user's system preference for initial theme
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
             applyTheme('light-mode');
         } else {
-            applyTheme('dark-mode'); // Default to dark mode
+            applyTheme('dark-mode');
         }
       }
 
@@ -619,21 +633,4 @@
           romCard.addEventListener('click', (event) => {
               // Check if the click originated from a download button (or its child) inside the current romCard
               if (event.target.closest('.download-button')) {
-                  // If clicked on download button, let its href handle the navigation
-                  console.log('Clicked on a download button, preventing card navigation.');
-                  return; 
-              }
-              // Otherwise, navigate based on data-url
-              const url = romCard.dataset.url;
-              if (url) {
-                  console.log('Navigating to:', url);
-                  window.location.href = url;
-              } else {
-                  console.warn('No data-url found on rom-card for navigation.');
-              }
-          });
-      });
-    });
-  </script>
-</body>
-</html>
+                  console.log('Clicked on a download button, preve

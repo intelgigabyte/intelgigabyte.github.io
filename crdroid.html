@@ -11,7 +11,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7471263191510520"
      crossorigin="anonymous"></script>
   <style>
-    /* Global Variables - Copied from index.html for consistency */
+    /* Global Variables - Unified for consistency */
     :root {
       --primary: #3b82f6;
       --secondary: #9333ea;
@@ -29,9 +29,10 @@
       --card-bg: rgba(255, 255, 255, 0.08);
       --footer-text: #cbd5e1;
       --transition-speed: 0.6s;
+      --focus-glow-color: rgba(59, 130, 246, 0.5); /* Màu mới cho hiệu ứng focus */
     }
 
-    /* Dark Mode Variables - Copied from index.html */
+    /* Dark Mode Variables */
     body.dark-mode {
       --background-start: #0f172a;
       --background-end: #1e293b;
@@ -42,9 +43,10 @@
       --text-dark: #f8fafc;
       --border-color: rgba(255, 255, 255, 0.15);
       --footer-text: #94a3b8;
+      --focus-glow-color: rgba(59, 130, 246, 0.5);
     }
 
-    /* Light Mode Variables - Copied from index.html */
+    /* Light Mode Variables */
     body.light-mode {
       --primary: #1d4ed8;
       --secondary: #6d28d9;
@@ -57,8 +59,10 @@
       --text-light: #334155;
       --border-color: rgba(0, 0, 0, 0.1);
       --footer-text: #475569;
+      --focus-glow-color: rgba(29, 78, 216, 0.3); /* Màu khác cho light mode */
     }
 
+    /* Base Styles */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -72,7 +76,9 @@
       min-height: 100vh;
       background-attachment: fixed;
       background-size: cover;
-      transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+      /* Smooth transition for theme changes */
+      transition: background var(--transition-speed) ease, 
+                  color var(--transition-speed) ease;
       display: flex; /* Ensure body is flex to push footer down */
       flex-direction: column;
     }
@@ -96,14 +102,19 @@
       border: 1px solid var(--border-color);
       animation: fadeIn 1s ease-out forwards; /* Apply animation */
       opacity: 0; /* Initial opacity for animation */
-      transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      /* Smooth transition for theme changes */
+      transition: background var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease,
+                  color var(--transition-speed) ease; /* Add color transition */
     }
 
     /* Animation delays for sections */
     .content-section:nth-of-type(1) { animation-delay: 0.2s; }
     .content-section:nth-of-type(2) { animation-delay: 0.4s; }
     .content-section:nth-of-type(3) { animation-delay: 0.6s; }
-    .content-section:nth-of-type(4) { animation-delay: 0.8s; } /* Thêm delay nếu có nhiều section */
+    .content-section:nth-of-type(4) { animation-delay: 0.8s; } 
+    .content-section:nth-of-type(5) { animation-delay: 1s; } 
 
 
     /* Specific Styles for crDroid content */
@@ -144,6 +155,7 @@
       margin-bottom: 0.5rem;
       font-size: 1rem;
       color: var(--text-light);
+      transition: color var(--transition-speed) ease; /* Smooth transition for text */
     }
     .info strong {
       color: var(--primary);
@@ -154,6 +166,7 @@
       padding-left: 1.2rem;
       line-height: 1.7;
       color: var(--text-light);
+      transition: color var(--transition-speed) ease; /* Smooth transition for list text */
     }
 
     .images {
@@ -173,6 +186,7 @@
       box-shadow: 0 8px 20px var(--shadow);
     }
 
+    /* Back Button Styling (similar to button-style from index.html) */
     .back {
       display: inline-block;
       margin-top: 2rem;
@@ -182,12 +196,22 @@
       text-decoration: none;
       border-radius: var(--radius-soft);
       font-weight: 600;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease; /* Thêm outline vào transition */
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+      outline: none; /* Bỏ outline mặc định */
     }
     .back:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    /* Hiệu ứng khi nút Back được focus hoặc active */
+    .back:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+    .back:active { /* Hiệu ứng khi click chuột xuống */
+        transform: translateY(0px) scale(0.98);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.4);
     }
 
     footer {
@@ -199,7 +223,7 @@
       margin-top: 2rem;
     }
 
-    /* Theme Toggle Button - Copied from index.html */
+    /* Theme Toggle Button - Unified with index.html */
     .theme-toggle {
       position: fixed;
       bottom: 20px;
@@ -216,13 +240,33 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 4px 12px var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      /* Bổ sung transition cho transform và box-shadow */
+      transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), 
+                  box-shadow 0.2s ease, 
+                  background 0.2s ease, /* Thêm transition cho background */
+                  color 0.2s ease, /* Thêm transition cho màu icon */
+                  outline 0.2s ease; /* Thêm transition cho outline */
       z-index: 1000;
+      transform: scale(1);
+      outline: none; /* Bỏ outline mặc định cho nút */
     }
 
     .theme-toggle:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
       box-shadow: 0 6px 16px var(--shadow);
+    }
+
+    /* Hiệu ứng khi nút chỉnh sáng/tối được focus hoặc active */
+    .theme-toggle:focus-visible { /* Chỉ hiển thị khi dùng bàn phím */
+        box-shadow: 0 0 0 3px var(--focus-glow-color), 0 6px 16px var(--shadow);
+    }
+    .theme-toggle:active { /* Hiệu ứng khi click chuột xuống */
+        transform: scale(0.95);
+        box-shadow: 0 3px 8px var(--shadow);
+    }
+
+    .theme-toggle.animate {
+      transform: scale(0.9);
     }
 
     /* Animations - Copied from index.html */
@@ -295,6 +339,17 @@
       opacity: 0; /* For animation */
       animation: fadeIn 1s ease-out forwards;
       animation-delay: 0.8s; /* Adjust delay as needed, after content sections */
+      /* Smooth transition for theme changes */
+      transition: background var(--transition-speed) ease, 
+                  border-color var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease;
+    }
+
+    /* Loại bỏ hiệu ứng highlight khi chạm trên di động (gợn sóng) */
+    .back,
+    .theme-toggle {
+        -webkit-tap-highlight-color: transparent; /* Cho Chrome/Safari trên Android/iOS */
+        -moz-focus-inner: none; /* Cho Firefox */
     }
   </style>
 </head>
@@ -312,7 +367,8 @@
     </div>
 
     <div class="ad-container">
-      <h2>📢 Advertisement</h2> <ins class="adsbygoogle"
+      <h2>📢 Advertisement</h2> 
+      <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-7471263191510520"
            data-ad-slot="YOUR_AD_UNIT_SLOT_ID_1"  data-ad-format="auto"
@@ -361,7 +417,7 @@
   </button>
 
   <script>
-    // Theme Toggle Logic - Copied from index.html
+    // Theme Toggle Logic - Unified for consistency
     document.addEventListener('DOMContentLoaded', () => {
       const themeToggle = document.getElementById('theme-toggle');
       const body = document.body;
@@ -387,7 +443,6 @@
       }
 
       themeToggle.addEventListener('click', () => {
-        // Add a temporary class for animation if you want a visual click feedback
         themeToggle.classList.add('animate');
         setTimeout(() => {
           themeToggle.classList.remove('animate');

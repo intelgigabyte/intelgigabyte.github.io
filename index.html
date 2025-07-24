@@ -248,7 +248,7 @@
     /* Style for all generic buttons/links */
     .button-style {
       display: inline-block;
-      margin: 0.5rem auto;
+      margin: 0.5rem 0.5rem; /* Adjust margin for multiple buttons */
       padding: 0.65rem 1.3rem;
       background: linear-gradient(to right, var(--primary), var(--secondary));
       color: white;
@@ -261,6 +261,7 @@
       width: fit-content;
       min-width: 150px;
       outline: none;
+      white-space: nowrap; /* Prevent text wrapping for button labels like "Download Now (ROM)" */
     }
 
     .button-style:hover {
@@ -279,8 +280,10 @@
     .download-button-wrapper {
         text-align: center;
         margin-top: auto;
-        display: flex;
+        display: flex; /* Use flexbox for multiple buttons */
         justify-content: center;
+        flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+        gap: 0.5rem; /* Space between buttons */
     }
 
     footer {
@@ -415,9 +418,15 @@
       }
 
       .button-style {
-        display: block;
-        margin: 0.5rem auto;
+        display: block; /* Make buttons stack on small screens */
+        margin: 0.5rem auto; /* Center them */
+        min-width: unset; /* Remove min-width constraint */
+        width: 100%; /* Take full width */
       }
+      .download-button-wrapper {
+        flex-direction: column; /* Stack buttons vertically */
+      }
+
 
       .ad-container {
         padding: 0.8rem;
@@ -489,15 +498,29 @@
     <section>
       <h2>📱 My ROMs</h2>
       <div class="rom-grid">
+        
         <div class="rom-card" data-url="crdroid.html">
           <div>
             <div class="rom-title">crDroid For Samsung Galaxy A71 4G</div>
             <div class="rom-status">✅ Official</div>
           </div>
           <div class="download-button-wrapper">
-              <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now</a>
+              <a href="https://crdroid.net/a71/11" class="button-style download-button">Download Now (ROM)</a>
+              <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button">Download Now (Recovery)</a>
           </div>
         </div>
+
+        <div class="rom-card" data-url="risingosrevived.html">
+            <div>
+              <div class="rom-title">RisingOS Revived For Samsung Galaxy A71 4G</div>
+              <div class="rom-status">✅ Unofficial</div>
+            </div>
+            <div class="download-button-wrapper">
+                <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/RisingOS_Revived-7.1-250711-0658-GAPPS-UNOFFICIAL-a71-ota.zip/download" class="button-style download-button">Download Now (ROM)</a>
+                <a href="https://sourceforge.net/projects/intelgigabyte-9299/files/twrp-3.7.0_11-3_afaneh92-a71.tar/download" class="button-style download-button">Download Now (Recovery)</a>
+            </div>
+        </div>
+
       </div>
     </section>
 
@@ -589,26 +612,15 @@
       });
 
       // --- ROM card click handler ---
-      const romCard = document.querySelector('.rom-card');
-      if (romCard) {
+      // Select all rom-cards
+      const romCards = document.querySelectorAll('.rom-card');
+
+      romCards.forEach(romCard => {
           romCard.addEventListener('click', (event) => {
-              // Check if the click originated from the download button or its child (icon/text)
+              // Check if the click originated from a download button or its child (icon/text)
               if (event.target.closest('.download-button')) {
                   // If clicked on download button, let its href handle the navigation
-                  console.log('Clicked on download button, preventing card navigation.');
+                  console.log('Clicked on a download button, preventing card navigation.');
                   return; 
               }
-              // Otherwise, navigate based on data-url
-              const url = romCard.dataset.url;
-              if (url) {
-                  console.log('Navigating to:', url);
-                  window.location.href = url;
-              } else {
-                  console.warn('No data-url found on rom-card for navigation.');
-              }
-          });
-      }
-    });
-  </script>
-</body>
-</html>
+           

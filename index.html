@@ -999,138 +999,125 @@
 
             <h3>Archives / Older Builds:</h3>
             <p>For previous changelogs or older build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
-        </div>    <script defer>
-    </div>ddEventListener('DOMContentLoaded', () => {
-e-toggle');
-    <script defer>l> element for theme classes
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');            if (!themeToggle) {
-            const htmlElement = document.documentElement; // Target <html> element for theme classesERROR: Theme toggle button not found!');
+</div>
+<script defer>
+document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    if (!themeToggle) {
+        console.error('ERROR: Theme toggle button not found!');
+        return;
+    }
+    if (htmlElement.classList.contains('light-mode')) {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+    const applyTheme = (theme) => {
+        if (theme === 'light-mode') {
+            htmlElement.classList.remove('dark-mode');
+            htmlElement.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            htmlElement.classList.remove('light-mode');
+            htmlElement.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+            document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        localStorage.setItem('theme', theme);
+    };
+    themeToggle.addEventListener('click', () => {
+        themeToggle.classList.add('animate');
+        setTimeout(() => {
+            themeToggle.classList.remove('animate');
+        }, 300);
+        if (htmlElement.classList.contains('dark-mode')) {
+            applyTheme('light-mode');
+        } else {
+            applyTheme('dark-mode');
+        }
+    });
 
-            if (!themeToggle) {
-                console.error('ERROR: Theme toggle button not found!');
-                return;            // Set initial icon based on theme already applied by the head script
+    // ROM card click handler
+    const romCards = document.querySelectorAll('.rom-card');
+    romCards.forEach(romCard => {
+        romCard.addEventListener('click', (event) => {
+            if (event.target.closest('.download-button')) {
+                return;
             }
-</i>';
-            // Set initial icon based on theme already applied by the head script
-            if (htmlElement.classList.contains('light-mode')) {eToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            const url = romCard.dataset.url;
+            if (url) {
+                window.location.href = url;
             } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';            const applyTheme = (theme) => {
-            } {
-ove('dark-mode');
-            const applyTheme = (theme) => {
-                if (theme === 'light-mode') {e'); // For backward compatibility
-                    htmlElement.classList.remove('dark-mode');
-                    htmlElement.classList.add('light-mode');
-                    document.body.classList.remove('dark-mode'); // For backward compatibility
-                    document.body.classList.add('light-mode'); // For backward compatibilityElement.classList.remove('light-mode');
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                } else {ode'); // For backward compatibility
-                    htmlElement.classList.remove('light-mode');
-                    htmlElement.classList.add('dark-mode');
-                    document.body.classList.remove('light-mode'); // For backward compatibility
-                    document.body.classList.add('dark-mode'); // For backward compatibilityocalStorage.setItem('theme', theme);
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                }
-                localStorage.setItem('theme', theme);            themeToggle.addEventListener('click', () => {
-            };
-
-            themeToggle.addEventListener('click', () => {assList.remove('animate');
-                themeToggle.classList.add('animate');
-                setTimeout(() => {
-                    themeToggle.classList.remove('animate');                if (htmlElement.classList.contains('dark-mode')) {
-                }, 300);
-
-                if (htmlElement.classList.contains('dark-mode')) {yTheme('dark-mode');
-                    applyTheme('light-mode');
-                } else {
-                    applyTheme('dark-mode');
-                }            // --- ROM card click handler ---
-            });lectorAll('.rom-card');
-
-            // --- ROM card click handler ---            romCards.forEach(romCard => {
-            const romCards = document.querySelectorAll('.rom-card');'click', (event) => {
-')) {
-            romCards.forEach(romCard => {
-                romCard.addEventListener('click', (event) => {
-                    if (event.target.closest('.download-button')) {onst url = romCard.dataset.url;
-                        return;
-                    }.location.href = url;
+                console.warn('No data-url found on rom-card for navigation.');
+            }
+        });
+        romCard.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                if (!event.target.closest('.download-button')) {
                     const url = romCard.dataset.url;
-                    if (url) {ole.warn('No data-url found on rom-card for navigation.');
+                    if (url) {
                         window.location.href = url;
-                    } else {
-                        console.warn('No data-url found on rom-card for navigation.');Card.addEventListener('keypress', (event) => {
-                    }') {
-                });
-                romCard.addEventListener('keypress', (event) => {st('.download-button')) {
-                    if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        if (!event.target.closest('.download-button')) {.location.href = url;
-                            const url = romCard.dataset.url;
-                            if (url) {e {
-                                window.location.href = url;t.target.click();
-                            }
-                        } else {
-                            event.target.click();
-                        }
                     }
-                });            // --- Changelog Modal Logic ---
-            });tElementById('changelog-btn');
-');
-            // --- Changelog Modal Logic ---
-            const changelogBtn = document.getElementById('changelog-btn');
-            const changelogModal = document.getElementById('changelogModal');            if (changelogBtn) {
-            const modalCloseBtn = document.querySelector('.modal-close');dEventListener('click', (e) => {
- behavior
-            if (changelogBtn) {odal
-                changelogBtn.addEventListener('click', (e) => {lling on body
-                    e.preventDefault(); // Prevent default link behavior
-                    changelogModal.style.display = 'flex'; // Show the modal{
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling on bodyole.error('ERROR: Changelog button not found!');
-                });
-            } else {
-                console.error('ERROR: Changelog button not found!');            if (modalCloseBtn) {
-            }dEventListener('click', (e) => {
-behavior
-            if (modalCloseBtn) {odal
-                modalCloseBtn.addEventListener('click', (e) => {on body
-                    e.preventDefault(); // Prevent default link behavior
-                    changelogModal.style.display = 'none'; // Hide the modal{
-                    document.body.style.overflow = ''; // Restore scrolling on bodyole.error('ERROR: Modal close button not found!');
-                });
-            } else {
-                console.error('ERROR: Modal close button not found!');            // Close modal when clicking outside of modal-content
+                } else {
+                    event.target.click();
+                }
             }
+        });
+    });
 
-            // Close modal when clicking outside of modal-contentne';
-            changelogModal.addEventListener('click', (event) => {
-                if (event.target === changelogModal) {
-                    changelogModal.style.display = 'none';
-                    document.body.style.overflow = '';
-                }            // --- Mobile Navigation Toggle ---
-            });lementById('nav-toggle-icon');
+    // Changelog Modal Logic
+    const changelogBtn = document.getElementById('changelog-btn');
+    const changelogModal = document.getElementById('changelogModal');
+    const modalCloseBtn = document.querySelector('.modal-close');
+    if (changelogBtn) {
+        changelogBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            changelogModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    } else {
+        console.error('ERROR: Changelog button not found!');
+    }
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            changelogModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    } else {
+        console.error('ERROR: Modal close button not found!');
+    }
+    changelogModal.addEventListener('click', (event) => {
+        if (event.target === changelogModal) {
+            changelogModal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
 
-            // --- Mobile Navigation Toggle ---
-            const navToggleIcon = document.getElementById('nav-toggle-icon');            if (navToggleIcon && navMenu) {
-            const navMenu = document.getElementById('nav-menu');ner('click', () => {
-
-            if (navToggleIcon && navMenu) {
-                navToggleIcon.addEventListener('click', () => {Close menu when a nav item is clicked on mobile
-                    navMenu.classList.toggle('active');em => {
-                });
-                // Close menu when a nav item is clicked on mobiletive')) {
-                navMenu.querySelectorAll('.nav-item a').forEach(item => {
-                    item.addEventListener('click', () => {
-                        if (navMenu.classList.contains('active')) {
-                            navMenu.classList.remove('active');
-                        }{
-                    });ole.error('ERROR: Navigation toggle elements not found!');
-                });
-            } else {
-                console.error('ERROR: Navigation toggle elements not found!');t>
-            }
-        });    </script>
+    // Mobile Navigation Toggle
+    const navToggleIcon = document.getElementById('nav-toggle-icon');
+    const navMenu = document.getElementById('nav-menu');
+    if (navToggleIcon && navMenu) {
+        navToggleIcon.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+        navMenu.querySelectorAll('.nav-item a').forEach(item => {
+            item.addEventListener('click', () => {
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+    } else {
+        console.error('ERROR: Navigation toggle elements not found!')
+    }
+});
+</script>
 </body>
 </html>

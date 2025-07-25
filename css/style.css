@@ -1,0 +1,123 @@
+/* CSS Styles for the intelgigabyte9299 Bio Project */
+
+/* Global Variables */
+:root {
+    --primary: #3b82f6; /* Blue */
+    --secondary: #9333ea; /* Purple */
+    --background-start: #0f172a; /* Dark background start */
+    --background-end: #1e293b; /* Dark background end */
+    --text-main: #f8fafc; /* Light text color */
+    --text-heading: #f8fafc; /* Light heading color */
+    --border-color: rgba(255, 255, 255, 0.2); /* Border color */
+    --shadow: rgba(0, 0, 0, 0.4); /* Shadow color */
+    --transition-speed: 0.3s; /* Transition speed */
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(120deg, var(--background-start), var(--background-end));
+    color: var(--text-main);
+    min-height: 100vh;
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2rem 1rem;
+}
+
+/* Navigation Bar */
+nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 20px var(--shadow);
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+}
+
+.nav-brand {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.2rem;
+    list-style: none;
+}
+
+.nav-item a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.4rem 0.7rem;
+    border-radius: 12px;
+    transition: background var(--transition-speed);
+}
+
+.nav-item a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sections */
+section {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px var(--shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Headings */
+h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--text-heading);
+}
+
+/* Paragraphs */
+p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.button-style {
+    display: inline-block;
+    padding: 0.65rem 1.3rem;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform var(--transition-speed);
+}
+
+.button-style:hover {
+    transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}

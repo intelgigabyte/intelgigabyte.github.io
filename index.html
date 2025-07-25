@@ -129,30 +129,47 @@
             padding-top: calc(2rem + 70px); /* Adjust for fixed navbar height + top spacing */
         }
 
-        /* Nav Bar - Desktop/Tablet Default (Pill Shape) */
-        nav {
-            position: fixed;
-            top: 20px; /* Distance from the top */
-            left: 50%; /* Center horizontally */
-            transform: translateX(-50%); /* Adjust to true center */
-            /* Using a combination of width and max-width for better control and to prevent "chìa ra ngoài" */
-            min-width: 320px; /* Ensure it's not too small on desktop */
-            max-width: 700px; /* Max width for the pill shape */
-            width: 95%; /* Make it 95% of viewport width, giving consistent margins */
-            background: var(--nav-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 4px 20px var(--shadow);
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 1.5rem; /* Reduced vertical padding for smaller height */
-            border-radius: var(--radius-nav-pill); /* Apply pill shape */
-            border: 1px solid var(--border-color); /* Add border */
-            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-radius 0.3s ease, top 0.3s ease, width 0.3s ease, left 0.3s ease, transform 0.3s ease;
-            overflow-x: hidden; /* Prevent internal content from forcing horizontal overflow on nav itself */
-        }
+ /* Nav Bar - Desktop Only (Pill Shape) */
+@media (min-width: 769px) {
+    nav {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        min-width: unset;
+        max-width: 98vw;
+        background: var(--nav-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 4px 20px var(--shadow);
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem 1.5rem;
+        border-radius: var(--radius-nav-pill);
+        border: 1px solid var(--border-color);
+        transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-radius 0.3s ease, top 0.3s ease, width 0.3s ease, left 0.3s ease, transform 0.3s ease;
+        overflow-x: auto; /* Allow horizontal scroll if menu is too long */
+    }
+    .nav-menu {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: none;
+        box-shadow: none;
+        border-radius: var(--radius-nav-pill);
+        padding: 0;
+        width: auto;
+        min-width: unset;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .nav-toggle-icon {
+        display: none !important;
+    }
+}
 
         .nav-brand {
             font-family: 'Space Grotesk', sans-serif;
@@ -570,172 +587,92 @@
 
 
         /* Responsive Design Adjustments */
-        /* For Tablets and smaller Desktops (up to 768px wide) */
-        @media (max-width: 768px) {
-            nav {
-                top: 15px; /* Adjust top spacing */
-                max-width: 90%; /* Allow wider nav on tablets */
-                padding: 0.5rem 1rem; /* Adjust padding */
-            }
-            .nav-brand {
-                font-size: 1.1rem;
-            }
-            .nav-menu {
-                gap: 0.8rem;
-                /* Allow menu items to wrap and center if they overflow on tablet */
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .nav-item a {
-                font-size: 0.95rem;
-                padding: 0.3rem 0.5rem;
-                gap: 0.3rem;
-            }
-            .container {
-                padding: 1.5rem 0.8rem;
-                padding-top: calc(1.5rem + 70px); /* Adjust for fixed navbar height */
-            }
+       /* For Mobile Phones (up to 480px wide) */
+@media (max-width: 480px) {
+    nav {
+        top: 0; /* Stick to top on mobile */
+        left: 0;
+        transform: translateX(0); /* Remove transform */
+        width: 100%; /* Full width */
+        max-width: none; /* No max width */
+        border-radius: 0; /* Sharp corners for mobile */
+        padding: 0.8rem 1rem; /* Standard padding */
+        justify-content: space-between; /* Space out brand and toggle */
+        border-bottom: 1px solid var(--border-color); /* Add bottom border */
+        border-left: none;
+        border-right: none;
+        overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    .nav-brand {
+        font-size: 1.4rem; /* Larger brand font for mobile */
+    }
+    .nav-toggle-icon {
+        display: block; /* Show hamburger icon */
+        font-size: 1.8rem; /* Larger hamburger icon */
+    }
+    .nav-menu {
+        flex-direction: column; /* Stack menu items vertically */
+        align-items: flex-end; /* Align to the right */
+        position: absolute;
+        top: 100%; /* Below the nav bar */
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(15px); /* Blur effect for dropdown */
+        -webkit-backdrop-filter: blur(15px);
+        width: 100%;
+        padding: 1rem;
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 4px 20px var(--shadow);
+        display: none; /* Hidden by default */
+        border-radius: var(--radius-nav-mobile); /* Rounded corners for dropdown */
+        overflow: hidden; /* Content stays within border-radius */
+    }
+    .nav-menu.active {
+        display: flex; /* Show menu when active */
+        animation: slideInMenu 0.3s ease-out forwards; /* Slide-in animation */
+    }
+    .nav-item {
+        width: 100%; /* Full width for stacked items */
+        text-align: right;
+    }
+    .nav-item a {
+        justify-content: flex-end; /* Align content to the right */
+        padding: 0.6rem 0.8rem; /* Larger tap target */
+        font-size: 1.1rem; /* Larger font for readability */
+    }
 
-            section {
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
+    .container {
+        padding: 1rem;
+        padding-top: calc(1rem + 60px); /* Adjust for smaller nav height */
+    }
+    h2 {
+        font-size: 1.2rem;
+    }
 
-            h2 {
-                font-size: 1.4rem;
-                padding-left: 0.8rem;
-            }
+    .rom-card {
+        padding: 1rem;
+    }
+    .modal-content h3 { /* Smaller date heading on mobile */
+        font-size: 1.1rem;
+    }
+    .modal-content h4 { /* Smaller subsection heading on mobile */
+        font-size: 1rem;
+    }
+    .modal-content ul ul { /* Smaller nested list on mobile */
+        font-size: 0.9rem;
+    }
 
-            .rom-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .rom-card {
-                padding: 1.2rem;
-            }
-
-            .rom-title {
-                font-size: 1.2rem;
-            }
-
-            .button-style {
-                display: block;
-                margin: 0.5rem auto;
-                min-width: unset;
-                width: 100%;
-            }
-            .download-button-wrapper {
-                flex-direction: column;
-            }
-
-            .ad-container {
-                padding: 0.8rem;
-            }
-            .toggle-button {
-                bottom: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-            .modal-content {
-                padding: 1.5rem;
-                width: 90%;
-            }
-            .modal-close {
-                font-size: 2rem;
-                top: 10px;
-                right: 15px;
-            }
-        }
-
-        /* For Mobile Phones (up to 480px wide) */
-        @media (max-width: 480px) {
-            nav {
-                top: 0; /* Stick to top on mobile */
-                left: 0;
-                transform: translateX(0); /* Remove transform */
-                width: 100%; /* Full width */
-                max-width: none; /* No max width */
-                border-radius: 0; /* Sharp corners or small radius */
-                padding: 0.8rem 1rem; /* Standard padding */
-                justify-content: space-between; /* Space out brand and toggle */
-                border-bottom: 1px solid var(--border-color); /* Add bottom border */
-                border-left: none;
-                border-right: none;
-                overflow-x: hidden; /* Ensure this is also applied on mobile */
-            }
-            .nav-brand {
-                font-size: 1.4rem; /* Slightly larger brand for mobile */
-            }
-            .nav-toggle-icon {
-                display: block; /* Show hamburger icon */
-                font-size: 1.8rem; /* Larger hamburger icon */
-            }
-            .nav-menu {
-                flex-direction: column; /* Stack menu items vertically */
-                align-items: flex-end; /* Align to the right */
-                position: absolute;
-                top: 100%; /* Below the nav bar */
-                right: 0;
-                background: var(--nav-bg);
-                backdrop-filter: blur(15px); /* Apply blur to the dropdown menu */
-                -webkit-backdrop-filter: blur(15px);
-                width: 100%;
-                padding: 1rem;
-                border-top: 1px solid var(--border-color);
-                box-shadow: 0 4px 20px var(--shadow);
-                display: none; /* Hidden by default */
-                border-radius: var(--radius-nav-mobile); /* Rounded corners for the dropdown menu */
-                overflow: hidden; /* Ensure content stays within border-radius for blur */
-            }
-            .nav-menu.active {
-                display: flex; /* Show menu when active */
-                animation: slideInMenu 0.3s ease-out forwards; /* Add slide-in animation */
-            }
-            .nav-item {
-                width: 100%; /* Full width for stacked items */
-                text-align: right;
-            }
-            .nav-item a {
-                justify-content: flex-end; /* Align content to the right when stacked */
-                padding: 0.6rem 0.8rem; /* Larger tap target */
-                font-size: 1.1rem; /* Larger font for readability */
-            }
-
-            .container {
-                padding: 1rem;
-                padding-top: calc(1rem + 60px); /* Adjust for smaller nav height on mobile */
-            }
-            h2 {
-                font-size: 1.2rem;
-            }
-
-            .rom-card {
-                padding: 1rem;
-            }
-            .modal-content h3 { /* Smaller date heading on mobile */
-                font-size: 1.1rem;
-            }
-            .modal-content h4 { /* Smaller subsection heading on mobile */
-                font-size: 1rem;
-            }
-            .modal-content ul ul { /* Smaller nested list on mobile */
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Animation for mobile menu slide-in */
-        @keyframes slideInMenu {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    /* Animation for mobile menu slide-in */
+@keyframes slideInMenu {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
         /* Remove tap highlight on mobile for interactive elements */
         .rom-card,
@@ -766,7 +703,7 @@
     <div class="container">
         <section>
             <h2>🧠 About Me</h2>
-            <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyễn Mạnh Dũng), a Custom ROM developer and the official Maintainer of <b>crDroid</b> for Samsung Galaxy A71 4G. This website is where I share my projects and achievements. A special thanks to <b>anhdat1024</b> for being a great inspiration to me ♥.</p>
+            <p>Hello! I'm <b>intelgigabyte9299</b> (real name: Nguyen Manh Dung), a Custom ROM developer and the official Maintainer of <b>crDroid</b> for Samsung Galaxy A71 4G. This website is where I share my projects and achievements. A special thanks to <b>anhdat1024</b> for being a great inspiration to me ♥.</p>
             <p>With extensive experience in fine-tuning and optimizing the Android operating system, I constantly strive to deliver stable, fast, and feature-rich ROMs, helping users make the most of their devices.</p>
         </section>
 
@@ -904,7 +841,7 @@
         </section>
 
         <section class="connect">
-            <h2>🔍ind Me
+            <h2>🔍Find Me
             <a href="https://paypal.me/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-paypal"></i> PayPal (Donate)</a>
             <a href="https://patreon.com/intelgigabyte9299" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-patreon"></i> Patreon (Donate)</a>
             <a href="https://t.me/intelgigabyteshit" class="button-style" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i> Telegram Channel</a>
@@ -913,7 +850,7 @@
     </div>
 
     <footer>
-        &copy; 2025 All Rights Reserved.
+        &copy; 2025 intelgigabyte9299.All Rights Reserved.
     </footer>
 
     <button id="theme-toggle" class="toggle-button" aria-label="Toggle dark and light mode">
@@ -1019,181 +956,181 @@
             <ul>
                 <li>5e7895d Automatic translation import</li>
             </ul>
-            <h4>* packages/apps/Contacts</h4>
-            <ul>
                 <li>866430826 Automatic translation import</li>
-            </ul>
+            <h4>* packages/apps/Contacts</h4>
+            <ul> packages/apps/DeskClock</h4>
+                <li>866430826 Automatic translation import</li>
+            </ul><li>353fcccc9 Automatic translation import</li>
             <h4>* packages/apps/DeskClock</h4>
-            <ul>
+            <ul> packages/apps/Glimpse</h4>
                 <li>353fcccc9 Automatic translation import</li>
-            </ul>
+            </ul><li>22730be Automatic translation import</li>
             <h4>* packages/apps/Glimpse</h4>
-            <ul>
+            <ul> packages/apps/Jelly</h4>
                 <li>22730be Automatic translation import</li>
-            </ul>
+            </ul><li>ebca57c Automatic translation import</li>
             <h4>* packages/apps/Jelly</h4>
             <ul>
-                <li>ebca57c Automatic translation import</li>
-            </ul>
+                <li>ebca57c Automatic translation import</li>            <h3>2025-07-15</h3>
+            </ul>ges noted for this date.</p>
 
-            <h3>2025-07-15</h3>
-            <p>No specific changes noted for this date.</p>
+            <h3>2025-07-15</h3>            <h3>2025-07-14</h3>
+            <p>No specific changes noted for this date.</p>/LMOFreeform</h4>
 
-            <h3>2025-07-14</h3>
+            <h3>2025-07-14</h3><li>e62ecc3 Merge pull request #4 from tavukkdoner/15.0-4</li>
             <h4>* packages/apps/LMOFreeform</h4>
-            <ul>
+            <ul> packages/apps/Launcher3</h4>
                 <li>e62ecc3 Merge pull request #4 from tavukkdoner/15.0-4</li>
-            </ul>
+            </ul><li>959b825 New translations (#497)</li>
             <h4>* packages/apps/Launcher3</h4>
             <ul>
-                <li>959b825 New translations (#497)</li>
-            </ul>
+                <li>959b825 New translations (#497)</li>            <h3>2025-07-13</h3>
+            </ul>-caf/sm8750/audio/agm</h4>
 
-            <h3>2025-07-13</h3>
+            <h3>2025-07-13</h3><li>fd7e234 agm: include headers from pal</li>
             <h4>* hardware/qcom-caf/sm8750/audio/agm</h4>
-            <ul>
+            <ul> packages/apps/TvSettings</h4>
                 <li>fd7e234 agm: include headers from pal</li>
-            </ul>
+            </ul><li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>
             <h4>* packages/apps/TvSettings</h4>
             <ul>
-                <li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>
-            </ul>
+                <li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>            <h3>Archives / Older Builds:</h3>
+            </ul>er build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
 
             <h3>Archives / Older Builds:</h3>
             <p>For previous changelogs or older build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
-        </div>
-    </div>
-
-    <script defer>
+        </div>    <script defer>
+    </div>ddEventListener('DOMContentLoaded', () => {
+e-toggle');
+    <script defer>l> element for theme classes
         document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            const htmlElement = document.documentElement; // Target <html> element for theme classes
+            const themeToggle = document.getElementById('theme-toggle');            if (!themeToggle) {
+            const htmlElement = document.documentElement; // Target <html> element for theme classesERROR: Theme toggle button not found!');
 
             if (!themeToggle) {
                 console.error('ERROR: Theme toggle button not found!');
-                return;
+                return;            // Set initial icon based on theme already applied by the head script
             }
-
+</i>';
             // Set initial icon based on theme already applied by the head script
-            if (htmlElement.classList.contains('light-mode')) {
+            if (htmlElement.classList.contains('light-mode')) {eToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            }
-
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';            const applyTheme = (theme) => {
+            } {
+ove('dark-mode');
             const applyTheme = (theme) => {
-                if (theme === 'light-mode') {
+                if (theme === 'light-mode') {e'); // For backward compatibility
                     htmlElement.classList.remove('dark-mode');
                     htmlElement.classList.add('light-mode');
                     document.body.classList.remove('dark-mode'); // For backward compatibility
-                    document.body.classList.add('light-mode'); // For backward compatibility
+                    document.body.classList.add('light-mode'); // For backward compatibilityElement.classList.remove('light-mode');
                     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                } else {
+                } else {ode'); // For backward compatibility
                     htmlElement.classList.remove('light-mode');
                     htmlElement.classList.add('dark-mode');
                     document.body.classList.remove('light-mode'); // For backward compatibility
-                    document.body.classList.add('dark-mode'); // For backward compatibility
+                    document.body.classList.add('dark-mode'); // For backward compatibilityocalStorage.setItem('theme', theme);
                     themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
-                localStorage.setItem('theme', theme);
+                localStorage.setItem('theme', theme);            themeToggle.addEventListener('click', () => {
             };
 
-            themeToggle.addEventListener('click', () => {
+            themeToggle.addEventListener('click', () => {assList.remove('animate');
                 themeToggle.classList.add('animate');
                 setTimeout(() => {
-                    themeToggle.classList.remove('animate');
+                    themeToggle.classList.remove('animate');                if (htmlElement.classList.contains('dark-mode')) {
                 }, 300);
 
-                if (htmlElement.classList.contains('dark-mode')) {
+                if (htmlElement.classList.contains('dark-mode')) {yTheme('dark-mode');
                     applyTheme('light-mode');
                 } else {
                     applyTheme('dark-mode');
-                }
-            });
+                }            // --- ROM card click handler ---
+            });lectorAll('.rom-card');
 
-            // --- ROM card click handler ---
-            const romCards = document.querySelectorAll('.rom-card');
-
+            // --- ROM card click handler ---            romCards.forEach(romCard => {
+            const romCards = document.querySelectorAll('.rom-card');'click', (event) => {
+')) {
             romCards.forEach(romCard => {
                 romCard.addEventListener('click', (event) => {
-                    if (event.target.closest('.download-button')) {
+                    if (event.target.closest('.download-button')) {onst url = romCard.dataset.url;
                         return;
-                    }
+                    }.location.href = url;
                     const url = romCard.dataset.url;
-                    if (url) {
+                    if (url) {ole.warn('No data-url found on rom-card for navigation.');
                         window.location.href = url;
                     } else {
-                        console.warn('No data-url found on rom-card for navigation.');
-                    }
+                        console.warn('No data-url found on rom-card for navigation.');Card.addEventListener('keypress', (event) => {
+                    }') {
                 });
-                romCard.addEventListener('keypress', (event) => {
+                romCard.addEventListener('keypress', (event) => {st('.download-button')) {
                     if (event.key === 'Enter' || event.key === ' ') {
                         event.preventDefault();
-                        if (!event.target.closest('.download-button')) {
+                        if (!event.target.closest('.download-button')) {.location.href = url;
                             const url = romCard.dataset.url;
-                            if (url) {
-                                window.location.href = url;
+                            if (url) {e {
+                                window.location.href = url;t.target.click();
                             }
                         } else {
                             event.target.click();
                         }
                     }
-                });
-            });
-
+                });            // --- Changelog Modal Logic ---
+            });tElementById('changelog-btn');
+');
             // --- Changelog Modal Logic ---
             const changelogBtn = document.getElementById('changelog-btn');
-            const changelogModal = document.getElementById('changelogModal');
-            const modalCloseBtn = document.querySelector('.modal-close');
-
-            if (changelogBtn) {
-                changelogBtn.addEventListener('click', (e) => {
+            const changelogModal = document.getElementById('changelogModal');            if (changelogBtn) {
+            const modalCloseBtn = document.querySelector('.modal-close');dEventListener('click', (e) => {
+ behavior
+            if (changelogBtn) {odal
+                changelogBtn.addEventListener('click', (e) => {lling on body
                     e.preventDefault(); // Prevent default link behavior
-                    changelogModal.style.display = 'flex'; // Show the modal
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling on body
+                    changelogModal.style.display = 'flex'; // Show the modal{
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling on bodyole.error('ERROR: Changelog button not found!');
                 });
             } else {
-                console.error('ERROR: Changelog button not found!');
-            }
-
-            if (modalCloseBtn) {
-                modalCloseBtn.addEventListener('click', (e) => {
+                console.error('ERROR: Changelog button not found!');            if (modalCloseBtn) {
+            }dEventListener('click', (e) => {
+behavior
+            if (modalCloseBtn) {odal
+                modalCloseBtn.addEventListener('click', (e) => {on body
                     e.preventDefault(); // Prevent default link behavior
-                    changelogModal.style.display = 'none'; // Hide the modal
-                    document.body.style.overflow = ''; // Restore scrolling on body
+                    changelogModal.style.display = 'none'; // Hide the modal{
+                    document.body.style.overflow = ''; // Restore scrolling on bodyole.error('ERROR: Modal close button not found!');
                 });
             } else {
-                console.error('ERROR: Modal close button not found!');
+                console.error('ERROR: Modal close button not found!');            // Close modal when clicking outside of modal-content
             }
 
-            // Close modal when clicking outside of modal-content
+            // Close modal when clicking outside of modal-contentne';
             changelogModal.addEventListener('click', (event) => {
                 if (event.target === changelogModal) {
                     changelogModal.style.display = 'none';
                     document.body.style.overflow = '';
-                }
-            });
+                }            // --- Mobile Navigation Toggle ---
+            });lementById('nav-toggle-icon');
 
             // --- Mobile Navigation Toggle ---
-            const navToggleIcon = document.getElementById('nav-toggle-icon');
-            const navMenu = document.getElementById('nav-menu');
+            const navToggleIcon = document.getElementById('nav-toggle-icon');            if (navToggleIcon && navMenu) {
+            const navMenu = document.getElementById('nav-menu');ner('click', () => {
 
             if (navToggleIcon && navMenu) {
-                navToggleIcon.addEventListener('click', () => {
-                    navMenu.classList.toggle('active');
+                navToggleIcon.addEventListener('click', () => {Close menu when a nav item is clicked on mobile
+                    navMenu.classList.toggle('active');em => {
                 });
-                // Close menu when a nav item is clicked on mobile
+                // Close menu when a nav item is clicked on mobiletive')) {
                 navMenu.querySelectorAll('.nav-item a').forEach(item => {
                     item.addEventListener('click', () => {
                         if (navMenu.classList.contains('active')) {
                             navMenu.classList.remove('active');
-                        }
-                    });
+                        }{
+                    });ole.error('ERROR: Navigation toggle elements not found!');
                 });
             } else {
-                console.error('ERROR: Navigation toggle elements not found!');
+                console.error('ERROR: Navigation toggle elements not found!');t>
             }
-        });
-    </script>
+        });    </script>
 </body>
 </html>

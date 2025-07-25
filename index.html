@@ -955,51 +955,56 @@
             <h4>* packages/apps/Catapult</h4>
             <ul>
                 <li>5e7895d Automatic translation import</li>
+                <li>866430826 Automatic translation import</li>
             </ul>
-                <li>866430826 Automatic translation import</li>
             <h4>* packages/apps/Contacts</h4>
-            <ul> packages/apps/DeskClock</h4>
+            <ul>
                 <li>866430826 Automatic translation import</li>
-            </ul><li>353fcccc9 Automatic translation import</li>
-            <h4>* packages/apps/DeskClock</h4>
-            <ul> packages/apps/Glimpse</h4>
                 <li>353fcccc9 Automatic translation import</li>
-            </ul><li>22730be Automatic translation import</li>
-            <h4>* packages/apps/Glimpse</h4>
-            <ul> packages/apps/Jelly</h4>
+            </ul>
+            <h4>* packages/apps/DeskClock</h4>
+            <ul>
+                <li>353fcccc9 Automatic translation import</li>
                 <li>22730be Automatic translation import</li>
-            </ul><li>ebca57c Automatic translation import</li>
+            </ul>
+            <h4>* packages/apps/Glimpse</h4>
+            <ul>
+                <li>22730be Automatic translation import</li>
+                <li>ebca57c Automatic translation import</li>
+            </ul>
             <h4>* packages/apps/Jelly</h4>
             <ul>
-                <li>ebca57c Automatic translation import</li>            <h3>2025-07-15</h3>
-            </ul>ges noted for this date.</p>
+                <li>ebca57c Automatic translation import</li>
+            </ul>
 
-            <h3>2025-07-15</h3>            <h3>2025-07-14</h3>
-            <p>No specific changes noted for this date.</p>/LMOFreeform</h4>
+            <h3>2025-07-15</h3>
+            <p>No specific changes noted for this date.</p>
 
-            <h3>2025-07-14</h3><li>e62ecc3 Merge pull request #4 from tavukkdoner/15.0-4</li>
+            <h3>2025-07-14</h3>
             <h4>* packages/apps/LMOFreeform</h4>
-            <ul> packages/apps/Launcher3</h4>
+            <ul>
                 <li>e62ecc3 Merge pull request #4 from tavukkdoner/15.0-4</li>
-            </ul><li>959b825 New translations (#497)</li>
+                <li>959b825 New translations (#497)</li>
+            </ul>
             <h4>* packages/apps/Launcher3</h4>
             <ul>
-                <li>959b825 New translations (#497)</li>            <h3>2025-07-13</h3>
-            </ul>-caf/sm8750/audio/agm</h4>
+                <li>959b825 New translations (#497)</li>
+            </ul>
 
-            <h3>2025-07-13</h3><li>fd7e234 agm: include headers from pal</li>
+            <h3>2025-07-13</h3>
             <h4>* hardware/qcom-caf/sm8750/audio/agm</h4>
-            <ul> packages/apps/TvSettings</h4>
+            <ul>
                 <li>fd7e234 agm: include headers from pal</li>
-            </ul><li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>
+            </ul>
             <h4>* packages/apps/TvSettings</h4>
             <ul>
-                <li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>            <h3>Archives / Older Builds:</h3>
-            </ul>er build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
+                <li>56deadcbd [TvSettings] fix PendingIntent conflict in RowBuilder actions</li>
+            </ul>
 
             <h3>Archives / Older Builds:</h3>
             <p>For previous changelogs or older build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
-</div>
+        </div>
+    </div>
 <script defer>
 document.addEventListener('DOMContentLoaded', () => {
     // Theme toggle logic
@@ -1115,9 +1120,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     } else {
-        console.error('ERROR: Navigation toggle elements not found!')
+        console.error('ERROR: Navigation toggle elements not found!');
     }
+    // Preloader logic
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.style.display = 'none';
+        }
+    });
 });
 </script>
-</body>
+</body> 
 </html>

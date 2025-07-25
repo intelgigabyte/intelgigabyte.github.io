@@ -211,31 +211,31 @@
         }
 
         /* Hamburger icon (Hidden on desktop) */
-        .nav-toggle-icon {
-            display: none;
-            font-size: 1.6rem;
-            color: var(--nav-text);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
+    .nav-toggle-icon {
+    display: none; /* Hidden by default (for desktop) */
+    font-size: 1.6rem; /* Size of the icon */
+    color: var(--nav-text); /* Text color from custom variable */
+    cursor: pointer; /* Shows pointer cursor on hover */
+    transition: color 0.3s ease; /* Smooth color transition on hover or state change */
+}
         /* Main Content Sections */
-        section {
-            background: var(--section-bg);
-            border-radius: var(--radius-section);
-            box-shadow: 0 8px 24px var(--shadow);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid var(--border-color);
-            animation: fadeIn 1s ease-out forwards;
-            opacity: 0;
-            transition: background var(--transition-speed) ease,
-                        border-color var(--transition-speed) ease,
-                        box-shadow var(--transition-speed) ease,
-                        color var(--transition-speed) ease;
-        }
+       section {
+    background: var(--section-bg);
+    border-radius: var(--radius-section);
+    box-shadow: 0 8px 24px var(--shadow);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+    animation: fadeIn 1s ease-out forwards;
+    opacity: 0;
+    transition: background var(--transition-speed) ease,
+                border-color var(--transition-speed) ease,
+                box-shadow var(--transition-speed) ease,
+                color var(--transition-speed) ease;
+}
+        
 
         section:nth-of-type(1) { animation-delay: 0.2s; }
         section:nth-of-type(2) { animation-delay: 0.4s; }
@@ -1002,7 +1002,7 @@
             </ul>
 
             <h3>Archives / Older Builds:</h3>
-            <p>For previous changelogs or older build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> hoặc <a href="https://github.com/intelgigabyte/ChangeLog" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a> (nếu có).</p>
+            <p>For previous changelogs or older build details, please refer to our <a href="https://t.me/intelgigabyteshit" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Telegram Channel</a> Or <a href="https://github.com/intelgigabyte" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">GitHub repository</a></p>
         </div>
     </div>
 <script defer>

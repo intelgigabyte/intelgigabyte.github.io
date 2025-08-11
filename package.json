@@ -1,0 +1,14 @@
+{
+  "name": "meidyos-site",
+  "version": "1.0.0",
+  "description": "MeidyOS static site, packed with Parcel",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html --dist-dir dist",
+    "preview": "npx serve dist"
+  },
+  "devDependencies": {
+    "parcel": "^2.15.4",
+    "serve": "^14.2.4"
+  }
+}

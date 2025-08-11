@@ -10,45 +10,40 @@ document.addEventListener('DOMContentLoaded', async () => {
     loading.style.display = 'flex';
     console.log('Fetching device data...');
 
-    // Direct data fetching without caching
-    try {
-      // Fetch unified device info from JSON
-      const deviceInfoRes = await fetch('https://raw.githubusercontent.com/AxionAOSP/official_devices/refs/heads/main/dinfo.json');
-      console.log('Device Info Response:', deviceInfoRes.status, deviceInfoRes.statusText);
-      
-      if (!deviceInfoRes.ok) {
-        throw new Error(`Failed to fetch device info: ${deviceInfoRes.status} ${deviceInfoRes.statusText}`);
+    const processedDevices = processDevices([
+      {
+      device_name: 'Samsung Galaxy A71',
+      codename: 'a71',
+      maintainer: 'rmux',
+      support_group: 'https://t.me/MeidyOSUpdates',
+      image_url: 'img/A71.png'
       }
-      
-      // Parse the JSON data
-      const deviceData = await deviceInfoRes.json();
-      
-      console.log(`Loaded ${deviceData.devices.length} devices from devices.json`);
-      
-      // Process device data
-      const processedDevices = processDevices(deviceData.devices);
-      console.log(`Processed ${processedDevices.length} devices`);
-      
-      console.log('Creating device elements...');
-      const deviceElements = await createDeviceElements(processedDevices);
-      console.log(`Created ${deviceElements.length} device elements`);
-      
-      // Clear the grid before adding elements
-      grid.innerHTML = '';
-      
-      deviceElements.forEach(element => {
-        // Make all cards visible by default for better UX
-        element.style.display = 'block';
-        grid.appendChild(element);
-      });
+    ]);
+    console.log(`Processed ${processedDevices.length} device(s)`);
 
+    console.log('Creating device elements...');
+    const deviceElements = await createDeviceElements(processedDevices);
+    console.log(`Created ${deviceElements.length} device element(s)`);
+
+    // Clear the grid before adding elements
+    grid.innerHTML = '';
+
+    deviceElements.forEach(element => {
+      element.style.display = 'block';
+      grid.appendChild(element);
+    });
+
+    // Hide search/filter UI when only one device is shown
+    if (deviceElements.length <= 1) {
+      const searchContainer = document.querySelector('.search-container');
+      const filterContainer = document.querySelector('.filter-container');
+      if (searchContainer) searchContainer.style.display = 'none';
+      if (filterContainer) filterContainer.style.display = 'none';
+    } else {
       initFilters();
       initSearch();
-      initModalLogic();
-    } catch (fetchError) {
-      console.error('Fetch error:', fetchError);
-      throw fetchError;
     }
+    initModalLogic();
 
   } catch (error) {
     console.error('Error details:', error);
@@ -58,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <i class="fas fa-exclamation-triangle"></i>
         <p>Failed to load devices: ${error.message}</p>
         <p>Please check the console for details or visit the 
-           <a href="https://github.com/AxionAOSP/official_devices" target="_blank">official repository</a>.
+           <a href="https://github.com/MeidyOS/official_devices" target="_blank">official repository</a>.
         </p>
       </div>
     `;
@@ -76,9 +71,9 @@ function processDevices(devices) {
   return devices.map(device => {
     // Determine brand from device name
     const brandName = getDeviceBrand(device.device_name);
-    
+
     console.log(`Processed device: ${device.codename} (${device.device_name}) - Brand: ${brandName} - Maintainer: ${device.maintainer}`);
-    
+
     return {
       name: device.device_name,
       codename: device.codename,
@@ -116,7 +111,7 @@ function createDeviceElements(devices) {
           fetchFlavorData(device.codename, 'GMS'),
           fetchFlavorData(device.codename, 'VANILLA'),
         ]);
-        
+
         console.log(`Flavor data for ${device.codename}: GMS=${!!gms}, Vanilla=${!!vanilla}`);
 
         const imageUrl = device.image_url || 'img/fallback.png';
@@ -171,9 +166,9 @@ function createDeviceElements(devices) {
  */
 async function fetchFlavorData(codename, type) {
   try {
-    const url = `https://raw.githubusercontent.com/AxionAOSP/official_devices/main/OTA/${type}/${codename.toLowerCase()}.json`;
+    const url = `https://raw.githubusercontent.com/MeidyOS/official_devices/main/OTA/${type}/${codename.toLowerCase()}.json`;
     console.log(`Fetching ${type} data from: ${url}`);
-    
+
     const res = await fetch(url);
     if (!res.ok) {
       console.log(`No ${type} build for ${codename}: ${res.status} ${res.statusText}`);
@@ -185,7 +180,7 @@ async function fetchFlavorData(codename, type) {
       console.log(`Empty ${type} data for ${codename}`);
       return null;
     }
-    
+
     console.log(`Found ${type} build for ${codename}`);
     return data.response[0];
   } catch (error) {
@@ -247,13 +242,13 @@ function initModalLogic() {
   document.querySelector('.downloads-grid').addEventListener('click', (event) => {
     const deviceHeader = event.target.closest('.device-header');
     if (!deviceHeader) return;
-  
+
     const flavorsData = deviceHeader.dataset.flavors;
     if (!flavorsData || decodeURIComponent(flavorsData).trim() === '') {
       showSnackbar("No builds available for this device yet.");
       return;
     }
-  
+
     modalBody.innerHTML = decodeURIComponent(flavorsData);
     modalOverlay.classList.add('active');
   });
@@ -340,7 +335,7 @@ function initFilters() {
     console.error('Filter container not found');
     return;
   }
-  
+
   // Get all unique brands from the device cards
   const brands = new Set();
   document.querySelectorAll('.device-card').forEach(card => {
@@ -348,7 +343,7 @@ function initFilters() {
       brands.add(card.dataset.brand);
     }
   });
-  
+
   // Create filter buttons dynamically
   if (brands.size > 0) {
     // Add "All" button
@@ -357,7 +352,7 @@ function initFilters() {
     allBtn.dataset.filter = 'all';
     allBtn.textContent = 'All';
     filterContainer.appendChild(allBtn);
-    
+
     // Add brand buttons
     Array.from(brands).sort().forEach(brand => {
       const btn = document.createElement('button');
@@ -367,7 +362,7 @@ function initFilters() {
       filterContainer.appendChild(btn);
     });
   }
-  
+
   // Add click event listener
   filterContainer.addEventListener('click', (event) => {
     const btn = event.target.closest('.filter-btn');
@@ -384,7 +379,7 @@ function initFilters() {
         card.style.display = card.dataset.brand === filter ? 'block' : 'none';
       }
     });
-    
+
     // Clear search when changing filter
     const searchInput = document.getElementById('deviceSearch');
     if (searchInput) {

@@ -3,7 +3,7 @@ const members = [
     { username: 'Saikrishna1504', group: 'Management', position: 'Project Manager' },
     { username: 'manidweep', group: 'Management', position: 'Project Administrator' },
     { username: 'zenin1504', group: 'Management', position: 'Project Administrator' },
-    { username: 'rmuxnet', group: 'Contributors', position: 'AxionAOSP Channel/Chat Bot' },
+    { username: 'rmuxnet', group: 'Contributors', position: 'MeidyOS Channel/Chat Bot' },
     { username: 'therealmharc', group: 'Contributors', position: 'Source contributor' },
     { username: 'not-ayan', group: 'Designers', position: 'Designer' },
     { username: 'alecxtra', group: 'Designers', position: 'Designer' }
@@ -30,21 +30,14 @@ function createMemberCard(member, avatarUrl) {
     return card;
 }
 
-function fetchAndCacheAvatar(member, membersRow) {
+function fetchAvatar(member, membersRow) {
     fetch(`https://api.github.com/users/${member.username}`)
         .then(res => res.json())
         .then(data => {
             let avatarUrl = `https://github.com/${member.username}.png?size=120&default=identicon`;
-
-            if (data.avatar_url && typeof data.avatar_url === 'string') {
+            if (data && typeof data.avatar_url === 'string' && data.avatar_url) {
                 avatarUrl = data.avatar_url;
             }
-
-            const cached = localStorage.getItem(`avatar_${member.username}`);
-            if (cached !== avatarUrl) {
-                localStorage.setItem(`avatar_${member.username}`, avatarUrl);
-            }
-
             const card = createMemberCard(member, avatarUrl);
             membersRow.appendChild(card);
         })
@@ -69,14 +62,7 @@ Object.entries(groupedMembers).forEach(([position, groupMembers]) => {
     membersRow.classList.add('team-members');
 
     groupMembers.forEach(member => {
-        const cachedAvatar = localStorage.getItem(`avatar_${member.username}`);
-
-        if (cachedAvatar) {
-            const card = createMemberCard(member, cachedAvatar);
-            membersRow.appendChild(card);
-        } else {
-            fetchAndCacheAvatar(member, membersRow);
-        }
+        fetchAvatar(member, membersRow);
     });
 
     groupDiv.appendChild(membersRow);

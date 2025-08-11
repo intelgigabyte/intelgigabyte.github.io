@@ -24,7 +24,7 @@ p {
 body {
   font-family: "Google Sans", sans-serif;
   background-color: var(--md_body_background);
-  color: var(--text_primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
 }

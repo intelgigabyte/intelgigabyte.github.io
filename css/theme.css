@@ -1,12 +1,16 @@
 :root {
-    --md_accent_color: #c9fdd3;
-    --md_surface_color: #1e1e1e;
-    --md_surface_color_light: #303030;
-    --md_accent_dark_color: #55a165b4;
-    --md_body_background: #111;
-    --card-bg: #000000;
-    --text-primary: #ffffff;
-    --text-primary-inverse: #000000;
-    --text-secondary: #ddd;
-    --error-red: #f87171;
-  }
+  /* Purple / Pink / Gray theme */
+  --md_accent_color: #ff4da6;            /* Pink */
+  --md_accent_dark_color: #7c3aed;       /* Purple */
+
+  --md_surface_color: #1e1e1e;           /* Dark gray surface */
+  --md_surface_color_light: #2a2a2a;     /* Lighter gray surface */
+  --md_body_background: #111216;         /* Body background (very dark gray) */
+  --card-bg: #18181b;                    /* Card background (gray) */
+
+  --text-primary: #ffffff;               /* Main text */
+  --text-primary-inverse: #0f0f12;       /* Text on accent backgrounds */
+  --text-secondary: #d1d5db;             /* Secondary text (gray-300) */
+
+  --error-red: #f87171;                  /* Error */
+}

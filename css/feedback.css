@@ -11,46 +11,49 @@
 }
 
 .user_feedback {
-    background: var(--md_surface_color_light);
+    background: rgba(24,24,27,0.45);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    backdrop-filter: saturate(160%) blur(10px);
     color: var(--text-secondary);
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 14px;
     font-family: "Space Grotesk", sans-serif;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
     max-width: 300px;
     font-size: 14px;
     line-height: 1.4;
     position: relative;
-    border: none;
+    border: 1px solid rgba(255,255,255,0.08);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 100px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
 .user_feedback::before {
     content: "“";
-    font-size: 24px;
+    font-size: 26px;
     position: absolute;
-    top: 0px;
-    left: 8px;
-    color: #888;
+    top: 4px;
+    left: 10px;
+    color: rgba(255,255,255,0.35);
 }
 
 .user_feedback::after {
     content: "”";
-    font-size: 24px;
+    font-size: 26px;
     position: absolute;
-    bottom: -5px;
-    right: 8px;
-    color: #888;
+    bottom: -2px;
+    right: 10px;
+    color: rgba(255,255,255,0.35);
 }
 
 .user_feedback_author {
     margin-top: 10px;
     font-weight: bold;
-    color: #aaa;
+    color: #cfcfcf;
     font-size: 13px;
     align-self: flex-end;
     text-align: right;

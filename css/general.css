@@ -23,10 +23,21 @@ p {
 
 body {
   font-family: "Google Sans", sans-serif;
-  background-color: var(--md_body_background);
+  background: var(--bg-gradient), var(--md_body_background);
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* subtle noise overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="120" height="120" filter="url(%23n)" opacity="0.12"/></svg>');
+  opacity: var(--bg-noise-opacity);
+  z-index: -1;
 }
 
 a {

@@ -13,4 +13,11 @@
   --text-secondary: #d1d5db;             /* Secondary text (gray-300) */
 
   --error-red: #f87171;                  /* Error */
+
+  /* Accent gradient and background glows */
+  --accent-gradient: linear-gradient(135deg, var(--md_accent_dark_color), var(--md_accent_color));
+  --bg-gradient: radial-gradient(800px 600px at 15% 10%, rgba(124,58,237,0.24), transparent 60%),
+                 radial-gradient(900px 700px at 85% 85%, rgba(255,77,166,0.20), transparent 60%),
+                 linear-gradient(180deg, #0f1116 0%, #0b0c10 100%);
+  --bg-noise-opacity: 0.03;
 }

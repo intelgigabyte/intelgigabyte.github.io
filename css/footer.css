@@ -1,7 +1,10 @@
 footer {
-    background: #000;
+    background: rgba(24,24,27,0.55);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    backdrop-filter: saturate(160%) blur(10px);
     padding: 20px;
     text-align: center;
     font-size: 0.9rem;
-    color: #777;
+    color: #a1a1aa;
+    border-top: 1px solid rgba(255,255,255,0.06);
 }

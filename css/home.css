@@ -103,10 +103,13 @@ section h2::after {
 }
 
 .content-card {
-    background: var(--md_surface_color);
+    background: rgba(24, 24, 27, 0.45);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    backdrop-filter: saturate(180%) blur(12px);
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
     margin-bottom: 40px;
     text-align: center;
 }
@@ -124,10 +127,23 @@ section h2::after {
 .header-text {
     text-align: left;
     max-width: 60%;
+    background: rgba(24, 24, 27, 0.35);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 32px;
 }
 
 .header-text-game {
     text-align: center;
+    background: rgba(24, 24, 27, 0.35);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: saturate(180%) blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 0 16px;
 }
 
 .header-mockup img {

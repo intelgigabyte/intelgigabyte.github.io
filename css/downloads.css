@@ -56,8 +56,10 @@ h1 {
 .filter-btn {
   padding: 0.75rem 1.25rem;
   border-radius: 2rem;
-  background: var(--md_surface_color);
-  border: none;
+  background: rgba(24,24,27,0.45);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
   color: var(--text-primary);
   cursor: pointer;
   transition: all var(--transition-speed) ease;
@@ -69,15 +71,15 @@ h1 {
 
 .filter-btn:hover {
   transform: translateY(-1px);
-  background: var(--md_accent_color);
-  color: var(--text-primary-inverse);
+  background: linear-gradient(135deg, var(--md_accent_dark_color), var(--md_accent_color));
+  color: var(--text-primary);
 }
 
 .filter-btn.active {
-  background: var(--md_accent_color);
-  color: var(--text-primary-inverse);
+  background: linear-gradient(135deg, var(--md_accent_dark_color), var(--md_accent_color));
+  color: var(--text-primary);
   border-color: transparent;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
 }
 
 /* Device Grid System */
@@ -93,20 +95,22 @@ h1 {
 
 /* Device Cards */
 .device-card {
-  background: var(--md_surface_color);
+  background: rgba(24,24,27,0.45);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
   border-radius: var(--card-border-radius);
-  border: none;
+  border: 1px solid rgba(255,255,255,0.08);
   overflow: hidden;
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.4s ease-out;
   animation-fill-mode: backwards;
   min-width: 358px;
 }
 
 .device-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255,255,255,0.06) inset;
 }
 
 .device-header {
@@ -116,6 +120,7 @@ h1 {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .device-thumb {
@@ -124,6 +129,7 @@ h1 {
   object-fit: contain;
   border-radius: 8px;
   background-color: transparent;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
 }
 
 .device-info {
@@ -160,7 +166,10 @@ h1 {
 
 /* Flavor Cards */
 .flavor-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: saturate(160%) blur(10px);
+  backdrop-filter: saturate(160%) blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 0.75rem;
   overflow: hidden;
   margin-bottom: 1rem;
@@ -171,7 +180,7 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 1rem;
-  background-color: var(--md_surface_color_light);
+  background: rgba(255,255,255,0.04);
 }
 
 .flavor-title {
@@ -180,8 +189,8 @@ h1 {
 }
 
 .download-btn {
-  background: var(--md_accent_color);
-  color: var(--text-primary-inverse);
+  background: linear-gradient(135deg, var(--md_accent_dark_color), var(--md_accent_color));
+  color: var(--text-primary);
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
@@ -195,12 +204,10 @@ h1 {
 
 .download-btn:hover {
   transform: translateY(-1px);
-  background: var(--md_accent_color);
-  box-shadow: 0 2px 8px rgba(201, 253, 211, 0.2);
+  box-shadow: 0 8px 18px rgba(124, 58, 237, 0.35);
 }
 
 .download-btn:active {
-  background: var(--md_accent_color);
   transform: translateY(0);
 }
 
@@ -376,7 +383,9 @@ h1 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.45);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
   display: none;
   align-items: center;
   justify-content: center;
@@ -388,9 +397,12 @@ h1 {
 }
 
 .modal-content {
-  background: var(--md_surface_color);
+  background: rgba(24,24,27,0.5);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
   border-radius: var(--card-border-radius);
-  border: none;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
   max-width: 600px;
   width: 90%;
   padding: 1rem;
@@ -429,7 +441,10 @@ h1 {
 .search-wrapper {
   display: flex;
   align-items: center;
-  background: var(--md_surface_color);
+  background: rgba(24,24,27,0.45);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
   padding: 16px;
   border-radius: 25px;
   width: 100%;

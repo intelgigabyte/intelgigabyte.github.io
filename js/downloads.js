@@ -10,15 +10,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     loading.style.display = 'flex';
     console.log('Fetching device data...');
 
-    const processedDevices = processDevices([
-      {
-      device_name: 'Samsung Galaxy A71',
-      codename: 'a71',
-      maintainer: 'rmux',
-      support_group: 'https://t.me/MeidyOSUpdates',
-      image_url: 'img/A71.png'
-      }
-    ]);
+    // Fetch device data from the new URL
+    const response = await fetch('https://raw.githubusercontent.com/MeidyOS/OTA/refs/heads/main/dinfo.json');
+    if (!response.ok) {
+      throw new Error(`Failed to fetch device data: ${response.status} ${response.statusText}`);
+    }
+    const deviceData = await response.json();
+
+    const processedDevices = processDevices(deviceData);
     console.log(`Processed ${processedDevices.length} device(s)`);
 
     console.log('Creating device elements...');
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <i class="fas fa-exclamation-triangle"></i>
         <p>Failed to load devices: ${error.message}</p>
         <p>Please check the console for details or visit the 
-           <a href="https://github.com/MeidyOS/official_devices" target="_blank">official repository</a>.
+           <a href="https://github.com/MeidyOS/OTA" target="_blank">official repository</a>.
         </p>
       </div>
     `;
@@ -107,19 +106,19 @@ function createDeviceElements(devices) {
         element.dataset.brand = device.brand;
 
         console.log(`Fetching flavor data for ${device.codename}...`);
-        const [gms, vanilla] = await Promise.all([
-          fetchFlavorData(device.codename, 'GMS'),
-          fetchFlavorData(device.codename, 'VANILLA'),
+        const [ui6, ui7] = await Promise.all([
+          fetchFlavorData(device.codename, 'UI6'),
+          fetchFlavorData(device.codename, 'UI7'),
         ]);
 
-        console.log(`Flavor data for ${device.codename}: GMS=${!!gms}, Vanilla=${!!vanilla}`);
+        console.log(`Flavor data for ${device.codename}: UI6=${!!ui6}, UI7=${!!ui7}`);
 
         const imageUrl = device.image_url || 'img/fallback.png';
         console.log(`Image URL for ${device.codename}: ${imageUrl}`);
 
         const flavorHtml = `
-          ${gms ? renderFlavor('GMS', gms) : ''}
-          ${vanilla ? renderFlavor('Vanilla', vanilla) : ''}
+          ${ui6 ? renderFlavor('OneUI 6', ui6) : ''}
+          ${ui7 ? renderFlavor('OneUI 7', ui7) : ''}
         `;
 
         element.innerHTML = `
@@ -139,7 +138,7 @@ function createDeviceElements(devices) {
         `;
 
         // Add a flag to indicate if this device has builds available
-        element.dataset.hasBuilds = (!!gms || !!vanilla).toString();
+        element.dataset.hasBuilds = (!!ui6 || !!ui7).toString();
 
         return element;
       } catch (error) {
@@ -161,12 +160,12 @@ function createDeviceElements(devices) {
 /**
  * Fetches flavor data for a device
  * @param {string} codename - Device codename
- * @param {string} type - Flavor type (GMS/VANILLA)
+ * @param {string} type - Flavor type (UI6/UI7)
  * @returns {Promise<object|null>} Flavor data or null
  */
 async function fetchFlavorData(codename, type) {
   try {
-    const url = `https://raw.githubusercontent.com/MeidyOS/official_devices/main/OTA/${type}/${codename.toLowerCase()}.json`;
+    const url = `https://raw.githubusercontent.com/MeidyOS/OTA/refs/heads/main/${type}/${codename.toLowerCase()}.json`;
     console.log(`Fetching ${type} data from: ${url}`);
 
     const res = await fetch(url);

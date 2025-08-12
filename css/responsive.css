@@ -69,9 +69,6 @@
     text-align: center !important;
   }
 
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
 
   .game-preview-container {
     max-height: 150px !important;

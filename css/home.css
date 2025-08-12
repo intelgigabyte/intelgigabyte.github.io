@@ -159,19 +159,6 @@ section h2::after {
     height: 100vh;
 }
 
-.faq-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.faq-item {
-    text-align: left;
-    padding-bottom: 20px;
-}
-
 #introHeader {
     text-align: center;
 }

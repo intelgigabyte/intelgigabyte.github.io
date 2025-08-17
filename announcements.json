@@ -1,0 +1,5 @@
+{
+  "title": "Update Announcement",
+  "date": "2025-08-17",
+  "content": "It turns out the boot issue with the PIF implementation was caused by using the wrong framework.jar. That’s now resolved.\n\nIn the next version, some apps will remain preinstalled, including Gmail, YouTube, Game-related features, eSIM functions, Chrome, and Calculator.\n\nWe’d love your suggestions for what else should be included. Share your ideas here: https://t.me/meidyoschat/1308"
+}

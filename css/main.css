@@ -4,7 +4,7 @@
 @import url('feedback.css');
 @import url('features.css');
 @import url('floating-cats.css');
-/* Add css before here */
+@import url('announcements.css');
 @import url('general.css');
 @import url('home.css');
 @import url('nav.css');

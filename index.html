@@ -1,61 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeidyOS - Make your android better</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Space+Grotesk"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MeidyOS - Make your android better</title>
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Space+Grotesk" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
-  <link rel="stylesheet" href="css/main.css" />
-</head>
+  <body>
+    <nav>
+      <div class="logo">
+        <a href="home.html#header_intro" onclick="loadPage(event)">MeidyOS</a>
+      </div>
+      <div class="mobile-nav"><i class="fas fa-bars"></i></div>
+      <ul class="nav-links">
+        <li>
+          <a href="home.html#about" onclick="loadPage(event)">About</a>
+        </li>
+        <li>
+          <a href="home.html#announcements" onclick="loadPage(event)"
+            >Announcements</a
+          >
+        </li>
+        <li>
+          <a href="home.html#features" onclick="loadPage(event)">Features</a>
+        </li>
+        <li>
+          <a href="home.html#community" onclick="loadPage(event)">Community</a>
+        </li>
+        <li>
+          <a href="#changelog">Changelog</a>
+        </li>
+        <li>
+          <a
+            href="download.html#downloads"
+            onclick="loadPage(event)"
+            id="downloadBtn"
+            >Downloads</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-<body>
-  <nav>
-    <div class="logo">
-  <a href="home.html#header_intro" onclick="loadPage(event)">MeidyOS</a>
+    <div class="modal-overlay" id="changelogModal">
+      <div class="modal-content">
+        <button class="close-btn" id="closeChangelogBtn">&times;</button>
+        <h2>Changelog</h2>
+        <div id="changelog-list"></div>
+      </div>
     </div>
-    <div class="mobile-nav"><i class="fas fa-bars"></i></div>
-    <ul class="nav-links">
-      <li>
-        <a href="home.html#about" onclick="loadPage(event)">About</a>
-      </li>
-      <li>
-        <a href="home.html#announcements" onclick="loadPage(event)">Announcements</a>
-      </li>
-      <li>
-        <a href="home.html#features" onclick="loadPage(event)">Features</a>
-      </li>
-      <li>
-        <a href="#changelog">Changelog</a>
-      </li>
-      <li>
-        <a href="download.html#downloads" onclick="loadPage(event)" id="downloadBtn">Downloads</a>
-      </li>
-    </ul>
-  </nav>
 
-  <div class="modal-overlay" id="changelogModal">
-    <div class="modal-content">
-      <button class="close-btn" id="closeChangelogBtn">&times;</button>
-      <h2>Changelog</h2>
-      <div id="changelog-list"></div>
+    <div id="iframeWrapper">
+      <iframe id="contentFrame" src="home.html"></iframe>
     </div>
-  </div>
 
-  <div id="iframeWrapper">
-    <iframe id="contentFrame" src="home.html"></iframe>
-  </div>
-
-  <script src="js/index.js"></script>
-  <script src="js/iframe.js"></script>
-  <script src="js/nav.js"></script>
-  <script src="js/changelog.js"></script>
-</body>
-
+    <script src="js/index.js"></script>
+    <script src="js/iframe.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/changelog.js"></script>
+  </body>
 </html>

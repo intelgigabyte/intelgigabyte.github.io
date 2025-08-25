@@ -79,7 +79,7 @@ h1 {
   background: linear-gradient(135deg, var(--md_accent_dark_color), var(--md_accent_color));
   color: var(--text-primary);
   border-color: transparent;
-  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.25);
+  box-shadow: 0 6px 18px #F5F5DC;
 }
 
 /* Device Grid System */

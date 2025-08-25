@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('Fetching device data...');
 
     // Fetch device data from the new URL
-    const response = await fetch('https://raw.githubusercontent.com/MeidyOS/OTA/refs/heads/main/dinfo.json');
+    const response = await fetch('https://raw.githubusercontent.com/intelgigabyte/OTA-NERV/refs/heads/main/ota.json');
     if (!response.ok) {
       throw new Error(`Failed to fetch device data: ${response.status} ${response.statusText}`);
     }
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <i class="fas fa-exclamation-triangle"></i>
         <p>Failed to load devices: ${error.message}</p>
         <p>Please check the console for details or visit the 
-           <a href="https://github.com/MeidyOS/OTA" target="_blank">official repository</a>.
+           <a href="https://github.com/intelgigabyte/OTA" target="_blank">official repository</a>.
         </p>
       </div>
     `;
@@ -117,8 +117,8 @@ function createDeviceElements(devices) {
         console.log(`Image URL for ${device.codename}: ${imageUrl}`);
 
         const flavorHtml = `
-          ${ui6 ? renderFlavor('OneUI 6', ui6) : ''}
-          ${ui7 ? renderFlavor('OneUI 7', ui7) : ''}
+          ${ui6 ? renderFlavor('ProjectNERV 1.1.1', ui6) : ''}
+          ${ui7 ? renderFlavor('ProjectNERV', ui7) : ''}
         `;
 
         element.innerHTML = `
@@ -165,7 +165,7 @@ function createDeviceElements(devices) {
  */
 async function fetchFlavorData(codename, type) {
   try {
-    const url = `https://raw.githubusercontent.com/MeidyOS/OTA/refs/heads/main/${type}/${codename.toLowerCase()}.json`;
+    const url = `https://raw.githubusercontent.com/intelgigabyte/OTA-NERV/refs/heads/main/${type}/${codename.toLowerCase()}.json`;
     console.log(`Fetching ${type} data from: ${url}`);
 
     const res = await fetch(url);

@@ -30,7 +30,7 @@ class AnnouncementManager {
 
     async loadAnnouncement() {
         try {
-            const response = await fetch('https://raw.githubusercontent.com/MeidyOS/MeidyOS.github.io/refs/heads/main/announcements.json');
+            const response = await fetch('none pls add json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

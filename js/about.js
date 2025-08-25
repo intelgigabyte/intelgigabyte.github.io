@@ -1,6 +1,18 @@
 const members = [
-    { username: 'rmuxnet', group: 'Core', position: 'Project Founder/Developer' },
-    { username: 'Exo1i', group: 'Core', position: 'Project Manager/Developer' },
+    { username: 'Salvogiangri', group: 'UN1CA Team', position: 'Project Founder/Developer' },
+    { username: 'DavidArsene', group: 'UN1CA Team', position: 'Help and time' },
+    { username: 'paulowesll', group: 'UN1CA Team', position: 'Help and support' },
+    { username: 'Simon1511', group: 'UN1CA Team', position: 'Support and some of the device-specific patches' },
+    { username: 'ananjaser1211', group: 'UN1CA Team', position: 'Troubleshooting and his time' },
+    { username: 'iDrinkCoffee-TG' , group: 'UN1CA Team', position: ' Documentation revisioning' },
+    { username: 'lineageos' , group: 'UN1CA Team', position: 'Their original OTA updater implementation' },
+    { username: 'RisenID' , group: 'UN1CA Team', position: 'Documentation revisioning' },
+    { username: 'ShaDisNX255', group: 'UN1CA Team', position: 'Time and for his NcX ROM which inspired this project' },
+    { username: 'Yagzie', group: 'NERV Team', position: 'Project Founder/Developer/Maintainer of a52sxq/m52xq/a73xq/r9q/r9q2' },
+    { username: 'Ksawlii', group: 'NERV Team', position: 'Maintainer of a53x' },
+    { username: 'pascua28', group: 'NERV Team', position: 'Maintainer of a71' },
+    { username: 'intelgigabyte', group: 'NERV Team', position: 'Maintainer of a71/Web Designer' },
+    { username: 'Alexfurina', group: 'NERV Team', position: 'Maintainer of a51' },
 ];
 
 const teamContainer = document.getElementById('team');

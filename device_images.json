@@ -1,8 +1,40 @@
 {
   "devices": [
     {
+      "codename": "a52sxq",
+      "imageUrl": "https://wiki.lineageos.org/images/devices/a52sxq.png"
+    },
+    {
       "codename": "a71",
-      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a71.jpg"
+      "imageUrl": "https://wiki.lineageos.org/images/devices/a71.png"
+    },
+    {
+      "codename": "r9q",
+      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s21-fe-5g.jpg"
+    },
+    {
+      "codename": "r9q2",
+      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-s21-fe-5g.jpg"
+    },
+    {
+      "codename": "m52xq",
+      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-m32-5g-.jpg"
+    },
+    {
+      "codename": "a53x",
+      "imageUrl": "https://xdaforums.com/data/xda/device/icon/18/1873.jpg?1647869176"
+    },
+    {
+      "codename": "a51",
+      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a51-sm-a515.jpg"
+    },
+    {
+      "codename": "a73xq",
+      "imageUrl": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-a73-5g.jpg"
+    },
+    {
+      "codename": "r8q",
+      "imageUrl": "https://wiki.lineageos.org/images/devices/r8q.png"
     }
   ]
 }

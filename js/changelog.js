@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const changelogList = document.getElementById('changelog-list');
-  const rawUrl = 'https://raw.githubusercontent.com/MeidyOS/changelogs/refs/heads/main/README.md';
+  const rawUrl = 'https://raw.githubusercontent.com/intelgigabyte/changelogs/refs/heads/main/README.md';
 
   const renderer = new marked.Renderer();
 

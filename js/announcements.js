@@ -30,7 +30,7 @@ class AnnouncementManager {
 
     async loadAnnouncement() {
         try {
-            const response = await fetch('none pls add json');
+            const response = await fetch('https://raw.githubusercontent.com/intelgigabyte/intelgigabyte.github.io/refs/heads/main/announcements.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

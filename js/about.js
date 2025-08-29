@@ -11,7 +11,7 @@ const members = [
     { username: 'Yagzie', group: 'NERV Team', position: 'Project Founder/Developer/Maintainer of a52sxq/m52xq/a73xq/r9q/r9q2' },
     { username: 'Ksawlii', group: 'NERV Team', position: 'Maintainer of a53x' },
     { username: 'pascua28', group: 'NERV Team', position: 'Maintainer of a71' },
-    { username: 'intelgigabyte', group: 'NERV Team', position: 'Maintainer of a71/Web Designer' },
+    { username: 'intelgigabyte', group: 'NERV Team', position: 'Web Designer' },
     { username: 'Alexfurina', group: 'NERV Team', position: 'Maintainer of a51' },
 ];
 

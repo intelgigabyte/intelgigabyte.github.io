@@ -35,7 +35,7 @@ class AnnouncementManager {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
-            const announcement = await response.json();
+             const announcement = await response.json();
             this.displayAnnouncement(announcement);
         } catch (error) {
             console.error('Failed to load announcement:', error);
